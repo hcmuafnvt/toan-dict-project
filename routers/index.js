@@ -7,33 +7,11 @@ module.exports = function (app) {
     });
 
     //api
-    app.get('/api/searchitems', function (req, res) {
-        var amazon = require('amazon-product-api');
-        var client = amazon.createClient({
-            awsId: "AKIAILTFB2GFBUZPHRJA",
-            awsSecret: "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",
-            awsTag: "orderhangus-20"
-        });
-
-        client.itemSearch({
-            SearchIndex: 'Books',
-            Keywords: 'business adventures',
-            responseGroup: 'Images,ItemAttributes,Offers'
-        }).then(function (results) {
-            //console.log(results);
-            res.json(results);
-        }).catch(function (err) {
-            res.end(err);
-        });
-
-
-    });
-
-    app.get('/api/search', function (req, res) {
+    app.get('/api/search/:word', function (req, res) {        
         var options = {
             host: 'dict.laban.vn',
             port: 80,
-            path: '/ajax/autocomplete?type=1&site=dictionary&query=dispute',
+            path: '/ajax/autocomplete?type=1&site=dictionary&query=' + req.params.word,
             method: 'GET',
             headers: {
                 "Accept": "application/json",
@@ -42,7 +20,6 @@ module.exports = function (app) {
         };
 
         var buffer = [];
-
 
         http.get(options, function (response) {
             //console.log("\nstatus code: ", res.statusCode);

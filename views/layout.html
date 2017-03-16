@@ -34,26 +34,21 @@
 
         <main id="main" class="main" role="main">
             <section class="search-wrapper">
-                <div class="container">                    
+                <div class="container">
                     <div class="search-box">                        
-                        <input id="txtSearch" type="text" placeholder="Nhập từ cần tìm">
-                        <i class="glyphicon glyphicon-search"></i>
-
-                        <div id="search-suggestion" class="search-suggestion">
-
+                        <input id="txtSearch" class="pull-left" type="text" placeholder="Nhập từ cần tìm">
+                        <div class="search-type pull-right">
+                            <div class="select">
+                                <select>
+                                    <option value="vi">VI</option>
+                                    <option value="en">EN</option>                                    
+                                </select>
+                                <div class="select__arrow"></div>
+                            </div>     
                         </div>
-                    </div>
-                    <div class="search-type">
-                        <div class="select">
-                            <select>
-                                <option value="">Tỉnh thành</option>
-                                <option value="">Hồ Chí Minh</option>
-                                <option value="">Hà Nội</option>
-                                <option value="">Bình Định</option>
-                            </select>
-                            <div class="select__arrow"></div>
-                        </div>     
-                    </div>                                   
+                        <div id="search-suggestion"  class="search-suggestion">                                                    
+                        </div>                                     
+                    </div>                                                                  
                 </div>                
             </section><!-- end .search-wrapper -->
 
@@ -67,6 +62,7 @@
     </div>
 
     <script type='text/javascript' src='public/js/libs/jquery.min.js'></script>
+    <script type='text/javascript' src='public/js/libs/jquery-ui.min.js'></script>
     <script type='text/javascript' src='public/js/app.min.js'></script>
 </body>
 

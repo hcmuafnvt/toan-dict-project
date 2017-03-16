@@ -1,0 +1,225 @@
+/*-----------------------------------------------------------------------------------------------------------
+CSS3 PROPERTIES 
+-----------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------------------------------
+Global
+-----------------------------------------------------------------------------------------------------------*/
+html,
+body {
+  height: 100%;
+}
+body {
+  font-size: 62.5%;
+}
+body.mobile-menu {
+  position: fixed;
+  overflow: hidden;
+}
+.main {
+  position: relative;
+  left: 0;
+  -webkit-transition: left 0.3s ease-in;
+  -moz-transition: left 0.3s ease-in;
+  -o-transition: left 0.3s ease-in;
+  transition: left 0.3s ease-in;
+}
+.mobile-menu .main {
+  left: -80%;
+}
+.mobile-menu .overlay-bg {
+  background-color: #000;
+  opacity: 0.7;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9998;
+}
+/*-----------------------------------------------------------------------------------------------------------
+Select
+-----------------------------------------------------------------------------------------------------------*/
+.select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.select select {
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  color: #7b7b7b;
+  border: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  outline: 0;
+  background: #e4ecff;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.select select::-ms-expand {
+  display: none;
+}
+.select select:disabled {
+  pointer-events: none;
+  opacity: .5;
+}
+.select__arrow {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  border-width: 8px 5px 0 5px;
+  border-style: solid;
+  border-color: #7b7b7b transparent transparent transparent;
+}
+.select select:disabled ~ .select__arrow {
+  border-top-color: #ccc;
+}
+/*-----------------------------------------------------------------------------------------------------------
+Main Menu
+-----------------------------------------------------------------------------------------------------------*/
+.main-menu {
+  position: fixed;
+  width: 80%;
+  right: -80%;
+  -webkit-transition: right 0.3s ease-in;
+  -moz-transition: right 0.3s ease-in;
+  -o-transition: right 0.3s ease-in;
+  transition: right 0.3s ease-in;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.main-menu ul {
+  position: absolute;
+  list-style: none;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2B4B5A;
+  padding: 0px;
+}
+.main-menu ul li {
+  display: block;
+  padding: 12px 0px 11px 0px;
+  border-bottom: 1px solid #656565;
+}
+.main-menu ul li:last-child {
+  border-bottom: 0px;
+}
+.main-menu ul li a {
+  color: #e4ecff;
+  font-size: 2.5em;
+  display: block;
+  text-align: center;
+}
+/*-----------------------------------------------------------------------------------------------------------
+Header
+-----------------------------------------------------------------------------------------------------------*/
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  -webkit-transition: left 0.3s ease-in;
+  -moz-transition: left 0.3s ease-in;
+  -o-transition: left 0.3s ease-in;
+  transition: left 0.3s ease-in;
+  background-color: #1a4f6f;
+  height: 50px;
+  z-index: 10000;
+}
+header .logo {
+  float: left;
+  width: 65px;
+  margin-top: 4px;
+  margin-left: 8px;
+}
+header .logo a {
+  font-size: 25px;
+  color: #fff;
+}
+header .logo h1 {
+  font-size: 1em;
+  margin: 7px 0px 0px 10px;
+}
+header .toggle-menu {
+  font-size: 24px;
+  margin: 12px 20px 0px;
+  color: #fff;
+}
+header .toggle-menu.glyphicon-remove {
+  display: none;
+}
+.mobile-menu header {
+  left: -80%;
+}
+.mobile-menu header .toggle-menu.glyphicon-menu-hamburger {
+  display: none;
+}
+.mobile-menu header .toggle-menu.glyphicon-remove {
+  display: block;
+}
+.mobile-menu .main-menu {
+  right: 0;
+}
+@media (min-width: 768px) {
+  .menu .toggle-menu {
+    display: none;
+  }
+  .menu nav ul {
+    position: relative;
+    right: inherit;
+    width: auto;
+    background-color: inherit;
+  }
+  .menu nav ul li {
+    display: inline;
+  }
+}
+.search-wrapper {
+  background-color: #00BDF2;
+  padding-top: 50px;
+}
+.search-wrapper .search-box {
+  position: relative;
+  margin: 15px 10px;
+}
+.search-wrapper .search-box .glyphicon-search {
+  position: absolute;
+  right: 5px;
+  font-size: 4em;
+  color: #e29a79;
+  top: 7px;
+  cursor: pointer;
+}
+.search-wrapper .search-box input[type='text'] {
+  width: 100%;
+  height: 37px;
+  font-size: 2.3em;
+  padding-left: 10px;
+  padding-right: 35px;
+  background-color: #e4ecff;
+  border: 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color: #7b7b7b;
+}
+.search-wrapper .search-type {
+  margin: 10px 10px 20px 10px;
+  display: none;
+}
+.search-wrapper .search-type .select select {
+  font-size: 2.4em;
+  padding: 7px 25px 7px 10px;
+}
+.search-wrapper .search-type .select .select__arrow {
+  top: 15px;
+  right: 8px;
+}

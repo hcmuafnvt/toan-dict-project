@@ -1,0 +1,111 @@
+/*-----------------------------------------------------------------------------------------------------------
+Main Menu
+-----------------------------------------------------------------------------------------------------------*/
+.main-menu {
+    position: fixed;    
+    width: @mobile-menu-width-size;
+    right: -@mobile-menu-width-size;
+    .transition(right 0.3s ease-in);
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;     
+    ul {
+        position: absolute;          
+        list-style: none;        
+        top: 0;
+        width: 100%;
+        height: 100%;       
+        background-color: #2B4B5A;
+        padding: 0px;
+        li {
+            display: block;
+            padding: 12px 0px 11px 0px;
+            border-bottom: 1px solid #656565;
+            &:last-child {
+                border-bottom: 0px;
+            }
+            a {
+                color: #e4ecff;
+                font-size: 2.5em;
+                display: block;               
+                text-align: center;                
+            }
+        }                
+    }
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+Header
+-----------------------------------------------------------------------------------------------------------*/
+// header
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    .transition(left 0.3s ease-in);
+    background-color: #1a4f6f;
+    height: 50px;
+    z-index: 10000;    
+    .logo {
+        float: left;
+        width: 65px;
+        margin-top: 4px;
+        margin-left: 8px;
+        a {
+            font-size: 25px;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 1em;
+            margin: 7px 0px 0px 10px;
+        }
+    }
+
+    .toggle-menu {
+        font-size: 24px;
+        margin: 12px 20px 0px;
+        color: #fff;
+        &.glyphicon-remove {
+            display: none;
+        }
+    }    
+}
+
+&.mobile-menu {
+    header {
+        left: -@mobile-menu-width-size;
+        .toggle-menu {        
+            &.glyphicon-menu-hamburger {
+                display: none;
+            }
+            &.glyphicon-remove {
+                display: block;
+            }
+        }    
+    }
+
+    .main-menu {
+        right: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .menu {        
+        .toggle-menu {
+            display: none;
+        }
+        nav {
+            ul {
+                position: relative;
+                right: inherit;
+                width: auto;
+                background-color: inherit;
+                li {
+                    display: inline;                    
+                }
+            }
+        }
+    }   
+}

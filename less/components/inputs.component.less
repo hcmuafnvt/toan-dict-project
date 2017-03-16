@@ -1,0 +1,47 @@
+/*-----------------------------------------------------------------------------------------------------------
+Select
+-----------------------------------------------------------------------------------------------------------*/
+.select {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+
+.select select {
+	display: inline-block;	
+	width: 100%;    
+	cursor: pointer;
+	color: @color2;
+	border: 0;
+	.border-radius(3px);
+	outline: 0;
+	background: @color1;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+.select select::-ms-expand {
+	display: none;
+}
+
+.select select:disabled {
+	pointer-events: none;
+	opacity: .5;
+}
+
+.select__arrow {
+	position: absolute;
+	top: 12px;
+	right: 15px;
+	width: 0;
+	height: 0;
+	pointer-events: none;
+	border-width: 8px 5px 0 5px;
+	border-style: solid;
+	border-color: #7b7b7b transparent transparent transparent;
+}
+
+.select select:disabled ~ .select__arrow {
+	border-top-color: #ccc;
+}

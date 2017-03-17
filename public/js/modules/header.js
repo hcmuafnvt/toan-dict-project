@@ -16,9 +16,9 @@ function bindAutoComplete(data) {
     }
 
     var len = data.suggestions.length;
-    var result = '<ul>';
+    var result = '<ul>';    
     $.each(data.suggestions, function(index, item) {
-        result += '<li>' + item.data + '</li>';
+        result += '<li data-select=' + item.select + '>' + item.data + '</li>';
     });
     $searchSuggestion.append(result + '</ul>');
 }
@@ -46,6 +46,19 @@ function handleSearch() {
                 bindAutoComplete(data);
             }
         });     
+    });
+
+    $('#search-suggestion').on('click', 'li', function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: "/api/find/" + $(this).data('select'),                
+            method: "GET",
+            dataType: "json",
+            success: function (data) {            
+                console.log(data.enViData.best.details);
+                $('#search-result').html(data.enViData.best.details);
+            }
+        });    
     });
 }
 

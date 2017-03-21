@@ -1,38 +1,20 @@
 {
-  "name": "orderhangus",
-  "version": "1.0.0",
-  "description": "Order Hang US",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hcmuafnvt/orderhangus.git"
-  },
-  "author": "Toan NGUYEN - itlab.nguyenvantoan@gmail.com",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/hcmuafnvt/orderhangus/issues"
-  },
-  "homepage": "https://github.com/hcmuafnvt/orderhangus#readme",
-  "devDependencies": {
-    "browserify": "^14.1.0",
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-less": "^3.3.0",
-    "gulp-minify-css": "^1.2.4",
-    "gulp-sourcemaps": "^1.9.1",
-    "gulp-uglify": "^2.0.1",
-    "load-gulp-tasks": "^0.1.0",
-    "merge-stream": "^1.0.1",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
-  },
+  "name": "dict_project",
+  "version": "0.0.0",
+  "private": true,
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "ejs": "^2.5.2",
-    "express": "^4.14.0",
-    "express-ejs-layouts": "^2.2.0"
+    "keystone": "^0.3.19",
+    "async": "^1.5.0",
+    "lodash": "^4.13.1",
+    "dotenv": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^2.12.0",
+    "eslint-config-keystone": "^2.3.1",
+    "eslint-plugin-react": "^5.1.1"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "start": "node keystone.js"
   }
 }

@@ -9,7 +9,7 @@ var User = new keystone.List('User');
 
 User.add({
 	name: { type: Types.Name, required: true, index: true },
-	email: { type: Types.Email, initial: true, required: true, index: true },
+	email: { type: Types.Email, initial: true, required: true, unique: true, index: true },
 	password: { type: Types.Password, initial: true, required: true },
 	createdAt: {type: Types.Datetime, default: Date.now},
     UpdatedAt: {type: Types.Datetime, default: Date.now}
@@ -20,6 +20,10 @@ User.add({
 // Provide access to Keystone
 User.schema.virtual('canAccessKeystone').get(function () {
 	return this.isAdmin;
+});
+
+User.schema.virtual('url').get(function() {
+	return '/users/' + this._id;
 });
 
 /**

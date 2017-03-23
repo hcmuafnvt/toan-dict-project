@@ -28,18 +28,18 @@ keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
 var routes = {
-	views: importRoutes('./views'),
-	api: importRoutes('./api')
+	views: importRoutes('./views')	
 };
 
 // Setup Route Bindings
 exports = module.exports = function (app) {
 	// Views
-	app.get('/', routes.views.index);	
+	app.get('/', routes.views.index);
+	app.all('/signup', routes.views.signup);	
 
 	// api
-	app.get('/api/words', keystone.middleware.api, routes.api.word.getWords);
-	app.post('/api/words', keystone.middleware.api, routes.api.word.createWord);
+	app.use('/api/vidict', require('./api/dict.laban'));
+	app.use('/api/words', require('./api/word'));	
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

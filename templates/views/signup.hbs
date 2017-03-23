@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Dictionary</title>
+    <link rel='stylesheet' href='/css/style.min.css' type='text/css' media='all' />
+</head>
+
+<body class="signup-page">
+    <div class="container">
+        <h1 class="hero-title">Create a Dict Account</h1>
+        <span>It's free. It's easy. It takes five seconds.</span>
+        <form action="/signup" method="post" id="frm-signup" class="frm-signup">
+            <div class="form-group">
+                <label for="firstname">First Name</label>
+                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="eg., Lando" value="{{form.firstname}}">
+            </div>
+            <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="eg., Calrissian">
+            </div>
+            <div class="form-group">
+                <label for="">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="eg., calrissian@cloud.ci">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="eg., ........" autocomplete="off">
+            </div>            
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> I accept the <a>Term of Services</a> and <a>Privacy Policy</a>
+                </label>
+            </div>
+            <button type="submit" class="btn btn-default">Create New Account</button>
+        </form>
+
+        <div class="social">
+            <h4>Sign up with a social account</h4>
+            <div class="facebook"><a href="#">Sign up with Facebook</a></div>
+            <div class="google"><a href="#">Sign up with Google</a></div>
+            <div class="twitter"><a href="#">Sign up with Twitter</a></div>
+        </div>
+    </div>
+</body>
+
+</html>

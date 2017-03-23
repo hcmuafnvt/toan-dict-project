@@ -11,9 +11,6 @@ html,
 body {
   height: 100%;
 }
-body {
-  font-size: 62.5%;
-}
 body.mobile-menu {
   position: fixed;
   overflow: hidden;
@@ -262,4 +259,13 @@ header .toggle-menu.glyphicon-remove {
 .search-wrapper .search-suggestion ul p {
   font-size: 2em;
   color: #00bdf2;
+}
+.signup-page .hero-title {
+  font-size: 1.7em;
+}
+.signup-page .frm-signup {
+  margin-top: 25px;
+}
+.signup-page .social {
+  margin-top: 30px;
 }

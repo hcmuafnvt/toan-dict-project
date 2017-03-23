@@ -39,7 +39,7 @@ function handleSearch() {
         } 
 
         $.ajax({
-            url: "/api/search/" + $(this).val(),                
+            url: "/api/vidict/suggest/" + $(this).val(),                
             method: "GET",
             dataType: "json",
             success: function (data) {            

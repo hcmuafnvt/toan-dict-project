@@ -1,0 +1,20 @@
+<section class="search-wrapper">
+    <div class="container">
+        <form action="/search" method="GET" class="frmSearch">
+            <div class="search-box">                        
+                <input id="word" name="word" class="pull-left" type="text" placeholder="Nhập từ cần tìm" value="{{word}}" autocomplete="off">
+                <div class="search-type pull-right">
+                    <div class="select">
+                        <select name="type">
+                            <option value="vi">VI</option>
+                            <option value="en">EN</option>                                    
+                        </select>
+                        <div class="select__arrow"></div>
+                    </div>     
+                </div>                
+                <div id="search-suggestion"  class="search-suggestion">                                                    
+                </div>                                     
+            </div>     
+        </form>                                                                     
+    </div>                
+</section><!-- end .search-wrapper -->

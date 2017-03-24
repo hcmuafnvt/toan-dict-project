@@ -22,6 +22,7 @@ body.mobile-menu {
   -moz-transition: left 0.3s ease-in;
   -o-transition: left 0.3s ease-in;
   transition: left 0.3s ease-in;
+  padding-top: 50px;
 }
 .mobile-menu .main {
   left: -80%;
@@ -93,6 +94,7 @@ Main Menu
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  z-index: 9999;
 }
 .main-menu ul {
   position: absolute;
@@ -100,12 +102,12 @@ Main Menu
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: #1a4f6f;
+  background-color: #026AA7;
   padding: 0px;
 }
 .main-menu ul li {
   display: block;
-  padding: 12px 0px 11px 0px;
+  padding: 14px 0px 13px 0px;
   border-bottom: 1px solid #656565;
 }
 .main-menu ul li:last-child {
@@ -113,7 +115,7 @@ Main Menu
 }
 .main-menu ul li a {
   color: #e4ecff;
-  font-size: 2.5em;
+  font-size: 1.2em;
   display: block;
   text-align: center;
 }
@@ -129,7 +131,7 @@ header {
   -moz-transition: left 0.3s ease-in;
   -o-transition: left 0.3s ease-in;
   transition: left 0.3s ease-in;
-  background-color: #1a4f6f;
+  background-color: #026AA7;
   height: 50px;
   z-index: 10000;
 }
@@ -183,7 +185,6 @@ header .toggle-menu.glyphicon-remove {
 }
 .search-wrapper {
   background-color: #00bdf2;
-  padding-top: 50px;
 }
 .search-wrapper .search-box {
   position: relative;
@@ -205,7 +206,7 @@ header .toggle-menu.glyphicon-remove {
 .search-wrapper .search-box input[type='text'] {
   width: 80%;
   height: 100%;
-  font-size: 2.3em;
+  font-size: 1.3em;
   padding-left: 10px;
   padding-right: 5px;
   background-color: transparent;
@@ -226,7 +227,7 @@ header .toggle-menu.glyphicon-remove {
   height: 100%;
 }
 .search-wrapper .search-type .select select {
-  font-size: 2.2em;
+  font-size: 1.1em;
   font-weight: bold;
   padding: 7px 25px 7px 10px;
   background-color: transparent !important;
@@ -250,14 +251,14 @@ header .toggle-menu.glyphicon-remove {
   padding: 10px 10px 0px;
 }
 .search-wrapper .search-suggestion ul .fl {
-  font-size: 2.5em;
-  color: #1a4f6f;
+  font-size: 1.5em;
+  color: #026AA7;
 }
 .search-wrapper .search-suggestion ul .fr.hl {
   display: none;
 }
 .search-wrapper .search-suggestion ul p {
-  font-size: 2em;
+  font-size: 1em;
   color: #00bdf2;
 }
 .signup-page .hero-title {
@@ -266,6 +267,13 @@ header .toggle-menu.glyphicon-remove {
 .signup-page .frm-signup {
   margin-top: 25px;
 }
-.signup-page .social {
-  margin-top: 30px;
+.signin-page .hero-title {
+  font-size: 1.7em;
+}
+.signin-page .frm-signin {
+  margin-top: 25px;
+}
+.signin-page .frm-signin .forgot-password {
+  display: inline-block;
+  margin-left: 10px;
 }

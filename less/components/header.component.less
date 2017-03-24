@@ -9,6 +9,7 @@ Main Menu
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;     
+    z-index: 9999;
     ul {
         position: absolute;          
         list-style: none;        
@@ -19,14 +20,14 @@ Main Menu
         padding: 0px;
         li {
             display: block;
-            padding: 12px 0px 11px 0px;
+            padding: 14px 0px 13px 0px;
             border-bottom: 1px solid #656565;
             &:last-child {
                 border-bottom: 0px;
             }
             a {
                 color: #e4ecff;
-                font-size: 2.5em;
+                font-size: 1.2em;
                 display: block;               
                 text-align: center;                
             }
@@ -44,7 +45,7 @@ header {
     top: 0;
     left: 0;
     .transition(left 0.3s ease-in);
-    background-color: #1a4f6f;
+    background-color: @color1;
     height: 50px;
     z-index: 10000;    
     .logo {

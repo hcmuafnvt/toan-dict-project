@@ -14,7 +14,7 @@ exports = module.exports = function (req, res) {
 
 	function validate(cb) {
 		if(!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password) {
-			req.flash('error', 'Please enter all input fields');
+			req.flash('error', 'Please enter all input fields.');
 			return cb(true);
 		}
 
@@ -24,7 +24,7 @@ exports = module.exports = function (req, res) {
 	function checkUserExist(cb) {
 		keystone.list('User').model.findOne({email: req.body.email}, function(err, user) {
 			if(err || user) {
-				req.flash('error', 'User already exists with that email');
+				req.flash('error', 'User already exists with that email.');
 				return cb(true);
 			}
 			return cb();
@@ -54,12 +54,12 @@ exports = module.exports = function (req, res) {
 
 		var onSuccess = function() {
 			res.redirect('/');
-		}
+		};
 
 		var onFail = function(e) {
-			req.flash('error', 'There was a problem signing you up, please try again!');
+			req.flash('error', 'There was a problem signing you up, please try again.');
 			return next();
-		}
+		};
 
 		keystone.session.signin({email: req.body.email, password: req.body.password}, req, res, onSuccess, onFail);
 	}
@@ -73,5 +73,5 @@ exports = module.exports = function (req, res) {
 	});
 
 	// Render the view
-	view.render('signup', {layout: false});
+	view.render('auth/signup');
 };

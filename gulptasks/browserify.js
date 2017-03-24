@@ -15,7 +15,7 @@ module.exports = function(gulp) {
             .pipe(source('app.min.js'))
             .pipe(buffer())
             .pipe(sourcemaps.init({ loadMaps: true }))
-            .pipe(uglify())            
+            //.pipe(uglify())            
             .pipe(sourcemaps.write('./sourcemaps'))
             .pipe(gulp.dest('./public/js'));
 

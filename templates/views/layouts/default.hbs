@@ -13,9 +13,9 @@
     <div class="wrapper">
         <nav role="navigation" class="main-menu">
             <ul>
-                <li><a href="#">Giải pháp</a></li>
-                <li><a href="#">Tin tức</a></li>
-                <li><a href="#">Đăng nhập</a></li>
+                <li><a href="/signin">Sign in</a></li>
+                <li><a href="/signup">Sign up</a></li>
+                <li><a href="/signout">Log out</a></li>
             </ul>
         </nav>
         
@@ -33,32 +33,13 @@
         </header>
 
         <main id="main" class="main" role="main">
-            <section class="search-wrapper">
-                <div class="container">
-                    <div class="search-box">                        
-                        <input id="txtSearch" class="pull-left" type="text" placeholder="Nhập từ cần tìm">
-                        <div class="search-type pull-right">
-                            <div class="select">
-                                <select>
-                                    <option value="vi">VI</option>
-                                    <option value="en">EN</option>                                    
-                                </select>
-                                <div class="select__arrow"></div>
-                            </div>     
-                        </div>
-                        <div id="search-suggestion"  class="search-suggestion">                                                    
-                        </div>                                     
-                    </div>                                                                  
-                </div>                
-            </section><!-- end .search-wrapper -->
-
-            {{{body}}}
-			<div class="overlay-bg"></div>
+            {{{body}}}			
         </main>
 
         <footer>
 
         </footer>
+        <div class="overlay-bg"></div>
     </div>
 
     <script type='text/javascript' src='/js/libs/jquery.min.js'></script>

@@ -11,7 +11,9 @@ function loadJavascriptForPage() {
         return;
     }
 
-    pages[window.pageContext.pageName].init();
+    if(typeof pages[window.pageContext.pageName] !== 'undefined') {
+        pages[window.pageContext.pageName].init();
+    }    
 }
 
 var app = {

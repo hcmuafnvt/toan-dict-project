@@ -37,6 +37,10 @@ body.mobile-menu {
   height: 100%;
   z-index: 9998;
 }
+.ajax-overlay {
+  position: absolute;
+  background-color: #ffffff;
+}
 /*-----------------------------------------------------------------------------------------------------------
 Select
 -----------------------------------------------------------------------------------------------------------*/
@@ -184,7 +188,7 @@ header .toggle-menu.glyphicon-remove {
   }
 }
 .search-wrapper {
-  background-color: #00bdf2;
+  background-color: #6ad5f3;
 }
 .search-wrapper .search-box {
   position: relative;
@@ -259,7 +263,7 @@ header .toggle-menu.glyphicon-remove {
 }
 .search-wrapper .search-suggestion ul p {
   font-size: 1em;
-  color: #00bdf2;
+  color: #6ad5f3;
 }
 .signup-page .hero-title {
   font-size: 1.7em;

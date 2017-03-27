@@ -1,9 +1,12 @@
 'use strict';
 
-var header = require('./modules/header');
+var header = require('./modules/header'),   
+    ajaxspiner = require('./helpers/ajaxspiner'),
+    util = require('./helpers/util');
 
 var pages = {
-    homepage: require('./pages/home.page')
+    homepage: require('./pages/home.page'),
+    searchresultpage: require('./pages/searchresult.page')
 }
 
 function loadJavascriptForPage() {
@@ -24,5 +27,5 @@ var app = {
 };
 
 $(function() {
-    app.init();
+    app.init();    
 });

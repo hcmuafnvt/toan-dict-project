@@ -2,10 +2,23 @@
     var pageContext = {
         pageName: 'searchresultpage'
     }
+
 </script>
 
 {{> _searchbox}}
 <div class="searchresult-page" id="searchresult-page">
     <a href="#" id="addToList"><i class="glyphicon glyphicon-plus"></i> Add to list</a>
-    <div id="search-result">{{{data.searchResult}}}</div>
+    <div id="search-result">{{{data.searchResult.details}}}</div>
+</div>
+
+<div class="add-to-list-popup mfp-hide container">
+    <h1 class="hero-title">{{data.searchResult.word}}</h1>
+    <div class="form-group">
+        <label for="list">Choose a list</label>
+        <select name="list" id="list">
+            <option value="1">test</option>
+            <option value="2">teasdasdsst</option>    
+        </select>
+    </div>
+    <button class="btn btn-default">Add to list</button>
 </div>

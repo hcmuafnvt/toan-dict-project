@@ -13,6 +13,14 @@ function addToList() {
                 }
             });
             return;
+        } else {
+            $.magnificPopup.open({
+                items: {
+                    src: '.add-to-list-popup', // can be a HTML string, jQuery object, or CSS selector
+                    type: 'inline'
+                }
+            });
+            return;
         }
     })
 }

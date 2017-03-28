@@ -1,0 +1,23 @@
+<script>
+    var pageContext = {
+        pageName: 'addlistpage'
+    }
+</script>
+
+{{> _searchbox}}
+<div class="addlist-page" id="addlist-page">
+   <div class="container">
+        <h1 class="hero-title">Create a list</h1>        
+        <form action="/lists/add" method="POST" id="frm-add" class="frm-add">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="title" value="{{form.title}}">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" name="description" placeholder="description" value="{{form.description}}">
+            </div>
+            <button type="submit" class="btn btn-default">Create New List</button>
+        </form>        
+    </div>
+</div>

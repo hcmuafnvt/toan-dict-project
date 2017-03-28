@@ -265,6 +265,12 @@ header .toggle-menu.glyphicon-remove {
   font-size: 1em;
   color: #6ad5f3;
 }
+.mfp-content {
+  background-color: #fff;
+}
+.mfp-content .popup {
+  display: block;
+}
 .signup-page .hero-title {
   font-size: 1.7em;
 }
@@ -280,4 +286,10 @@ header .toggle-menu.glyphicon-remove {
 .signin-page .frm-signin .forgot-password {
   display: inline-block;
   margin-left: 10px;
+}
+.lists-page .lists .item {
+  margin-top: 15px;
+}
+.lists-page .lists .item .title {
+  font-weight: bold;
 }

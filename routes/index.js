@@ -39,6 +39,8 @@ exports = module.exports = function (app) {
 	app.all('/signin', routes.views.auth.signin);
 	app.get('/signout', routes.views.auth.signout);
 	app.get('/search', routes.views.searchresult);
+	app.get('/lists', routes.views.list.index);
+	app.all('/lists/add', routes.views.list.add);
 
 	// api
 	app.use('/api/vidict', require('./api/dict.laban'));

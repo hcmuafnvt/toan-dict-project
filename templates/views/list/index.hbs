@@ -1,0 +1,17 @@
+<script>
+    var pageContext = {
+        pageName: 'listspage'
+    }
+</script>
+
+{{> _searchbox}}
+<div class="lists-page" id="lists-page">
+    <div class="container lists">
+        {{#each data.lists}}
+            <div class="row item">
+                <div class="col-xs-12 title"><a href="/lists/{{_id}}">{{title}}</a></div>
+                <div class="col-xs-12 desc">{{description}}</div>
+            </div>
+        {{/each}}
+    </div>
+</div>

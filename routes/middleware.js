@@ -24,8 +24,8 @@ exports.initLocals = function (req, res, next) {
 	// 	{ label: 'Gallery', key: 'gallery', href: '/gallery' },
 	// 	{ label: 'Contact', key: 'contact', href: '/contact' },
 	// ];
-	//res.locals.user = req.user;
 	
+	res.locals.user = req.user;	
 	res.locals.userId = req.user ? req.user._id : '';
 	next();
 };

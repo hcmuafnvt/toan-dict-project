@@ -40,8 +40,8 @@ exports = module.exports = function(req, res) {
                         result = JSON.parse(buffer.join(""));
                     } catch (exp) {
                         result = { 'status_code': 500, 'status_text': 'JSON Parse Failed' };
-                    }
-                    locals.data.searchResult = result.enViData.best.details;
+                    }                    
+                    locals.data.searchResult = result.enViData.best;
                     next();
                 })
                 .on('error', function (err) {

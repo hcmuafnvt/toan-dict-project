@@ -1,6 +1,7 @@
 'use strict';
 
-var util = require('../helpers/util');
+var util = require('../helpers/util'),
+    ajax = require('../helpers/ajax');
 
 function addToList() {
     $('#addToList').on('click', function(e) {
@@ -8,21 +9,32 @@ function addToList() {
         if(!util.isAuthenticated()) {
             $.magnificPopup.open({
                 items: {
-                    src: '.authen-popup', // can be a HTML string, jQuery object, or CSS selector
-                    type: 'inline'
+                    src: '.authen-popup'                    
                 }
             });
             return;
         } else {
             $.magnificPopup.open({
                 items: {
-                    src: '.add-to-list-popup', // can be a HTML string, jQuery object, or CSS selector
-                    type: 'inline'
+                    src: '.add-to-list-popup'
+                },
+                callbacks: {
+                    beforeOpen: function() {
+                        var options = '';
+                        ajax.get('/api/lists').done(function(lists) {
+                            $.each(lists, function(index, list) {
+                                options += '<option value="' + list._id + '">' + list.title + '</option>';
+                            });
+                            $('.add-to-list-popup #list').empty();
+                            $('.add-to-list-popup #list').append(options);
+                        }).fail(function(err) {
+                            console.log(err);
+                        });
+                    }
                 }
             });
-            return;
         }
-    })
+    });
 }
 
 function init() {

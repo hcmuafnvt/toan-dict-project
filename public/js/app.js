@@ -1,7 +1,6 @@
 'use strict';
 
-var header = require('./modules/header'),   
-    ajaxspiner = require('./helpers/ajaxspiner'),
+var header = require('./modules/header'),    
     util = require('./helpers/util');
 
 var pages = {

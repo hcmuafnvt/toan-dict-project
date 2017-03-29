@@ -26,11 +26,12 @@ var ajaxspiner = {},
         position: 'absolute' // Element positioning
     };
 
-ajaxspiner.start = function (spinnerSize, spinnerContainer, isSpinnerLoadingText, isOverlayDiv) {
-    spinnerContainer = spinnerContainer || 'body';
-    var spinnerSize = spinnerSize || 'large',
-        isSpinnerLoadingText = isSpinnerLoadingText || false,
-        isOverlayDiv = typeof isOverlayDiv !== 'undefined' ? isOverlayDiv : true,
+ajaxspiner.start = function (options) {
+    options = options || {};
+    spinnerContainer = options.spinnerContainer || 'body';
+    var spinnerSize = options.spinnerSize || 'large',
+        isSpinnerLoadingText = options.isSpinnerLoadingText || false,
+        isOverlayDiv = typeof options.isOverlayDiv !== 'undefined' ? options.isOverlayDiv : true,
         opts;
 
     switch (spinnerSize) {

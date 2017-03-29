@@ -44,7 +44,8 @@ exports = module.exports = function (app) {
 
 	// api
 	app.use('/api/vidict', require('./api/dict.laban'));
-	app.use('/api/words', require('./api/word'));	
+	app.use('/api/words', require('./api/word'));
+	app.use('/api/lists', require('./api/list'));	
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

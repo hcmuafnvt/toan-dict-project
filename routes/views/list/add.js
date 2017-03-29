@@ -31,14 +31,14 @@ exports = module.exports = function (req, res) {
 	}
 
 	function createList(cb) {
-		var ListData = {
+		var listData = {
 			title: req.body.title,
             description: req.body.description,
             createdBy: res.locals.user.id
 		};
 
 		var List = keystone.list('List').model,
-			newList = new List(ListData);
+			newList = new List(listData);
 
 		newList.save(function(err) {
 			return cb(err);

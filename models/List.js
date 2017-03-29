@@ -23,7 +23,7 @@ List.add({
 /**
  * Relationships
  */
-List.relationship({ ref: 'Word', refPath: 'words', path: 'lists' });
+//List.relationship({ ref: 'Word', refPath: 'words', path: 'lists' });
 
 /**
  * Registration

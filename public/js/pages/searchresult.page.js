@@ -3,7 +3,7 @@
 var util = require('../helpers/util'),
     ajax = require('../helpers/ajax');
 
-function addToList() {
+function openAddWordPopup() {
     $('#addToList').on('click', function(e) {
         e.preventDefault();
         if(!util.isAuthenticated()) {
@@ -37,8 +37,36 @@ function addToList() {
     });
 }
 
+function addWordToList() {
+    var $addToListPopup = $('#add-to-list-popup');
+    $addToListPopup.on('click', 'button', function(e) {
+        e.preventDefault();
+        var data = {
+            word: $addToListPopup.find('.hero-title').text(),
+            translateToEn: '',
+            translateToVi: document.getElementById('content_selectable').outerHTML,
+            listId: $addToListPopup.find('#list').val()
+        }
+
+        console.log(data);
+
+        $.ajax({
+            url: '/api/words',
+            method: 'POST',
+            data: data,
+            success: function(result) {
+                console.log(result);
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        })
+    })
+}
+
 function init() {
-    addToList();
+    openAddWordPopup();
+    addWordToList();
 }
 
 module.exports = {

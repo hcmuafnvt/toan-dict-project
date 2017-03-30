@@ -293,3 +293,39 @@ header .toggle-menu.glyphicon-remove {
 .lists-page .lists .item .title {
   font-weight: bold;
 }
+.learn-page .main-quiz-wrapper {
+  background-color: #ccc;
+  margin: 18px 5px;
+  border-radius: 20px;
+}
+.learn-page .main-quiz-wrapper #progress-keeper {
+  height: 70px;
+}
+.learn-page .main-quiz-wrapper .question-container .question .images .image {
+  height: 100px;
+  margin-top: 15px;
+}
+.learn-page .main-quiz-wrapper .question-container .question .images .image img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+}
+.learn-page .main-quiz-wrapper .question-container .question .title {
+  text-align: center;
+}
+.learn-page .main-quiz-wrapper .question-container .answer .txt-answer {
+  margin: 0 auto;
+  display: block;
+}
+.learn-page .main-quiz-wrapper .buttons {
+  margin-top: 20px;
+  background-color: #d5efd5;
+  height: 70px;
+  border-radius: 0px 0px 20px 20px;
+  position: relative;
+}
+.learn-page .main-quiz-wrapper .buttons .next {
+  position: absolute;
+  right: 15px;
+  top: 20px;
+}

@@ -8,7 +8,13 @@
             height: 70px;
         }
 
-        .question-container {
+        .question-container {            
+            position: relative;
+
+            &.hide-item {
+                display: none;
+            }
+            
             .question {
                 .images {
                     .image {
@@ -33,20 +39,25 @@
                     display: block;
                 }
             }
-        } //.question-container
 
-        .buttons {
+            .buttons {
+                position: absolute;
+                right: 15px;
+                bottom: -70px;
+                z-index: 10;                
+            }
+        } //.question-container        
+
+        #notice {
             margin-top: 20px;
             background-color: #d5efd5;
             height: 70px;
-            border-radius: 0px 0px 20px 20px;
+            border-radius: 0 0 20px 20px;
             position: relative;
 
-            .next {
-                position: absolute;
-                right: 15px;
-                top: 20px;
+            .btn-ignore {
+                margin: 15px 0px 0px 15px;
             }
-        }
+        } //#notice 
     }    
 }

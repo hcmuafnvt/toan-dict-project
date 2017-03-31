@@ -26,16 +26,41 @@
                 </div> 
                 <div class="answer">
                     <input type="text" class="txt-answer">
+                    <input type="hidden" class="hdfAnswer" data-correct="false" value="coat" />
                 </div>
                 <div class="buttons">                     
                     <div class="next"> 
-                        <a class="btn btn-default bt-next" href="#">Next</a>
+                        <button class="btn btn-default btn-check" data-checked="false">Check</button>
+                    </div>
+                </div>
+            </div>
+            <div class="question-container hide-item">
+                <div class="question"> 
+                    <div class="images">
+                        <div class="image col-xs-6"><img src="https://d2pur3iezf4d1j.cloudfront.net/images/335ef45544d0468289039d8f96075ad6" alt="" /></div>
+                        <div class="image col-xs-6"><img src="https://d2pur3iezf4d1j.cloudfront.net/images/f455a62655d4e19178445e5b4092cbf0" alt="" /></div>
+                        <div class="image col-xs-6"><img src="https://d2pur3iezf4d1j.cloudfront.net/images/144e50214b9225ce324315e4363b2124" alt="" /></div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="title">
+                        <h2>Dịch "Xin chào"</h2>
+                    </div>                    
+                </div> 
+                <div class="answer">
+                    <input type="text" class="txt-answer">
+                    <input type="hidden" class="hdfAnswer" data-correct="false" value="hello" />
+                </div>
+                <div class="buttons">                     
+                    <div class="next"> 
+                        <button class="btn btn-default btn-check" data-checked="false">Check</button>
                     </div>
                 </div>
             </div>
 
             <div id="notice">
-                
+                <div class="correct hide">Great</div>
+                <div class="incorrect hide"></div>
+                <button class="btn btn-default btn-ignore">Ignore</button>
             </div>
         </div>
 

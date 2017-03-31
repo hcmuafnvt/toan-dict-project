@@ -5,7 +5,8 @@ var header = require('./modules/header'),
 
 var pages = {
     homepage: require('./pages/home.page'),
-    searchresultpage: require('./pages/searchresult.page')
+    searchresultpage: require('./pages/searchresult.page'),
+    learnpage: require('./pages/learn.page')
 }
 
 function loadJavascriptForPage() {

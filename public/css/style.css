@@ -301,6 +301,12 @@ header .toggle-menu.glyphicon-remove {
 .learn-page .main-quiz-wrapper #progress-keeper {
   height: 70px;
 }
+.learn-page .main-quiz-wrapper .question-container {
+  position: relative;
+}
+.learn-page .main-quiz-wrapper .question-container.hide-item {
+  display: none;
+}
 .learn-page .main-quiz-wrapper .question-container .question .images .image {
   height: 100px;
   margin-top: 15px;
@@ -317,15 +323,19 @@ header .toggle-menu.glyphicon-remove {
   margin: 0 auto;
   display: block;
 }
-.learn-page .main-quiz-wrapper .buttons {
+.learn-page .main-quiz-wrapper .question-container .buttons {
+  position: absolute;
+  right: 15px;
+  bottom: -70px;
+  z-index: 10;
+}
+.learn-page .main-quiz-wrapper #notice {
   margin-top: 20px;
   background-color: #d5efd5;
   height: 70px;
-  border-radius: 0px 0px 20px 20px;
+  border-radius: 0 0 20px 20px;
   position: relative;
 }
-.learn-page .main-quiz-wrapper .buttons .next {
-  position: absolute;
-  right: 15px;
-  top: 20px;
+.learn-page .main-quiz-wrapper #notice .btn-ignore {
+  margin: 15px 0px 0px 15px;
 }

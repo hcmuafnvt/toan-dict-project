@@ -136,12 +136,12 @@ header {
   -o-transition: left 0.3s ease-in;
   transition: left 0.3s ease-in;
   background-color: #026AA7;
-  height: 50px;
+  height: 65px;
   z-index: 10000;
 }
 header .logo {
   float: left;
-  width: 110px;
+  width: 115px;
   margin-top: 4px;
   margin-left: 8px;
 }
@@ -149,20 +149,30 @@ header .logo a {
   color: #fff;
 }
 header .logo h1 {
-  font-size: 2em;
-  margin: 7px 0px 0px 10px;
+  font-size: 2.3em;
+  margin: 10px 0px 0px 10px;
   display: inline-block;
 }
 header .logo .voca {
-  font-size: 1.7em;
+  font-size: 1.8em;
   color: #f1f0d0;
   display: inline-block;
   margin-left: 3px;
   letter-spacing: 2px;
 }
+header .right-menu .btn-signup {
+  background: linear-gradient(to bottom, #61bd4f 0, #5aac44 100%);
+  background-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-weight: bold;
+  margin: 0px 0px 19px 5px;
+  display: inline-block;
+  padding: 4px 7px;
+}
 header .toggle-menu {
-  font-size: 24px;
-  margin: 12px 20px 0px;
+  font-size: 2.2em;
+  margin: 15px 20px 0px 10px;
   color: #fff;
 }
 header .toggle-menu.glyphicon-remove {

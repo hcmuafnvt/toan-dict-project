@@ -20,14 +20,14 @@ Main Menu
         padding: 0px;
         li {
             display: block;
-            padding: 14px 0px 13px 0px;
-            border-bottom: 1px solid #656565;
+            padding: 17px 0px 18px 0px;
+            border-bottom: 1px solid #91ab96;
             &:last-child {
                 border-bottom: 0px;
             }
             a {
                 color: #e4ecff;
-                font-size: 1.2em;
+                font-size: 1.5em;
                 display: block;               
                 text-align: center;                
             }
@@ -73,15 +73,8 @@ header {
     }
 
     .right-menu {
-        .btn-signup {
-            background: linear-gradient(to bottom, #61bd4f 0, #5aac44 100%);
-            background-color: rgba(0,0,0,0.15);
-            box-shadow: 0 2px 0 rgba(0,0,0,0.3);
-            color: #fff;            
-            font-weight: bold;
-            margin: 0px 0px 19px 5px;
-            display: inline-block;
-            padding: 4px 7px;            
+        .btn-signup {            
+            .btnelvoca(#61bd4f, #5aac44);              
         }        
     }
 
@@ -98,6 +91,9 @@ header {
 &.mobile-menu {
     header {
         left: -@mobile-menu-width-size;
+        .btn-signup {
+            display: none;
+        }
         .toggle-menu {        
             &.glyphicon-menu-hamburger {
                 display: none;

@@ -22,7 +22,7 @@ body.mobile-menu {
   -moz-transition: left 0.3s ease-in;
   -o-transition: left 0.3s ease-in;
   transition: left 0.3s ease-in;
-  padding-top: 50px;
+  padding-top: 65px;
 }
 .mobile-menu .main {
   left: -80%;
@@ -111,15 +111,15 @@ Main Menu
 }
 .main-menu ul li {
   display: block;
-  padding: 14px 0px 13px 0px;
-  border-bottom: 1px solid #656565;
+  padding: 17px 0px 18px 0px;
+  border-bottom: 1px solid #91ab96;
 }
 .main-menu ul li:last-child {
   border-bottom: 0px;
 }
 .main-menu ul li a {
   color: #e4ecff;
-  font-size: 1.2em;
+  font-size: 1.5em;
   display: block;
   text-align: center;
 }
@@ -162,12 +162,10 @@ header .logo .voca {
 }
 header .right-menu .btn-signup {
   background: linear-gradient(to bottom, #61bd4f 0, #5aac44 100%);
-  background-color: rgba(0, 0, 0, 0.15);
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
   color: #fff;
   font-weight: bold;
   margin: 0px 0px 19px 5px;
-  display: inline-block;
   padding: 4px 7px;
 }
 header .toggle-menu {
@@ -180,6 +178,9 @@ header .toggle-menu.glyphicon-remove {
 }
 .mobile-menu header {
   left: -80%;
+}
+.mobile-menu header .btn-signup {
+  display: none;
 }
 .mobile-menu header .toggle-menu.glyphicon-menu-hamburger {
   display: none;
@@ -307,17 +308,53 @@ header .toggle-menu.glyphicon-remove {
 }
 .home-page .search-section {
   background-color: #eee;
+  padding-bottom: 20px;
 }
-.home-page h2 {
+.home-page .search-section h2 {
   color: #455358;
   font-size: 2.1em;
   margin-top: 45px;
   font-weight: bold;
 }
-.home-page .sub-title {
+.home-page .search-section .sub-title {
   font-size: 1.1em;
   color: #999;
   line-height: 25px;
+}
+.home-page .about-section {
+  background-color: #fff;
+}
+.home-page .about-section .about {
+  font-size: 2em;
+  font-weight: bold;
+  color: #7b7b7b;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+.home-page .about-section .title {
+  font-size: 1.2em;
+  color: #7b7b7b;
+  text-align: justify;
+  line-height: 27px;
+  font-weight: bold;
+}
+.home-page .about-section .title .stands {
+  color: #61bd4f;
+  font-weight: bold;
+}
+.home-page .about-section .sub-title {
+  color: #7b7b7b;
+  font-size: 1.1em;
+  line-height: 25px;
+  margin-top: 19px;
+}
+.home-page .about-section .btn-signup {
+  background: linear-gradient(to bottom, #61bd4f 0, #5aac44 100%);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-weight: bold;
+  margin: 0px 0px 19px 5px;
+  padding: 4px 7px;
 }
 .signup-page .hero-title {
   font-size: 1.7em;

@@ -8,7 +8,7 @@ require('load-gulp-tasks')(gulp, {
 gulp.task('copy', ['copyfiles']);
 
 // default
-gulp.task('default', ['less', 'browserify']);
+gulp.task('default', ['less', 'uglify', 'browserify']);
 
 // watching
 gulp.task('watching', ['watch:less', 'watch:js']);

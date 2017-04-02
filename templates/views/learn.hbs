@@ -12,7 +12,43 @@
                 <div id="progress"> 
                 </div> 
             </div>
-            <div class="question-container">
+            <div class="question-container type-1" data-type="1">
+                <div class="question"> 
+                    <div class="title">
+                        <h2>Dịch "quả táo"</h2>
+                    </div>                                                    
+                </div> 
+                <div class="answer row">
+                    <div class="item col-xs-6">
+                        <img src="https://d2pur3iezf4d1j.cloudfront.net/images/8bccc504c410a7bee653438cff643a8d" alt="" />
+                        <div>
+                            <input type="radio" value="apple" name="grpword">
+                            <span>Apple</span>
+                        </div>
+                    </div>
+                    <div class="item col-xs-6">
+                        <img src="https://d2pur3iezf4d1j.cloudfront.net/images/f455a62655d4e19178445e5b4092cbf0" alt="" />
+                        <div>
+                            <input type="radio" value="shirt" name="grpword">
+                            <span>Shirt</span>
+                        </div>
+                    </div>
+                    <div class="item col-xs-6">
+                        <img src="https://d2pur3iezf4d1j.cloudfront.net/images/144e50214b9225ce324315e4363b2124" alt="" />
+                        <div>
+                            <input type="radio" value="woman" name="grpword">
+                            <span>Woman</span>
+                        </div>
+                    </div>
+                    <input type="hidden" class="hdfAnswer" data-correct="false" value="apple" />
+                </div>
+                <div class="buttons">                     
+                    <div class="next"> 
+                        <button class="btn btn-default btn-check" data-checked="false">Check</button>
+                    </div>
+                </div>
+            </div>
+            <div class="question-container type-2 hide-item" data-type="2">
                 <div class="question"> 
                     <div class="images">
                         <div class="image col-xs-6"><img src="https://d2pur3iezf4d1j.cloudfront.net/images/335ef45544d0468289039d8f96075ad6" alt="" /></div>
@@ -34,21 +70,19 @@
                     </div>
                 </div>
             </div>
-            <div class="question-container hide-item">
-                <div class="question"> 
-                    <div class="images">
-                        <div class="image col-xs-6"><img src="https://d2pur3iezf4d1j.cloudfront.net/images/335ef45544d0468289039d8f96075ad6" alt="" /></div>
-                        <div class="image col-xs-6"><img src="https://d2pur3iezf4d1j.cloudfront.net/images/f455a62655d4e19178445e5b4092cbf0" alt="" /></div>
-                        <div class="image col-xs-6"><img src="https://d2pur3iezf4d1j.cloudfront.net/images/144e50214b9225ce324315e4363b2124" alt="" /></div>
-                        <div class="clearfix"></div>
-                    </div>
+            <div class="question-container type-3 hide-item" data-type="3">
+                <div class="question">                    
                     <div class="title">
-                        <h2>Dịch "Xin chào"</h2>
+                        <h2> a piece of clothing worn, especially by men</h2>
+                        <div class="hint">
+                            <span class="hint">hint</span>
+                            <h3 class="hide vi-hint">quần áo</h3>
+                        </div>
                     </div>                    
                 </div> 
                 <div class="answer">
                     <input type="text" class="txt-answer">
-                    <input type="hidden" class="hdfAnswer" data-correct="false" value="hello" />
+                    <input type="hidden" class="hdfAnswer" data-correct="false" value="shirt" />
                 </div>
                 <div class="buttons">                     
                     <div class="next"> 
@@ -56,7 +90,26 @@
                     </div>
                 </div>
             </div>
-
+            <div class="question-container type-4 hide-item" data-type="4">
+                <div class="question">                    
+                    <div class="title">
+                        <h2>/ˈwʊm.ən/ </h2>
+                        <a href="javascript:;" class="sound" data-src="http://dictionary.cambridge.org/media/english/uk_pron/u/ukw/ukwit/ukwitte026.mp3"><img src="http://stc.laban.vn/dictionary/images/sp_uk_3.jpg" alt="" /></a>                        
+                    </div>                    
+                </div> 
+                <div class="answer">
+                    <input type="text" class="txt-answer">
+                    <input type="hidden" class="hdfAnswer" data-correct="false" value="woman" />
+                </div>
+                <div class="buttons">                     
+                    <div class="next"> 
+                        <button class="btn btn-default btn-check" data-checked="false">Check</button>
+                    </div>
+                </div>
+            </div>
+            <div id="finish" class="hide">
+                <h2>Finish</h2>
+            </div>
             <div id="notice">
                 <div class="correct hide">Great</div>
                 <div class="incorrect hide"></div>

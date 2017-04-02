@@ -1,10 +1,16 @@
+<div class="home-page" id="home-page">
+    <section class="search-section">
+        <div class="container">
+            <h2>Welcome to ELvoca!</h2>
+            <p class="sub-title">Lookup a word and add to your list for learning.</p>
+
+            {{> _searchbox}}
+        </div>
+    </section>
+</div>
+
 <script>
     var pageContext = {
         pageName: 'homepage'
     }
 </script>
-
-{{> _searchbox}}
-<div class="home-page" id="home-page" style="height: 1000px;">    
-    <div id="search-result"></div>
-</div>

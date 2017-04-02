@@ -141,17 +141,24 @@ header {
 }
 header .logo {
   float: left;
-  width: 65px;
+  width: 110px;
   margin-top: 4px;
   margin-left: 8px;
 }
 header .logo a {
-  font-size: 25px;
   color: #fff;
 }
 header .logo h1 {
-  font-size: 1em;
+  font-size: 2em;
   margin: 7px 0px 0px 10px;
+  display: inline-block;
+}
+header .logo .voca {
+  font-size: 1.7em;
+  color: #f1f0d0;
+  display: inline-block;
+  margin-left: 3px;
+  letter-spacing: 2px;
 }
 header .toggle-menu {
   font-size: 24px;
@@ -187,19 +194,36 @@ header .toggle-menu.glyphicon-remove {
     display: inline;
   }
 }
-.search-wrapper {
-  background-color: #6ad5f3;
-}
-.search-wrapper .search-box {
+.search-box {
   position: relative;
-  margin: 30px 10px;
-  height: 40px;
+  margin: 30px 5px;
+  height: 45px;
   background-color: #fff;
+  border: 1px solid #e4e4e4;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
-.search-wrapper .search-box .glyphicon-search {
+.search-box ::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #bbb8b8;
+}
+.search-box ::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #bbb8b8;
+}
+.search-box :-ms-input-placeholder {
+  /* IE 10+ */
+  color: #bbb8b8;
+}
+.search-box :-moz-placeholder {
+  /* Firefox 18- */
+  color: #bbb8b8;
+}
+.search-box .frmSearch {
+  height: 100%;
+}
+.search-box .glyphicon-search {
   position: absolute;
   right: 5px;
   font-size: 4em;
@@ -207,7 +231,7 @@ header .toggle-menu.glyphicon-remove {
   top: 7px;
   cursor: pointer;
 }
-.search-wrapper .search-box input[type='text'] {
+.search-box input[type='text'] {
   width: 80%;
   height: 100%;
   font-size: 1.3em;
@@ -221,47 +245,47 @@ header .toggle-menu.glyphicon-remove {
   outline: none;
   color: #7b7b7b;
 }
-.search-wrapper .search-type {
+.search-type {
   width: 20%;
   border-left: 1px solid #ccc;
   height: 80%;
   margin-top: 4px;
 }
-.search-wrapper .search-type .select {
+.search-type .select {
   height: 100%;
 }
-.search-wrapper .search-type .select select {
+.search-type .select select {
   font-size: 1.1em;
   font-weight: bold;
   padding: 7px 25px 7px 10px;
   background-color: transparent !important;
 }
-.search-wrapper .search-type .select .select__arrow {
+.search-type .select .select__arrow {
   top: 12px;
   right: 10px;
 }
-.search-wrapper .search-suggestion {
+.search-suggestion {
   position: absolute;
   width: 100%;
-  top: 38px;
+  top: 44px;
   background-color: #efefef;
   z-index: 1000;
   max-height: 200px;
   overflow: auto;
   border-radius: 0px 0px 3px 3px;
 }
-.search-wrapper .search-suggestion ul {
+.search-suggestion ul {
   list-style: none;
   padding: 10px 10px 0px;
 }
-.search-wrapper .search-suggestion ul .fl {
+.search-suggestion ul .fl {
   font-size: 1.5em;
   color: #026AA7;
 }
-.search-wrapper .search-suggestion ul .fr.hl {
+.search-suggestion ul .fr.hl {
   display: none;
 }
-.search-wrapper .search-suggestion ul p {
+.search-suggestion ul p {
   font-size: 1em;
   color: #6ad5f3;
 }
@@ -270,6 +294,20 @@ header .toggle-menu.glyphicon-remove {
 }
 .mfp-content .popup {
   display: block;
+}
+.home-page .search-section {
+  background-color: #eee;
+}
+.home-page h2 {
+  color: #455358;
+  font-size: 2.1em;
+  margin-top: 45px;
+  font-weight: bold;
+}
+.home-page .sub-title {
+  font-size: 1.1em;
+  color: #999;
+  line-height: 25px;
 }
 .signup-page .hero-title {
   font-size: 1.7em;
@@ -307,19 +345,26 @@ header .toggle-menu.glyphicon-remove {
 .learn-page .main-quiz-wrapper .question-container.hide-item {
   display: none;
 }
-.learn-page .main-quiz-wrapper .question-container .question .images .image {
+.learn-page .main-quiz-wrapper .question-container.type-1 .answer .item {
+  height: 150px;
+}
+.learn-page .main-quiz-wrapper .question-container.type-1 .answer .item img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.learn-page .main-quiz-wrapper .question-container.type-2 .question .images .image {
   height: 100px;
   margin-top: 15px;
 }
-.learn-page .main-quiz-wrapper .question-container .question .images .image img {
+.learn-page .main-quiz-wrapper .question-container.type-2 .question .images .image img {
   max-width: 100%;
   max-height: 100%;
   width: 100%;
 }
-.learn-page .main-quiz-wrapper .question-container .question .title {
+.learn-page .main-quiz-wrapper .question-container.type-2 .question .title {
   text-align: center;
 }
-.learn-page .main-quiz-wrapper .question-container .answer .txt-answer {
+.learn-page .main-quiz-wrapper .question-container.type-2 .answer .txt-answer {
   margin: 0 auto;
   display: block;
 }

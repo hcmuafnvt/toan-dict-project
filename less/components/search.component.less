@@ -10,17 +10,9 @@
     .frmSearch {
         height: 100%;
     }
-
-    .glyphicon-search {               
-        position: absolute;            
-        right: 5px;
-        font-size: 4em;
-        color: #e29a79;
-        top: 7px;
-        cursor: pointer;
-    }
+    
     input[type='text'] {
-        width: 80%;
+        width: 65%;
         height: 100%;
         font-size: 1.3em;
         padding-left: 10px;
@@ -29,11 +21,13 @@
         border: 0px;
         .border-radius(3px);
         outline: none;
-        color: @color3;                 
+        color: @color3;
+        float: left;            
     }       
 }
 
 .search-type {
+    float: left;
     width: 20%;            
     border-left: 1px solid #ccc;
     height: 80%;
@@ -55,22 +49,38 @@
     }
 }
 
+.btn-search {
+    float: right;
+    height: 100%;
+    width: 15%;
+    .border-radius(0px);
+    background-color: #D0A44C;
+    position: relative;
+
+    i {
+        font-size: 2em;
+        color: #fff;
+        top: 4px;
+        right: 5px;
+    }
+}
+
 .search-suggestion {
     position: absolute;
     width: 100%;
     top: 44px;
-    background-color: #efefef;
-    z-index: 1000;
-    max-height: 200px;
-    overflow: auto;
+    background-color: #f3e1bc;
+    z-index: 1000;    
     border-radius: 0px 0px 3px 3px;
+    text-align: left;
+    word-wrap: break-word;
 
     ul {
         list-style: none;
         padding: 10px 10px 0px;
 
         .fl {
-            font-size: 1.5em;
+            font-size: 1.3em;
             color: @color1;
         }
 
@@ -80,7 +90,7 @@
 
         p {
             font-size: 1em;
-            color: @color2;
+            color: #777977;
         }
     }
 }

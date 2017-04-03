@@ -4,7 +4,7 @@ var router = require('express').Router(),
     zlib = require('zlib');
 
 //  search auto complete word
-router.get('/autocomplete/:word', keystone.middleware.api, function (req, res) {
+router.get('/autocomplete/:word/:pagesize', keystone.middleware.api, function (req, res) {
     var options = {
         host: 'dict.laban.vn',
         port: 80,
@@ -34,7 +34,14 @@ router.get('/autocomplete/:word', keystone.middleware.api, function (req, res) {
                     } catch (exp) {
                         result = { 'status_code': 500, 'status_text': 'JSON Parse Failed' };
                     }
-                    res.apiResponse(result);
+
+                    var resData;
+                    if(typeof req.params.pagesize !== 'undefined') {
+                        resData = result.suggestions.slice(0, req.params.pagesize);
+                    } else {
+                        resData = result.suggestions;
+                    }
+                    res.apiResponse(resData);
                 })
                 .on('error', function (err) {
                     res.apiError('error', err);

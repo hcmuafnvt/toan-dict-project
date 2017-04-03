@@ -160,8 +160,19 @@ header .logo .voca {
   margin-left: 3px;
   letter-spacing: 2px;
 }
+header .right-menu .btn-login {
+  display: none;
+}
 header .right-menu .btn-signup {
+  background: -webkit-linear-gradient(to bottom, #61bd4f 0, #5aac44 100%);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(to bottom, #61bd4f 0, #5aac44 100%);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(to bottom, #61bd4f 0, #5aac44 100%);
+  /* For Firefox 3.6 to 15 */
   background: linear-gradient(to bottom, #61bd4f 0, #5aac44 100%);
+  /* Standard syntax (must be last) */
+  background-color: rgba(0, 0, 0, 0.15);
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
   color: #fff;
   font-weight: bold;
@@ -176,6 +187,9 @@ header .toggle-menu {
 header .toggle-menu.glyphicon-remove {
   display: none;
 }
+/*-----------------------------------------------------------------------------------------------------------
+Mobile
+-----------------------------------------------------------------------------------------------------------*/
 .mobile-menu header {
   left: -80%;
 }
@@ -191,18 +205,76 @@ header .toggle-menu.glyphicon-remove {
 .mobile-menu .main-menu {
   right: 0;
 }
+/*-----------------------------------------------------------------------------------------------------------
+Tablet display
+-----------------------------------------------------------------------------------------------------------*/
 @media (min-width: 768px) {
-  .menu .toggle-menu {
+  header .right-menu .toggle-menu {
     display: none;
   }
-  .menu nav ul {
-    position: relative;
-    right: inherit;
-    width: auto;
-    background-color: inherit;
+  header .btn-login {
+    display: inline-block !important;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+    color: #fff;
+    margin: 16px 0px 19px 5px;
+    padding: 4px 15px;
+    background-color: rgba(0, 0, 0, 0.15);
   }
-  .menu nav ul li {
-    display: inline;
+  header .btn-login:hover {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+  header .btn-signup {
+    margin: 16px 20px 19px 10px !important;
+    padding: 4px 10px !important;
+  }
+}
+/*-----------------------------------------------------------------------------------------------------------
+Desktop display
+-----------------------------------------------------------------------------------------------------------*/
+@media (min-width: 1024px) {
+  header {
+    height: 80px;
+  }
+  header .logo {
+    width: 150px;
+  }
+  header .logo h1 {
+    font-size: 3em;
+  }
+  header .logo .voca {
+    font-size: 2.5em;
+  }
+  header .right-menu .toggle-menu {
+    display: none;
+  }
+  header .btn-login {
+    display: inline-block !important;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+    color: #fff;
+    margin: 20px 0px 19px 5px;
+    padding: 4px 18px;
+    font-size: 1.4em;
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+  header .btn-login:hover {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+  header .btn-signup {
+    margin: 20px 20px 19px 10px !important;
+    padding: 4px 13px !important;
+    font-size: 1.4em;
+  }
+  header .btn-signup:hover {
+    background: -webkit-linear-gradient(to bottom, #61bd4f 0, #38964c 100%) !important;
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(to bottom, #61bd4f 0, #38964c 100%) !important;
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(to bottom, #61bd4f 0, #38964c 100%) !important;
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom, #61bd4f 0, #38964c 100%) !important;
+    /* Standard syntax (must be last) */
   }
 }
 .search-box {
@@ -306,20 +378,48 @@ header .toggle-menu.glyphicon-remove {
 .mfp-content .popup {
   display: block;
 }
+.home-page {
+  /*-----------------------------------------------------------------------------------------------------------
+    Tablet display
+    -----------------------------------------------------------------------------------------------------------*/
+  /*-----------------------------------------------------------------------------------------------------------
+    Desktop display
+    -----------------------------------------------------------------------------------------------------------*/
+}
 .home-page .search-section {
-  background-color: #eee;
+  position: relative;
+  background-color: #63634d;
   padding-bottom: 20px;
 }
+.home-page .search-section .container {
+  text-align: center;
+}
+.home-page .search-section .bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/search-section-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.3;
+  filter: alpha(opacity=20);
+}
 .home-page .search-section h2 {
-  color: #455358;
+  color: #fff;
   font-size: 2.1em;
   margin-top: 45px;
   font-weight: bold;
 }
 .home-page .search-section .sub-title {
-  font-size: 1.1em;
-  color: #999;
-  line-height: 25px;
+  font-size: 1.3em;
+  color: #a9a9a9;
+  line-height: 30px;
 }
 .home-page .about-section {
   background-color: #fff;
@@ -329,12 +429,14 @@ header .toggle-menu.glyphicon-remove {
   font-weight: bold;
   color: #7b7b7b;
   letter-spacing: 2px;
-  margin-bottom: 20px;
+  margin: 30px 0px 20px 0px;
+}
+.home-page .about-section .container {
+  text-align: center;
 }
 .home-page .about-section .title {
   font-size: 1.2em;
   color: #7b7b7b;
-  text-align: justify;
   line-height: 27px;
   font-weight: bold;
 }
@@ -349,12 +451,123 @@ header .toggle-menu.glyphicon-remove {
   margin-top: 19px;
 }
 .home-page .about-section .btn-signup {
+  background: -webkit-linear-gradient(to bottom, #61bd4f 0, #5aac44 100%);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(to bottom, #61bd4f 0, #5aac44 100%);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(to bottom, #61bd4f 0, #5aac44 100%);
+  /* For Firefox 3.6 to 15 */
   background: linear-gradient(to bottom, #61bd4f 0, #5aac44 100%);
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+  /* Standard syntax (must be last) */
+  box-shadow: 0 2px 0 #38713b;
   color: #fff;
   font-weight: bold;
-  margin: 0px 0px 19px 5px;
-  padding: 4px 7px;
+  margin-top: 10px;
+  padding: 6px 10px;
+}
+.home-page .about-section p.log-in {
+  margin-top: 15px;
+  font-size: 1.1em;
+  color: #7b7b7b;
+}
+.home-page .about-section p.log-in a {
+  text-decoration: underline;
+  color: #61bd4f;
+}
+@media (min-width: 768px) {
+  .home-page .search-section h2 {
+    font-size: 3em;
+    margin-top: 100px;
+    letter-spacing: 2px;
+  }
+  .home-page .search-section .search-box {
+    width: 60%;
+    height: 50px;
+    margin: 50px auto;
+  }
+  .home-page .search-section .search-box input[type=text] {
+    width: 85%;
+    font-size: 1.5em;
+  }
+  .home-page .search-section .search-box .search-type {
+    width: 15%;
+    height: 90%;
+  }
+  .home-page .search-section .search-box .search-type .select select {
+    font-size: 1.3em;
+    padding: 9px 25px 7px 15px;
+  }
+  .home-page .search-section .search-box .search-type .select .select__arrow {
+    top: 17px;
+  }
+  .home-page .about-section .about {
+    font-size: 2.5em;
+    margin-top: 50px;
+  }
+  .home-page .about-section .title {
+    font-size: 1.5em;
+    line-height: 30px;
+    font-weight: 700;
+  }
+  .home-page .about-section .sub-title {
+    font-size: 1.3em;
+    line-height: 27px;
+  }
+  .home-page .about-section p.log-in {
+    font-size: 1.3em;
+  }
+  .home-page .about-section .btn-signup {
+    font-size: 1.2em;
+    padding: 6px 12px;
+  }
+}
+@media (min-width: 1024px) {
+  .home-page .search-section .bg-img {
+    background-position: 50% 33%;
+  }
+  .home-page .search-section h2 {
+    font-size: 4em;
+    margin-top: 150px;
+    letter-spacing: 4px;
+  }
+  .home-page .search-section .sub-title {
+    font-size: 1.8em;
+    letter-spacing: 1px;
+  }
+  .home-page .search-section .search-box {
+    height: 60px;
+    width: 55%;
+  }
+  .home-page .search-section .search-box input[type=text] {
+    font-size: 1.7em;
+  }
+  .home-page .search-section .search-box .search-type .select select {
+    font-size: 1.6em;
+    padding: 11px 25px 7px 20px !important;
+  }
+  .home-page .search-section .search-box .search-type .select .select__arrow {
+    top: 21px;
+    right: 15px;
+    border-width: 11px 7px 0;
+  }
+  .home-page .about-section .about {
+    font-size: 3em;
+    margin: 70px 0 40px 0 !important;
+  }
+  .home-page .about-section .title {
+    font-size: 2em;
+    line-height: 40px;
+    font-weight: normal;
+  }
+  .home-page .about-section .sub-title {
+    font-size: 1.5em;
+    color: #a9a9a9;
+  }
+  .home-page .about-section .btn-signup {
+    font-size: 1.5em;
+    margin: 40px 0px 10px 0px;
+    padding: 6px 15px;
+  }
 }
 .signup-page .hero-title {
   font-size: 1.7em;

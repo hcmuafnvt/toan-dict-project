@@ -38,7 +38,6 @@ Main Menu
 /*-----------------------------------------------------------------------------------------------------------
 Header
 -----------------------------------------------------------------------------------------------------------*/
-// header
 header {
     position: fixed;
     width: 100%;
@@ -73,8 +72,18 @@ header {
     }
 
     .right-menu {
-        .btn-signup {            
-            .btnelvoca(#61bd4f, #5aac44);              
+        .btn-login {
+            display: none;           
+        }
+
+        .btn-signup {          
+            .linearGradient(#61bd4f, #5aac44);
+            background-color: rgba(0,0,0,0.15);	
+            box-shadow: 0 2px 0 rgba(0,0,0,0.3);
+            color: #fff;            
+            font-weight: bold;
+            margin: 0px 0px 19px 5px;            
+            padding: 4px 7px;         
         }        
     }
 
@@ -88,7 +97,10 @@ header {
     }    
 }
 
-&.mobile-menu {
+/*-----------------------------------------------------------------------------------------------------------
+Mobile
+-----------------------------------------------------------------------------------------------------------*/
+.mobile-menu {
     header {
         left: -@mobile-menu-width-size;
         .btn-signup {
@@ -109,21 +121,84 @@ header {
     }
 }
 
+/*-----------------------------------------------------------------------------------------------------------
+Tablet display
+-----------------------------------------------------------------------------------------------------------*/
 @media (min-width: 768px) {
-    .menu {        
-        .toggle-menu {
-            display: none;
-        }
-        nav {
-            ul {
-                position: relative;
-                right: inherit;
-                width: auto;
-                background-color: inherit;
-                li {
-                    display: inline;                    
-                }
+    // header
+    header {        
+        .right-menu {
+            .toggle-menu {
+                display: none;
+            }
+        } // end .right-menu
+
+        .btn-login {
+            display: inline-block !important;                              	
+            box-shadow: 0 2px 0 rgba(0,0,0,0.3);
+            color: #fff;        
+            margin: 16px 0px 19px 5px;            
+            padding: 4px 15px;            
+            background-color: rgba(0,0,0,0.15);
+
+            &:hover {
+                color: #fff;
+                background-color: rgba(0,0,0,0.25);
             }
         }
-    }   
+
+        .btn-signup {
+            margin: 16px 20px 19px 10px !important;
+            padding: 4px 10px !important;         
+        }
+    } // end header 
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+Desktop display
+-----------------------------------------------------------------------------------------------------------*/
+@media (min-width: 1024px) {
+    // header
+    header {
+        height: 80px;
+        .logo {
+            width: 150px;
+            h1 {
+                font-size: 3em;
+            }
+            .voca {
+                font-size: 2.5em;
+            }
+        } // end: .logo
+
+        .right-menu {
+            .toggle-menu {
+                display: none;
+            }
+        } // end .right-menu
+
+        .btn-login {
+            display: inline-block !important;                              	
+            box-shadow: 0 2px 0 rgba(0,0,0,0.3);
+            color: #fff;        
+            margin: 20px 0px 19px 5px;            
+            padding: 4px 18px;
+            font-size: 1.4em;
+            background-color: rgba(0,0,0,0.15);
+
+            &:hover {
+                color: #fff;
+                background-color: rgba(0,0,0,0.25);
+            }
+        }
+
+        .btn-signup {
+            margin: 20px 20px 19px 10px !important;            
+            padding: 4px 13px !important;
+            font-size: 1.4em;
+            &:hover {
+                .linearGradient(#61bd4f, #38964c) !important;
+            }
+        }
+    } // end header    
 }

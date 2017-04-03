@@ -42,7 +42,7 @@ CSS3 PROPERTIES
             transition: @transition;
 }
 
-// 
+// -moz-background-size
 .backgroundSize(@backgroundsize) {
     -webkit-background-size: @backgroundsize;
     -moz-background-size: @backgroundsize;
@@ -67,12 +67,9 @@ CSS3 PROPERTIES
 }
 
 // .btn-elvoca
-.btnelvoca(@tocolor, @bottomcolor) {
-    background: linear-gradient(to bottom, @tocolor 0, @bottomcolor 100%);
-    //background-color: rgba(0,0,0,0.15);	
-	box-shadow: 0 2px 0 rgba(0,0,0,0.3);
-	color: #fff;            
-	font-weight: bold;
-	margin: 0px 0px 19px 5px;            
-	padding: 4px 7px; 
+.linearGradient(@tocolor, @bottomcolor) {    
+    background: -webkit-linear-gradient(to bottom, @tocolor 0, @bottomcolor 100%); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(to bottom, @tocolor 0, @bottomcolor 100%); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(to bottom, @tocolor 0, @bottomcolor 100%); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom, @tocolor 0, @bottomcolor 100%); /* Standard syntax (must be last) */
 }

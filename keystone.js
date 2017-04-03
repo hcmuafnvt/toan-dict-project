@@ -34,6 +34,8 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User',
+
+	'host': '172.20.1.74'
 });
 
 // Load your project's Models

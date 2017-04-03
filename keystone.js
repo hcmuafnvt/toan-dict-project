@@ -33,9 +33,7 @@ keystone.init({
 	'auto update': true,
 	'session': true,
 	'auth': true,
-	'user model': 'User',
-
-	'host': '172.20.1.74'
+	'user model': 'User'
 });
 
 // Load your project's Models

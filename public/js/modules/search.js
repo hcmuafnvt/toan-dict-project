@@ -11,8 +11,11 @@ function bindAutoComplete(data) {
 
     var len = data.length;
     var result = '<ul>';    
-    $.each(data, function(index, item) {        
-        result += '<li><a href="/search?word=' + item.select + '&type=vi">' + $(item.data).html() + '</a></li>';
+    // $.each(data, function(index, item) {        
+    //     result += '<li><a href="/search?word=' + item.select + '&type=vi">' + $(item.data).html() + '</a></li>';
+    // });
+    $.each(data, function(index, word) {        
+        result += '<li><a href="/search?word=' + word.name + '&type=vi">' + word.name + '</a></li>';
     });
     $searchSuggestion.append(result + '</ul>');
     $searchSuggestion.show();
@@ -28,10 +31,10 @@ function searchAutocomplete() {
         console.time('autocomplete');
         var $self = $(this);
         var word = $self.val().trim();
-        // if(word.length < 3) {
-        //     bindAutoComplete(null);
-        //     return;
-        // } 
+        if(word.length < 1) {
+            bindAutoComplete(null);
+            return;
+        } 
 
         var pagesize = 5, wWidth = $(window).width();
         if(wWidth >= 768 && wWidth < 1024) {
@@ -45,8 +48,7 @@ function searchAutocomplete() {
             method: "GET",
             dataType: "json",
             success: function (data) { 
-                //bindAutoComplete(data);
-                console.log(data);
+                bindAutoComplete(data);                
                 console.timeEnd('autocomplete');               
                 
             }

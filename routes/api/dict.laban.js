@@ -50,8 +50,8 @@ router.get('/autocomplete/:word/:pagesize', keystone.middleware.api, function (r
     // });  
     
     var regex = new RegExp('^' + req.params.word, 'i');
-    keystone.list('Word').model.find({name : regex}).sort({'name': 1}).limit(20).exec(function(err, words) {
-        if(err) return res.apiError('error', err);
+    keystone.list('Word').model.find({name : regex}, 'name').sort({'name': 1}).limit(20).exec(function(err, words) {
+        if(err) return res.apiError('error', err);        
         res.apiResponse(words);
     });
 });

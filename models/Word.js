@@ -10,7 +10,8 @@ var Word = new keystone.List('Word', {
 });
 
 Word.add({
-	name: { type: String, required: true, initial: true, default: '', index: true },
+	name: { type: String, required: true, initial: true, default: '', index: true, unique: true },
+	vdictHref: { type: String, default: '' },
 	translateToEn: { type: Types.Html, wysiwyg: true },
 	translateToVi: { type: Types.Html, wysiwyg: true },
 	createdBy: { type: Types.Relationship, ref: 'User', index: true, many: false },

@@ -19,13 +19,19 @@ function bindAutoComplete(data) {
 }
 
 function searchAutocomplete() {
+    // hide search result when hide device keyboard
+    document.addEventListener('focusout', function(e) {
+        $('#search-suggestion').hide().empty();
+    });
+
     $("#word").on('input', function() {
+        console.time('autocomplete');
         var $self = $(this);
         var word = $self.val().trim();
-        if(word.length < 3) {
-            bindAutoComplete(null);
-            return;
-        } 
+        // if(word.length < 3) {
+        //     bindAutoComplete(null);
+        //     return;
+        // } 
 
         var pagesize = 5, wWidth = $(window).width();
         if(wWidth >= 768 && wWidth < 1024) {
@@ -38,13 +44,11 @@ function searchAutocomplete() {
             url: "/api/vidict/autocomplete/" + $(this).val().trim() + '/' + pagesize,              
             method: "GET",
             dataType: "json",
-            success: function (data) {      
-                bindAutoComplete(data);
+            success: function (data) { 
+                //bindAutoComplete(data);
+                console.log(data);
+                console.timeEnd('autocomplete');               
                 
-                // hide search result when hide device keyboard
-                document.addEventListener('focusout', function(e) {
-                    $('#search-suggestion').hide().empty();
-                });
             }
         });     
     });    

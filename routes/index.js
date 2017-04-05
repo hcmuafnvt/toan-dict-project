@@ -40,13 +40,15 @@ exports = module.exports = function (app) {
 	app.get('/signout', routes.views.auth.signout);
 	app.get('/search', routes.views.searchresult);
 	app.get('/learn', routes.views.learn);
+	app.get('/wordcrawler', routes.views.wordcrawler);
 	app.get('/lists', routes.views.list.index);
 	app.all('/lists/add', routes.views.list.add);
 
 	// api
 	app.use('/api/vidict', require('./api/dict.laban'));
 	app.use('/api/words', require('./api/word'));
-	app.use('/api/lists', require('./api/list'));	
+	app.use('/api/lists', require('./api/list'));
+	app.use('/api/wordcrawler', require('./api/wordcrawler'));
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

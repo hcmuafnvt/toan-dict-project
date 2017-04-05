@@ -1,0 +1,26 @@
+<script>
+    var pageContext = {
+        pageName: 'wordcrawlerpage'
+    }
+</script>
+
+<div class="wordcrawler-page" id="wordcrawler-page" style="margin-top: 20px;">
+    <div class="container">
+        <div class="form-group">
+            <label for="url">Url</label>
+            <input type="text" class="form-control" id="url">
+        </div>
+        <div class="form-group">
+            <label for="fromindex">From index</label>
+            <input type="text" class="form-control" id="fromindex" style="width: 50%;">
+        </div>
+        <div class="form-group">
+            <label for="toindex">To index</label>
+            <input type="text" class="form-control" id="toindex" style="width: 50%;">
+        </div>
+
+        <p id="msg" class="hide">Crawling completed!</p>
+
+        <button id="btn-submit" class="btn btn-default">Submit</button>
+    </div>
+</div>

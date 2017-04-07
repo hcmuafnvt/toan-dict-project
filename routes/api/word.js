@@ -13,26 +13,36 @@ router.get('/', keystone.middleware.api, function (req, res) {
 
 // create a word and assign to list
 router.post('/', keystone.middleware.api, function (req, res) {
-    if(!req.body.word || !req.body.listId) return res.apiError('validated error');
+    var wordData = {
+                name: req.body.word,
+                createdBy: req.body.createdBy
+    };
+    var newWord = new Word.model(wordData);
 
-    Word.model.findOne({slug: req.body.word.trim()}, function(err, word) {
-        if(err || word) {            
-            addWordToList(req, res, word._id, req.body.listId);
-        } else {
-            var wordData = {
-                name: req.body.word,                
-                translateToEn: req.body.translateToEn,
-                translateToVi: req.body.translateToVi,
-                createdBy: res.locals.user.id
-            },
-            newWord = new Word.model(wordData);
-
-            newWord.save(function(err, word) {
-                if(err) return res.apiError('created word with error', err);            
-                addWordToList(req, res, word._id, req.body.listId);
-            });
-        }        
+    newWord.save(function(err, word) {
+        if(err) return res.apiError('created word with error', err);            
+        res.apiResponse('successfully');
     });
+    // if(!req.body.word || !req.body.listId) return res.apiError('validated error');
+
+    // Word.model.findOne({slug: req.body.word.trim()}, function(err, word) {
+    //     if(err || word) {            
+    //         addWordToList(req, res, word._id, req.body.listId);
+    //     } else {
+    //         var wordData = {
+    //             name: req.body.word,                
+    //             translateToEn: req.body.translateToEn,
+    //             translateToVi: req.body.translateToVi,
+    //             createdBy: res.locals.user.id
+    //         },
+    //         newWord = new Word.model(wordData);
+
+    //         newWord.save(function(err, word) {
+    //             if(err) return res.apiError('created word with error', err);            
+    //             addWordToList(req, res, word._id, req.body.listId);
+    //         });
+    //     }        
+    // });
 });
 
 ////////////////////////////////////////

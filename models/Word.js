@@ -11,6 +11,8 @@ var Word = new keystone.List('Word', {
 
 Word.add({
 	name: { type: String, required: true, initial: true, default: '', index: true, unique: true },
+	mainViMean: { type: String, default: '' },
+	mainEnMean: { type: String, default: '' },
 	vdictHref: { type: String, default: '' },
 	translateToEn: { type: Types.Html, wysiwyg: true },
 	translateToVi: { type: Types.Html, wysiwyg: true },

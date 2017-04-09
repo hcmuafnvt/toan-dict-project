@@ -7,6 +7,13 @@ var router = require('express').Router(),
 
 var totalWords = 0;
 
+var listOfWords;
+
+Word.model.find({$or: [{name: /^b/, mainViMean: {$exists: false}}, {name: /^c/}]}).exec(function(err, result) {
+    listOfWords = result;
+    console.log('list of words : ', listOfWords.length);
+});
+
 // crawling words
 router.post('/', keystone.middleware.api, function (req, res) {
     console.time('crawling');
@@ -62,7 +69,7 @@ router.post('/', keystone.middleware.api, function (req, res) {
             var wordData = {
                 name: $(word).text(),
                 vdictHref: $(word).attr('href'),                
-                createdBy: '58d49e2b3a1ed79cd5c2a428'
+                createdBy: '58e7b53dfacb8f2f0968e17b'
             },
             
             newWord = new Word.model(wordData);
@@ -95,34 +102,77 @@ router.post('/', keystone.middleware.api, function (req, res) {
 });
 
 // crawling mean of word
-router.get('/getword', keystone.middleware.api, function (req, res) {
+router.get('/getword', keystone.middleware.api, function (req, res) {    
     console.time('crawling');
-    var crawler;
-    
-    Word.model.find({}).limit(20).exec(function(err, words) {
-        for(var i = 0; i < words.length; i++) {
-            // crawler = new simplecrawler('https://vdict.com/' + words[i].vdictHref);
+    var crawler = new simplecrawler('https://vdict.com/browse.php');
 
-            // crawler.on("fetchcomplete", function(queueItem, responseBody, response) {
-            //     console.log('fetchcomplete : ', queueItem.url);
-            //     // var self = this;
-            //     // var con = self.wait();
-            //     // var $ = cheerio.load(responseBody);
-            // });
-
-            // crawler.on('complete', function() {
-            //     res.apiResponse('Crawling completed');
-            //     console.timeEnd('crawling');        
-            // });
-
-            // crawler.maxConcurrency = 1;
-            // crawler.maxDepth = 1;
-            // crawler.decodeResponses=true;
-
-            // crawler.start();    
-            console.log(words.name, ', ');
-        }   
+    crawler.on('fetchstart', function(queueItem, resources) {
+        if(queueItem.depth === 2) {
+            console.log('====> fetchstart %s', queueItem.url);
+        }        
+        //console.log('====> fetchstart %s', queueItem.url);
     });
+
+    crawler.on('queueadd', function(queueItem) {
+        //console.log('+ queueadd %s ', queueItem.url);
+    });
+
+    crawler.discoverResources = function(buffer, queueItem) {        
+        return listOfWords.map(function(word) {
+            return 'https://vdict.com' + word.vdictHref
+        });        
+    };   
+
+    crawler.on("fetchcomplete", function(queueItem, responseBody, response) {
+        if(queueItem.depth === 1) return;        
+
+        var $ = cheerio.load(responseBody.toString("utf8"));
+        var $mainContents = $('#result-contents');        
+        if($mainContents.length === 0) {            
+            return;
+        }       
+
+        var con = this.wait();
+        
+        var meanOfWord = $mainContents.find('.list1').first().find('li b').text();        
+        $mainContents.find('.dictionary-name').remove();
+        $mainContents.find('#tandp').remove();
+        $mainContents.find('a[href="#comments"]').remove();
+        $mainContents.find('#adsensediv').remove();        
+        $mainContents.find('a[name="comments"]').remove();
+        $mainContents.find('> div.clear').remove();          
+
+        var data = {
+            mainViMean: $mainContents.find('.list1').first().find('li b').text(),
+            translateToVi: $mainContents.html().replace('<?xml version="1.0"?>', '')
+        };        
+        
+        $mainContents.find('.list1').each(function(index, elem) {
+            $(this).removeClass('list1').addClass('level-1');
+        });
+
+        $mainContents.find('.list2').each(function(index, elem) {
+            $(this).removeClass('list2').addClass('level-2');
+        });
+
+        var selectedWord = listOfWords.filter(function(obj) {            
+            return ('https://vdict.com' + obj.vdictHref === queueItem.url);
+        });
+        
+        selectedWord[0].getUpdateHandler(req).process(data, function(err) {            
+            con();
+        });      
+    });
+
+    crawler.on('complete', function() {
+        res.apiResponse('Crawling completed');
+        console.timeEnd('crawling');        
+    });
+
+    //crawler.maxConcurrency = 1;
+    crawler.maxDepth = 2;
+    crawler.decodeResponses=true;
+    crawler.start();   
 });
 
 module.exports = router;

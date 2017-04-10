@@ -9,10 +9,10 @@ var totalWords = 0;
 
 var listOfWords;
 
-Word.model.find({$or: [{name: /^b/, mainViMean: {$exists: false}}, {name: /^c/}]}).exec(function(err, result) {
-    listOfWords = result;
-    console.log('list of words : ', listOfWords.length);
-});
+// Word.model.find({$or: [{name: /^b/, mainViMean: {$exists: false}}, {name: /^c/}]}).exec(function(err, result) {
+//     listOfWords = result;
+//     console.log('list of words : ', listOfWords.length);
+// });
 
 // crawling words
 router.post('/', keystone.middleware.api, function (req, res) {

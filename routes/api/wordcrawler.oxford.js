@@ -9,10 +9,10 @@ var totalWords = 0;
 
 var listOfWords;
 
-Word.model.find({name: /^a/}).limit(10).exec(function(err, result) {
-    listOfWords = result;
-    console.log('list of words : ', listOfWords.length);
-});
+// Word.model.find({name: /^a/}).limit(10).exec(function(err, result) {
+//     listOfWords = result;
+//     console.log('list of words : ', listOfWords.length);
+// });
 
 // crawling mean of word
 router.get('/getword', keystone.middleware.api, function (req, res) {    
@@ -30,23 +30,89 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
     });
 
     crawler.discoverResources = function(buffer, queueItem) {        
-        return listOfWords.map(function(word) {
-            return 'https://en.oxforddictionaries.com/definition/' + word.name.replace(/ /g, '_');
-        });        
+        // return listOfWords.map(function(word) {
+        //     return 'https://en.oxforddictionaries.com/definition/' + word.name.replace(/ /g, '_');
+        // });
+
+        var urls = [
+            'https://en.oxforddictionaries.com/definition/take'.replace(/ /g, '_'),
+            'https://en.oxforddictionaries.com/definition/eat'.replace(/ /g, '_'),
+            //'https://en.oxforddictionaries.com/search?filter=dictionary&query=disputeasdsad',
+            'https://en.oxforddictionaries.com/definition/take_a_back_seat'
+        ];
+        return urls;     
     };   
 
     crawler.on("fetchcomplete", function(queueItem, responseBody, response) {
         if(queueItem.depth === 1) return;        
 
+        console.time('fetchcomplete');
         var $ = cheerio.load(responseBody.toString("utf8"));
         var $mainContents = $('.entryWrapper');        
-        if($mainContents.length === 0) {            
+        if($mainContents.length === 0 || $mainContents.find('.no-exact-matches').length > 0) {
             return;
-        }       
+        }
 
-        var con = this.wait();       
+        var translateToEn = {};
+        if($mainContents.find('> .gramb').length > 0) {
+            translateToEn.grambs = [];
+            $mainContents.find('> .gramb').each(function(idx, gramb) {
+                var grambObj = {};
+                var $gramb = $(gramb);                
+                grambObj.typeOfWord = $gramb.find('.pos').first().text();
+                if(grambObj.typeOfWord === '') return;
+                grambObj.level1 = [];
+                $gramb.find('.semb > li').each(function(idx, level1) {
+                    var level1Obj = {};
+                    var $level1 = $(level1);
+
+                    level1Obj.mean = $level1.find('.trg p .ind').text();
+
+                    level1Obj.exampls = [];
+                    $level1.find('> .trg > .exg .ex').each(function() {
+                        var ex = '';
+                        if($(this).find('.grammatical_note').length > 0) {
+                            ex = '<span class="no-object">' + $(this).find('.grammatical_note').text() + '<span>' + $(this).find('em').text();
+                        }  else {
+                             ex = $(this).find('em').text();
+                        }
+                        level1Obj.exampls.push(ex);
+                    });
+                    if(level1Obj.exampls.length < 5) {
+                        var $otherExamples = $level1.find('> .trg > .examples .ex');
+                        if($otherExamples.length > 0) {
+                            $otherExamples.slice(0, 5 - level1Obj.exampls.length).each(function() {                                
+                                var ex = '';
+                                if($(this).find('.grammatical_note').length > 0) {
+                                    ex = '<span class="no-object">' + $(this).find('.grammatical_note').text() + '<span>' + $(this).find('em').text();
+                                }  else {
+                                    ex = $(this).find('em').text();
+                                }
+                                level1Obj.exampls.push(ex);
+                            });
+                        } 
+                    }
+
+                    grambObj.level1.push(level1Obj);
+                })
+                translateToEn.grambs.push(grambObj);
+            });
+
+            console.log(JSON.stringify(translateToEn));
+        }
+              
+
+        //var con = this.wait();       
         
-        console.log('==== fetchcomplete : ', $mainContents.find('.entryHead .hw').text());
+        // var mainEnMean = $mainContents.find('.ind').first().text(),
+        //     phoneticSpelling = $mainContents.find('.phoneticSpelling').first().text(),
+        //     soundLink = $mainContents.find('.speaker').first().find('audio').attr('src'),
+        //     mainType = $mainContents.find('.pos').first().text();
+            
+        // console.log('==== mainEnMean : ', mainEnMean);
+        // console.log('==== phoneticSpelling : ', phoneticSpelling);
+        // console.log('==== soundLink : ', soundLink);
+        // console.log('==== mainType : ', mainType);
 
         // var data = {            
         //     translateToEn: $mainContents.html().replace('<?xml version="1.0"?>', '')
@@ -61,6 +127,7 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
         // selectedWord[0].getUpdateHandler(req).process(data, function(err) {            
         //     con();
         // });      
+        console.timeEnd('fetchcomplete');
     });
 
     crawler.on('complete', function() {

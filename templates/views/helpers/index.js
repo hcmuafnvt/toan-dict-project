@@ -326,5 +326,10 @@ module.exports = function () {
 		return obj._[underscoreMethod].format();
 	};
 
+	//Customs
+	_helpers.incIndex = function(index) {
+		return parseInt(index) + 1;
+	}
+
 	return _helpers;
 };

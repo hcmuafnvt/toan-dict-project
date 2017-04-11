@@ -147,14 +147,14 @@ header {
 header .logo {
   float: left;
   width: 115px;
-  margin-top: 4px;
   margin-left: 8px;
 }
 header .logo a {
   color: #fff;
 }
-header .logo h1 {
+header .logo .el {
   font-size: 2.3em;
+  font-weight: 500;
   margin: 10px 0px 0px 10px;
   display: inline-block;
 }
@@ -244,7 +244,7 @@ Desktop display
   header .logo {
     width: 150px;
   }
-  header .logo h1 {
+  header .logo .el {
     font-size: 3em;
   }
   header .logo .voca {

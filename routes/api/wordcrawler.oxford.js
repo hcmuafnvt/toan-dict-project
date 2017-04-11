@@ -9,18 +9,19 @@ var totalWords = 0;
 
 var listOfWords;
 
-// Word.model.find({name: /^a/}).limit(10).exec(function(err, result) {
-//     listOfWords = result;
-//     console.log('list of words : ', listOfWords.length);
-// });
+Word.model.find({name: 'eat'}).exec(function(err, result) {
+    listOfWords = result;
+    console.log('list of words : ', listOfWords.length);
+});
 
 // crawling mean of word
 router.get('/getword', keystone.middleware.api, function (req, res) {    
     console.time('crawling');
     var crawler = new simplecrawler('https://en.oxforddictionaries.com/');
 
-    crawler.on('fetchstart', function(queueItem, resources) {
+    crawler.on('fetchstart', function(queueItem, resources) {        
         if(queueItem.depth === 2) {
+            console.time('fetchTime');
             console.log('====> fetchstart %s', queueItem.url);
         }        
     });
@@ -30,30 +31,41 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
     });
 
     crawler.discoverResources = function(buffer, queueItem) {        
-        // return listOfWords.map(function(word) {
-        //     return 'https://en.oxforddictionaries.com/definition/' + word.name.replace(/ /g, '_');
-        // });
+        return listOfWords.map(function(word) {
+            return 'https://en.oxforddictionaries.com/definition/' + word.name.replace(/ /g, '_');
+        });
 
-        var urls = [
-            'https://en.oxforddictionaries.com/definition/take'.replace(/ /g, '_'),
-            'https://en.oxforddictionaries.com/definition/eat'.replace(/ /g, '_'),
-            //'https://en.oxforddictionaries.com/search?filter=dictionary&query=disputeasdsad',
-            'https://en.oxforddictionaries.com/definition/take_a_back_seat'
-        ];
-        return urls;     
+        // var urls = [
+        //     // 'https://en.oxforddictionaries.com/definition/take',
+        //     // 'https://en.oxforddictionaries.com/definition/eat',
+        //     // 'https://en.oxforddictionaries.com/search?filter=dictionary&query=disputeasdsad',
+        //     'https://en.oxforddictionaries.com/definition/take_a_back_seat'
+        // ];
+        // return urls;     
     };   
 
     crawler.on("fetchcomplete", function(queueItem, responseBody, response) {
         if(queueItem.depth === 1) return;        
 
+        console.timeEnd('fetchTime');
+
         console.time('fetchcomplete');
+        var con = this.wait(); 
         var $ = cheerio.load(responseBody.toString("utf8"));
         var $mainContents = $('.entryWrapper');        
         if($mainContents.length === 0 || $mainContents.find('.no-exact-matches').length > 0) {
             return;
         }
 
+        var data = {
+            mainEnMean: $mainContents.find('.ind').first().text(),
+            phoneticSpelling: $mainContents.find('.phoneticspelling').first().text(),
+            soundLink: $mainContents.find('.speaker').first().find('audio').attr('src'),
+            mainType: $mainContents.find('.pos').first().text()
+        }              
+            
         var translateToEn = {};
+
         // grambs
         if($mainContents.find('> .gramb').length > 0) {
             translateToEn.grambs = [];
@@ -69,7 +81,7 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
                     var $level1 = $(level1);
                     level1Obj.mean = $level1.find('.trg p .ind').text();
                     
-                    level1Obj.exampls = [];
+                    level1Obj.examples = [];
                     $level1.find('> .trg > .exg .ex').each(function() {
                         var ex = '';
                         if($(this).find('.form-groups').length > 0) {
@@ -79,12 +91,12 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
                             ex += '<span class="no-object">' + $(this).find('.grammatical_note').text() + '</span>';
                         }                            
                         ex += $(this).find('em').text();
-                        level1Obj.exampls.push(ex);
+                        level1Obj.examples.push(ex);
                     });
-                    if(level1Obj.exampls.length < 5) {
+                    if(level1Obj.examples.length < 5) {
                         var $otherExamples = $level1.find('> .trg > .examples .ex');
                         if($otherExamples.length > 0) {
-                            $otherExamples.slice(0, 5 - level1Obj.exampls.length).each(function() {                                
+                            $otherExamples.slice(0, 5 - level1Obj.examples.length).each(function() {                                
                                 var ex = '';
                                 if($(this).find('.form-groups').length > 0) {
                                     ex += '<span class="level1-strong-mean">' + $(this).find('.form-groups strong').text() + '</span>';
@@ -93,7 +105,7 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
                                     ex += '<span class="no-object">' + $(this).find('.grammatical_note').text() + '</span>';
                                 }                            
                                 ex += $(this).find('em').text();
-                                level1Obj.exampls.push(ex);
+                                level1Obj.examples.push(ex);
                             });
                         } 
                     }
@@ -114,7 +126,7 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
                         level2Mean += $level2.find('.ind').text();
                         level2Obj.mean = level2Mean;
                         
-                        level2Obj.exampls = [];
+                        level2Obj.examples = [];
                         $level2.find('> .trg > .exg .ex').each(function() {
                             var ex = '';
                             if($(this).find('.form-groups').length > 0) {
@@ -124,12 +136,12 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
                                 ex += '<span class="no-object">' + $(this).find('.grammatical_note').text() + '</span>';
                             }                            
                             ex += $(this).find('em').text();
-                            level2Obj.exampls.push(ex);
+                            level2Obj.examples.push(ex);
                         });
-                        if(level2Obj.exampls.length < 2) {
+                        if(level2Obj.examples.length < 2) {
                             var $otherExamples = $level2.find('> .trg > .examples .ex');
                             if($otherExamples.length > 0) {
-                                $otherExamples.slice(0, 2 - level2Obj.exampls.length).each(function() {                                
+                                $otherExamples.slice(0, 2 - level2Obj.examples.length).each(function() {                                
                                     var ex = '';
                                     if($(this).find('.form-groups').length > 0) {
                                         ex += '<span class="level2-strong-mean">' + $(this).find('.form-groups strong').text() + '</span>';
@@ -138,7 +150,7 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
                                         ex += '<span class="no-object">' + $(this).find('.grammatical_note').text() + '</span>';
                                     }                            
                                     ex += $(this).find('em').text();
-                                    level2Obj.exampls.push(ex);
+                                    level2Obj.examples.push(ex);
                                 });
                             } 
                         }
@@ -171,7 +183,7 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
                     level1Obj.phase = $level1Phase.find('.trg .ind').text();
                     level1Obj.mean = $level1Mean.find('.trg').first().find('.ind').text();
 
-                    level1Obj.exampls = [];
+                    level1Obj.examples = [];
                     $level1Mean.find('.trg').eq(1).find('> .exg .ex').each(function() {
                         var ex = '';
                         if($(this).find('.form-groups').length > 0) {
@@ -181,12 +193,12 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
                             ex += '<span class="no-object">' + $(this).find('.grammatical_note').text() + '</span>';
                         }                            
                         ex += $(this).find('em').text();
-                        level1Obj.exampls.push(ex);
+                        level1Obj.examples.push(ex);
                     });
-                    if(level1Obj.exampls.length < 2) {
+                    if(level1Obj.examples.length < 2) {
                         var $otherExamples = $level1Mean.find('.trg').eq(1).find('> .examples .ex');
                         if($otherExamples.length > 0) {
-                            $otherExamples.slice(0, 2 - level1Obj.exampls.length).each(function() {                                
+                            $otherExamples.slice(0, 2 - level1Obj.examples.length).each(function() {                                
                                 var ex = '';
                                 if($(this).find('.form-groups').length > 0) {
                                     ex += '<span class="level1-strong-mean">' + $(this).find('.form-groups strong').text() + '</span>';
@@ -195,7 +207,7 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
                                     ex += '<span class="no-object">' + $(this).find('.grammatical_note').text() + '</span>';
                                 }                            
                                 ex += $(this).find('em').text();
-                                level1Obj.exampls.push(ex);
+                                level1Obj.examples.push(ex);
                             });
                         } 
                     }                    
@@ -206,35 +218,22 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
             });            
         }
 
-        console.log(JSON.stringify(translateToEn));
+
+        //console.log(JSON.stringify(translateToEn));
               
-
-        //var con = this.wait();       
+        data.translateToEn = translateToEn;
+        var selectedWord = listOfWords.filter(function(obj) {            
+            return ('https://en.oxforddictionaries.com/definition/' + obj.name.replace(/ /g, '_') === queueItem.url);
+        });
         
-        // var mainEnMean = $mainContents.find('.ind').first().text(),
-        //     phoneticSpelling = $mainContents.find('.phoneticSpelling').first().text(),
-        //     soundLink = $mainContents.find('.speaker').first().find('audio').attr('src'),
-        //     mainType = $mainContents.find('.pos').first().text();
-            
-        // console.log('==== mainEnMean : ', mainEnMean);
-        // console.log('==== phoneticSpelling : ', phoneticSpelling);
-        // console.log('==== soundLink : ', soundLink);
-        // console.log('==== mainType : ', mainType);
-
-        // var data = {            
-        //     translateToEn: $mainContents.html().replace('<?xml version="1.0"?>', '')
-        // };        
-        
-        
-
-        // var selectedWord = listOfWords.filter(function(obj) {            
-        //     return ('https://vdict.com' + obj.vdictHref === queueItem.url);
-        // });
-        
-        // selectedWord[0].getUpdateHandler(req).process(data, function(err) {            
-        //     con();
-        // });      
-        console.timeEnd('fetchcomplete');
+        selectedWord[0].getUpdateHandler(req).process(data, function(err, word) {
+            word.translateToEn = translateToEn;
+            word.save(function(err, word1) {
+                console.log(word1);
+            });
+            console.timeEnd('fetchcomplete');
+            con();
+        });        
     });
 
     crawler.on('complete', function() {
@@ -245,7 +244,7 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
     crawler.maxConcurrency = 1;
     crawler.maxDepth = 2;
     crawler.decodeResponses=true;
-    crawler.start();   
+    crawler.start();
 });
 
 module.exports = router;

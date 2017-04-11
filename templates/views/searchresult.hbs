@@ -5,13 +5,64 @@
 
 </script>
 
-{{> _searchbox}}
+{{!--{{> _searchbox}}--}}
 <div class="searchresult-page" id="searchresult-page">
-    <a href="#" id="addToList"><i class="glyphicon glyphicon-plus"></i> Add to list</a>
-    <div id="search-result">{{{data.searchResult.details}}}</div>
+    {{!--<a href="#" id="addToList"><i class="glyphicon glyphicon-plus"></i> Add to list</a>--}}
+    <div class="search-result">
+        <div class="container">
+            <h1 class="word-name">{{data.searchResult.name}}</h1>
+            <div class="grambs">
+                {{#data.searchResult.translateToEn.grambs}}
+                    <div class="gramb">
+                        <div class="type-of-word">{{typeOfWord}}</div>
+                        {{#level1}}                           
+                            <div class="l1-container">
+                                <h2 class="l1-mean"><span class="l1-index">{{incIndex @index}} </span>{{{mean}}}</h2>
+                                <div class="l1-examples">
+                                    {{#examples}}
+                                        <p class="ex">- {{{this}}}</p>
+                                    {{/examples}}
+                                </div>
+                                <div class="l2-container">
+                                    {{#level2}}
+                                        <h3 class="l2-mean"><span class="l2-index">{{incIndex @../index}}.{{incIndex @index}} </span>{{{mean}}}</h3>
+                                        <div class="l2-examples">
+                                            {{#examples}}
+                                                <p class="ex">- {{{this}}}</p>
+                                            {{/examples}}
+                                        </div>
+                                    {{/level2}}
+                                </div>
+                            </div>
+                        {{/level1}}
+                    </div>                    
+                {{/data.searchResult.translateToEn.grambs}}  
+            </div>
+
+            <div class="etymologys">
+                {{#data.searchResult.translateToEn.etymologys}}
+                    <div class="etymology">
+                        <div class="type-of-word">{{typeOfWord}}</div>
+                        {{#level1}}                           
+                            <div class="l1-container">
+                                <h2 class="l1-phase">{{{phase}}}</h2>
+                                <h3 class="l1-mean">{{{mean}}}</h3>
+                                <div class="l1-examples">
+                                    {{#examples}}
+                                        <p class="ex">- {{{this}}}</p>
+                                    {{/examples}}
+                                </div>                                
+                            </div>
+                        {{/level1}}
+                    </div>                    
+                {{/data.searchResult.translateToEn.etymologys}}  
+            </div> <!-- end .etymologys -->
+        </div>       
+    </div>
 </div>
 
-<div class="add-to-list-popup mfp-hide container" id="add-to-list-popup">
+<!-- add to list popup -->
+{{!--<div class="add-to-list-popup mfp-hide container" id="add-to-list-popup">
     <h1 class="hero-title">{{data.searchResult.word}}</h1>
     <div class="form-group">
         <label for="list">Choose a list</label>
@@ -19,4 +70,4 @@
         </select>
     </div>
     <button class="btn btn-default">Add to list</button>
-</div>
+</div>--}}

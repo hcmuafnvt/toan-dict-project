@@ -16,12 +16,12 @@ Word.add({
 	soundLink: { type: String, default: '' },
 	mainViMean: { type: String, default: '' },
 	mainEnMean: { type: String, default: '' },
-	vdictHref: { type: String, default: '' },
-	//translateToEn: Schema.Types.Mixed,
+	vdictHref: { type: String, default: '' },	
 	translateToVi: { type: Types.Html, wysiwyg: true },
 	createdBy: { type: Types.Relationship, ref: 'User', index: true, many: false },
 	createdAt: { type: Types.Datetime, default: Date.now },
-	UpdatedAt: { type: Types.Datetime, default: Date.now }
+	UpdatedAt: { type: Types.Datetime, default: Date.now },
+	isCrawlingEn: { type: Types.Boolean, default: false }
 });
 
 Word.schema.add({

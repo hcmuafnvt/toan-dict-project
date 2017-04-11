@@ -5,11 +5,10 @@ var router = require('express').Router(),
     cheerio = require('cheerio'),
     async = require('async');
 
-var totalWords = 0;
-
 var listOfWords;
+var selectedWord = null;        
 
-Word.model.find({name: 'eat'}).exec(function(err, result) {
+Word.model.find({name: /^a/}).sort({name: 1}).exec(function(err, result) {
     listOfWords = result;
     console.log('list of words : ', listOfWords.length);
 });
@@ -19,8 +18,20 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
     console.time('crawling');
     var crawler = new simplecrawler('https://en.oxforddictionaries.com/');
 
-    crawler.on('fetchstart', function(queueItem, resources) {        
+    crawler.on('fetchstart', function(queueItem, resources) {
+        var con = this.wait();   
         if(queueItem.depth === 2) {
+            for(var i = 0; i < listOfWords.length; i++) {
+                if('https://en.oxforddictionaries.com/definition/' + listOfWords[i].name.replace(/ /g, '_') === queueItem.url) {
+                    selectedWord = listOfWords[i];                                             
+                    listOfWords.splice(i, 1);
+                    break;                
+                }
+            }
+            selectedWord.isCrawlingEn = true;
+            selectedWord.save(function() {
+                con();
+            });
             console.time('fetchTime');
             console.log('====> fetchstart %s', queueItem.url);
         }        
@@ -33,36 +44,21 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
     crawler.discoverResources = function(buffer, queueItem) {        
         return listOfWords.map(function(word) {
             return 'https://en.oxforddictionaries.com/definition/' + word.name.replace(/ /g, '_');
-        });
-
-        // var urls = [
-        //     // 'https://en.oxforddictionaries.com/definition/take',
-        //     // 'https://en.oxforddictionaries.com/definition/eat',
-        //     // 'https://en.oxforddictionaries.com/search?filter=dictionary&query=disputeasdsad',
-        //     'https://en.oxforddictionaries.com/definition/take_a_back_seat'
-        // ];
-        // return urls;     
+        });        
     };   
 
-    crawler.on("fetchcomplete", function(queueItem, responseBody, response) {
+    crawler.on("fetchcomplete", function(queueItem, responseBody, response) {        
         if(queueItem.depth === 1) return;        
 
+        console.log('--------' + queueItem.url.substring(queueItem.url.lastIndexOf('/') + 1, queueItem.url.length) + '---------------');
         console.timeEnd('fetchTime');
 
-        console.time('fetchcomplete');
-        var con = this.wait(); 
+        console.time('fetchcomplete');        
         var $ = cheerio.load(responseBody.toString("utf8"));
         var $mainContents = $('.entryWrapper');        
         if($mainContents.length === 0 || $mainContents.find('.no-exact-matches').length > 0) {
             return;
-        }
-
-        var data = {
-            mainEnMean: $mainContents.find('.ind').first().text(),
-            phoneticSpelling: $mainContents.find('.phoneticspelling').first().text(),
-            soundLink: $mainContents.find('.speaker').first().find('audio').attr('src'),
-            mainType: $mainContents.find('.pos').first().text()
-        }              
+        }                   
             
         var translateToEn = {};
 
@@ -216,24 +212,31 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
                 }                
                 translateToEn.etymologys.push(etymologyObj);
             });            
-        }
-
-
-        //console.log(JSON.stringify(translateToEn));
-              
-        data.translateToEn = translateToEn;
-        var selectedWord = listOfWords.filter(function(obj) {            
-            return ('https://en.oxforddictionaries.com/definition/' + obj.name.replace(/ /g, '_') === queueItem.url);
-        });
+        }       
         
-        selectedWord[0].getUpdateHandler(req).process(data, function(err, word) {
-            word.translateToEn = translateToEn;
-            word.save(function(err, word1) {
-                console.log(word1);
-            });
-            console.timeEnd('fetchcomplete');
-            con();
-        });        
+        var selectedWord = null;
+        for(var i = 0; i < listOfWords.length; i++) {
+            if('https://en.oxforddictionaries.com/definition/' + listOfWords[i].name.replace(/ /g, '_') === queueItem.url) {
+                selectedWord = listOfWords[i];                                             
+                listOfWords.splice(i, 1);
+                break;                
+            }
+        }
+                
+        if(selectedWord != null) {
+            var con = this.wait(); 
+            selectedWord.mainEnMean = $mainContents.find('.ind').first().text(),
+            selectedWord.phoneticSpelling = $mainContents.find('.phoneticspelling').first().text(),
+            selectedWord.soundLink = $mainContents.find('.speaker').first().find('audio').attr('src'),
+            selectedWord.mainType = $mainContents.find('.pos').first().text()        
+            selectedWord.translateToEn = translateToEn;            
+            selectedWord.save(function(err) {
+                if(err) console.log(err);
+                console.timeEnd('fetchcomplete');
+                con();
+            });            
+        }
+              
     });
 
     crawler.on('complete', function() {

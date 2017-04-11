@@ -50,7 +50,7 @@ exports = module.exports = function(req, res) {
         //         });
         // });
 
-        Word.model.findOne({name: 'eat'}, function(err, word) {
+        Word.model.findOne({name: locals.word}, function(err, word) {
             if(err) return next(err);            
             locals.data.searchResult = word;            
             next();

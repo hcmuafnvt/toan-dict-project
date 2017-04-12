@@ -8,7 +8,7 @@ var router = require('express').Router(),
 var listOfWords;
 var selectedWord = null;        
 
-Word.model.find({name: /^a/, isCrawlingEn: {$exists: false}}).sort({name: 1}).limit(1000).exec(function(err, result) {
+Word.model.find({name: /^a/, isCrawlingEn: {$exists: false}}).sort({name: 1}).exec(function(err, result) {
     listOfWords = result;
     console.log('list of words : ', listOfWords.length);
 });
@@ -65,7 +65,7 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
         console.time('fetchcomplete');        
         var $ = cheerio.load(responseBody.toString("utf8"));
         var $mainContents = $('.entryWrapper');        
-        if($mainContents.length === 0 || $mainContents.find('.no-exact-matches').length > 0) {
+        if($mainContents.length === 0 || $mainContents.find('.no-exact-matches').length > 0 || selectedWord == null) {
             return;
         }                   
             
@@ -231,20 +231,18 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
         //         break;                
         //     }
         // }
-        console.log(selectedWord.name);       
-        if(selectedWord != null) {
-            var con = this.wait(); 
-            selectedWord.mainEnMean = $mainContents.find('.ind').first().text(),
-            selectedWord.phoneticSpelling = $mainContents.find('.phoneticspelling').first().text(),
-            selectedWord.soundLink = $mainContents.find('.speaker').first().find('audio').attr('src'),
-            selectedWord.mainType = $mainContents.find('.pos').first().text()        
-            selectedWord.translateToEn = translateToEn;            
-            selectedWord.save(function(err) {
-                if(err) console.log(err);
-                console.timeEnd('fetchcomplete');
-                con();
-            });            
-        }
+        
+        var con = this.wait();
+        selectedWord.mainEnMean = $mainContents.find('.ind').first().text(),
+        selectedWord.phoneticSpelling = $mainContents.find('.phoneticspelling').first().text(),
+        selectedWord.soundLink = $mainContents.find('.speaker').first().find('audio').attr('src'),
+        selectedWord.mainType = $mainContents.find('.pos').first().text()        
+        selectedWord.translateToEn = translateToEn;            
+        selectedWord.save(function(err) {
+            if(err) console.log(err);
+            console.timeEnd('fetchcomplete');
+            con();
+        });        
               
     });
 

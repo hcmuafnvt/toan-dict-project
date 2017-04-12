@@ -8,7 +8,7 @@ var router = require('express').Router(),
 var listOfWords;
 var selectedWord = null;        
 
-Word.model.find({name: /^a/}).sort({name: 1}).exec(function(err, result) {
+Word.model.find({name: /^a/, isCrawlingEn: {$exists: false}}).sort({name: 1}).limit(100).exec(function(err, result) {
     listOfWords = result;
     console.log('list of words : ', listOfWords.length);
 });
@@ -45,7 +45,13 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
         return listOfWords.map(function(word) {
             return 'https://en.oxforddictionaries.com/definition/' + word.name.replace(/ /g, '_');
         });        
-    };   
+    };
+
+    crawler.on('fetchredirect', function(oldQueueItem, redirectQueueItem, responseObject) {
+        console.log('fetchredirect');
+        console.log('oldQueueItem : ', oldQueueItem.url);
+        console.log('redirectQueueItem : ', redirectQueueItem.url);
+    });
 
     crawler.on("fetchcomplete", function(queueItem, responseBody, response) {        
         if(queueItem.depth === 1) return;        

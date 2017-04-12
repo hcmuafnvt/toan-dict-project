@@ -8,7 +8,7 @@ var router = require('express').Router(),
 var listOfWords;
 var selectedWord = null;        
 
-Word.model.find({name: /^a/, isCrawlingEn: {$exists: false}}).sort({name: 1}).limit(100).exec(function(err, result) {
+Word.model.find({name: /^a/, isCrawlingEn: {$exists: false}}).sort({name: 1}).limit(1000).exec(function(err, result) {
     listOfWords = result;
     console.log('list of words : ', listOfWords.length);
 });
@@ -18,22 +18,25 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
     console.time('crawling');
     var crawler = new simplecrawler('https://en.oxforddictionaries.com/');
 
-    crawler.on('fetchstart', function(queueItem, resources) {
-        var con = this.wait();   
+    crawler.on('fetchstart', function(queueItem, resources) {           
         if(queueItem.depth === 2) {
-            for(var i = 0; i < listOfWords.length; i++) {
-                if('https://en.oxforddictionaries.com/definition/' + listOfWords[i].name.replace(/ /g, '_') === queueItem.url) {
+            console.time('fetchTime');
+            console.log('====> fetchstart %s', queueItem.url);
+            for(var i = 0; i < listOfWords.length; i++) {                
+                if('https://en.oxforddictionaries.com/definition/' + listOfWords[i].name.replace(/ /g, '_') === unescape(queueItem.url)) {
                     selectedWord = listOfWords[i];                                             
                     listOfWords.splice(i, 1);
                     break;                
                 }
             }
-            selectedWord.isCrawlingEn = true;
-            selectedWord.save(function() {
-                con();
-            });
-            console.time('fetchTime');
-            console.log('====> fetchstart %s', queueItem.url);
+            if(selectedWord != null) {
+                var con = this.wait();
+                selectedWord.isCrawlingEn = true;
+                selectedWord.save(function() {
+                    console.log('saved isCrawlingEn for ', selectedWord.name); 
+                    con();
+                });
+            }            
         }        
     });
 
@@ -220,15 +223,15 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
             });            
         }       
         
-        var selectedWord = null;
-        for(var i = 0; i < listOfWords.length; i++) {
-            if('https://en.oxforddictionaries.com/definition/' + listOfWords[i].name.replace(/ /g, '_') === queueItem.url) {
-                selectedWord = listOfWords[i];                                             
-                listOfWords.splice(i, 1);
-                break;                
-            }
-        }
-                
+        // var selectedWord = null;
+        // for(var i = 0; i < listOfWords.length; i++) {
+        //     if('https://en.oxforddictionaries.com/definition/' + listOfWords[i].name.replace(/ /g, '_') === queueItem.url) {
+        //         selectedWord = listOfWords[i];                                             
+        //         listOfWords.splice(i, 1);
+        //         break;                
+        //     }
+        // }
+        console.log(selectedWord.name);       
         if(selectedWord != null) {
             var con = this.wait(); 
             selectedWord.mainEnMean = $mainContents.find('.ind').first().text(),
@@ -250,7 +253,7 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
         console.timeEnd('crawling');        
     });
 
-    crawler.maxConcurrency = 1;
+    //crawler.maxConcurrency = 1;
     crawler.maxDepth = 2;
     crawler.decodeResponses=true;
     crawler.start();

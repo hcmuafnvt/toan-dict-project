@@ -9,9 +9,9 @@ var listOfWords;
 var selectedWord = null;
 var crawlingCount = 0;    
 
-Word.model.find({$and: [{name: /^c/}, {translateToEn: {$exists: false}}]}).sort({name: 1}).exec(function(err, result) {
+Word.model.find({name: 'd.ration'}).sort({name: 1}).exec(function(err, result) {
     listOfWords = result;
-    console.log('list of words : ', listOfWords.length);
+    console.log('list of words of oxford : ', listOfWords.length);
 });
 
 // crawling mean of word
@@ -33,7 +33,7 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
 
             crawlingCount++;
             console.log(crawlingCount);
-            if((crawlingCount % 300) === 0) {                
+            if((crawlingCount % 200) === 0) {                
                 console.log('===============================Waiting 3 minutes=====================');
                 crawler.stop();
                 setTimeout(function() {
@@ -58,6 +58,9 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
         console.log('fetchredirect');
         console.log('oldQueueItem : ', oldQueueItem.url);
         console.log('redirectQueueItem : ', redirectQueueItem.url);
+        selectedWord.isEnRedirected = true;
+        selectedWord.save(function() {            
+        });
     });
 
     crawler.on("fetchcomplete", function(queueItem, responseBody, response) {        

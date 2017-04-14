@@ -1,18 +1,31 @@
 <div class="search-box">
     <form action="/search" method="GET" class="frmSearch">                                        
-            <input id="word" name="word" type="text" placeholder="eg., vocabulary" value="{{word}}" autocomplete="off">
+            <input id="word" name="word" type="text" placeholder="English - English" value="{{word}}" autocomplete="off">
             <div class="search-type">
-                <div class="select">
+                {{!--<div class="select">
                     <select name="type">
                         <option value="vi">VI</option>
                         <option value="en">EN</option>                                    
                     </select>
                     <div class="select__arrow"></div>
-                </div>     
+                </div>     --}}
+                <span class="select-icons">
+                    <i class="glyphicon glyphicon-book"></i>
+                    <i class="arrow down"></i>                    
+                    <i class="arrow up"></i>
+                </span>
             </div>
             <button type="submit" class="btn btn-search">
                 <i class="glyphicon glyphicon-search"></i>    
-            </button>         
+            </button> 
+
+            <div class="select-types-content">
+                <ul class="dict-type">
+                    <li class="active">English - English</li>
+                    <li>English - Vietnamese</li>
+                    <li>Vietnamese - English</li>                    
+                </ul>
+            </div>
             <div id="search-suggestion"  class="search-suggestion">                                                    
             </div>                    
     </form>

@@ -73,3 +73,10 @@ CSS3 PROPERTIES
     background: -moz-linear-gradient(to bottom, @tocolor 0, @bottomcolor 100%); /* For Firefox 3.6 to 15 */
     background: linear-gradient(to bottom, @tocolor 0, @bottomcolor 100%); /* Standard syntax (must be last) */
 }
+
+.transform(@transform) {
+    -webkit-transform: @transform;
+    -moz-transform: @transform;
+    -o-transform: @transform;
+    transform: @transform;
+}

@@ -333,34 +333,111 @@ Desktop display
   height: 80%;
   margin-top: 4px;
 }
-.search-type .select {
-  height: 100%;
+.search-type .select-icons {
+  padding: 5px;
+  cursor: pointer;
 }
-.search-type .select select {
-  font-size: 1.1em;
-  font-weight: bold;
-  padding: 7px 25px 7px 10px;
-  background-color: transparent !important;
+.search-type .select-icons .glyphicon-book {
+  font-size: 1.3em;
+  margin: 8px 4px 0px 0px;
+  color: #585a5a;
 }
-.search-type .select .select__arrow {
-  top: 12px;
-  right: 10px;
+.search-type .select-icons .arrow {
+  border: solid #585a5a;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  margin: 0px 0px 7px 2px;
+}
+.search-type .select-icons .arrow.up {
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+  margin-bottom: 6px;
+  display: none;
+}
+.search-type .select-icons .arrow.down {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  display: inline-block;
+}
+.search-type .select-icons.active .arrow.up {
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+  display: inline-block;
+}
+.search-type .select-icons.active .arrow.down {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  display: none;
 }
 .btn-search {
   float: right;
-  height: 100%;
+  height: 105%;
   width: 15%;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
   background-color: #D0A44C;
   position: relative;
+  bottom: 1px;
+  right: -1px;
+  border-radius: 0px 3px 3px 0px;
 }
 .btn-search i {
   font-size: 2em;
   color: #fff;
   top: 4px;
   right: 5px;
+}
+.select-types-content {
+  position: absolute;
+  width: 100%;
+  top: 44px;
+  background-color: #026aa7;
+  z-index: 1000;
+  border-radius: 0 0 3px 3px;
+  text-align: left;
+  word-wrap: break-word;
+  display: none;
+}
+.select-types-content.active {
+  display: block;
+}
+.select-types-content .dict-type {
+  list-style: none;
+  padding: 0px;
+  margin-bottom: 0px;
+}
+.select-types-content .dict-type li {
+  position: relative;
+  color: #fff;
+  padding: 12px 0px 12px 10px;
+  border-bottom: 1px solid #c0bdbc;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+.select-types-content .dict-type li:last-child {
+  border: none;
+}
+.select-types-content .dict-type li.active:after {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 15px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  position: absolute;
+  right: 15px;
+  top: 15px;
 }
 .search-suggestion {
   position: absolute;

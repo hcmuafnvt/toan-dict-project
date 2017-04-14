@@ -6,10 +6,9 @@ var router = require('express').Router(),
     async = require('async');
 
 var listOfWords;
-var selectedWord = null;
 var crawlingCount = 0;    
 
-Word.model.find({name: /^a/}).sort({name: 1}).exec(function(err, result) {
+Word.model.find({name: /^a/}).sort({name: 1}).limit(10).exec(function(err, result) { //1
     listOfWords = result;
     console.log('list of words of vdict : ', listOfWords.length);
 });
@@ -108,25 +107,16 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
 
     crawler.on('fetchstart', function(queueItem, resources) {        
         if(queueItem.depth === 2) {
-            console.time('fetchTime');
-            console.log('====> fetchstart %s', queueItem.url);
-            for(var i = 0; i < listOfWords.length; i++) {                
-                if('https://vdict.com' + listOfWords[i].vdictHref === unescape(queueItem.url)) {
-                    selectedWord = listOfWords[i];                                             
-                    listOfWords.splice(i, 1);
-                    break;                
-                }
-            }
-
             crawlingCount++;
-            console.log(crawlingCount);
-            if((crawlingCount % 1000) === 0) {                
+            console.log('====> (%d) fetchstart %s', crawlingCount, queueItem.url);
+            console.time('fetchTime');            
+            if((crawlingCount % 500) === 0) {                
                 console.log('===============================Waiting 3 minutes=====================');
                 crawler.stop();
                 setTimeout(function() {
                     console.log('==============================start crawling======================');
                     crawler.start();
-                }, 180000);
+                }, 90000);
             }               
         }          
     });
@@ -145,10 +135,34 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
         console.log('fetchredirect');
         console.log('oldQueueItem : ', oldQueueItem.url);
         console.log('redirectQueueItem : ', redirectQueueItem.url);
+        var selectedWord = null;
+        for(var i = 0; i < listOfWords.length; i++) {                
+            if('https://vdict.com' + listOfWords[i].vdictHref === unescape(queueItem.url)) {
+                selectedWord = listOfWords[i];                                             
+                listOfWords.splice(i, 1);
+                break;                
+            }
+        }
+
+        if(selectedWord !=null) {
+            selectedWord.isViRedirected = true;
+            selectedWord.save(function() {            
+                //TODO sth
+            });
+        }        
     });
 
     crawler.on("fetchcomplete", function(queueItem, responseBody, response) {        
         if(queueItem.depth === 1) return;        
+
+        var selectedWord = null;
+        for(var i = 0; i < listOfWords.length; i++) {                
+            if('https://vdict.com' + listOfWords[i].vdictHref === unescape(queueItem.url)) {
+                selectedWord = listOfWords[i];                                             
+                listOfWords.splice(i, 1);
+                break;                
+            }
+        }
 
         console.log('--------' + queueItem.url.substring(queueItem.url.lastIndexOf('/') + 1, queueItem.url.length) + '---------------');
         console.timeEnd('fetchTime');
@@ -156,9 +170,17 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
         console.time('fetchcomplete');        
         var $ = cheerio.load(responseBody.toString("utf8"));
         var $mainContents = $('#result-contents').find('> .phanloai, > .idioms, > .list1');        
-        if($mainContents.length === 0 || selectedWord == null || $mainContents.length === 0) {
+        if($mainContents.length === 0) {
+            if(selectedWord !== null) {
+                selectedWord.remove(); //remove out of db
+            }
             return;
-        }                   
+        }        
+
+        if(selectedWord == null) {
+            console.log('fetch completed but selectedWord=null : ', queueItem.url);
+            return;
+        }              
             
         var translateToVi = {};        
         var types = [];
@@ -199,7 +221,9 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
             }
         });
 
-        translateToVi.types = types;     
+        translateToVi.types = types;        
+
+        
         
         var con = this.wait();
         selectedWord.mainViMean = $('#result-contents').find('> .list1').first().find('> li b').text();           
@@ -214,7 +238,8 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
 
     crawler.on('complete', function() {
         res.apiResponse('Crawling completed');
-        console.timeEnd('crawling');        
+        console.timeEnd('crawling');
+        console.log('listOfWords : ', listOfWords.length);      
     });
 
     //crawler.maxConcurrency = 1;

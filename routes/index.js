@@ -48,7 +48,7 @@ exports = module.exports = function (app) {
 	app.use('/api/vidict', require('./api/dict.laban'));
 	app.use('/api/words', require('./api/word'));
 	app.use('/api/lists', require('./api/list'));
-	app.use('/api/wordcrawler', require('./api/wordcrawler.vdict'));
+	app.use('/api/crawlingvdict', require('./api/wordcrawler.vdict'));
 	app.use('/api/crawlingoxford', require('./api/wordcrawler.oxford'));
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:

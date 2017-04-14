@@ -17,15 +17,15 @@ Word.add({
 	mainViMean: { type: String, default: '' },
 	mainEnMean: { type: String, default: '' },
 	vdictHref: { type: String, default: '' },	
-	translateToVi: { type: Types.Html, wysiwyg: true },
 	createdBy: { type: Types.Relationship, ref: 'User', index: true, many: false },
 	createdAt: { type: Types.Datetime, default: Date.now },
 	UpdatedAt: { type: Types.Datetime, default: Date.now },
-	isCrawlingEn: { type: Types.Boolean, default: false }
+	isEnRedirected: { type: Types.Boolean, default: false }
 });
 
 Word.schema.add({
-	translateToEn: {type:keystone.mongoose.Schema.Types.Mixed} // for storing entire JS objects
+	translateToEn: {type:keystone.mongoose.Schema.Types.Mixed}, // for storing entire JS objects
+	translateToVi: {type:keystone.mongoose.Schema.Types.Mixed}
 });
 
 /**

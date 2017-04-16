@@ -8,7 +8,7 @@ var router = require('express').Router(),
 var listOfWords;
 var crawlingCount = 0;    
 
-Word.model.find({name: /^c/}).sort({name: 1}).skip(2000).limit(1000).exec(function(err, result) { //3
+Word.model.find({name: /^d/}).sort({name: 1}).exec(function(err, result) {
     listOfWords = result;
     console.log('list of words of oxford : ', listOfWords.length);
 });
@@ -30,7 +30,7 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
                 setTimeout(function() {
                     console.log('==============================start crawling======================');
                     crawler.start();
-                }, 90000);
+                }, 180000);
             }               
         }          
     });

@@ -4,7 +4,7 @@ var router = require('express').Router(),
     zlib = require('zlib');
 
 //  search auto complete word
-router.get('/autocomplete/:word/:pagesize', keystone.middleware.api, function (req, res) {
+router.get('/autocomplete/:word/:pagesize/:type', keystone.middleware.api, function (req, res) {
     // var options = {
     //     host: 'dict.laban.vn',
     //     port: 80,
@@ -49,10 +49,21 @@ router.get('/autocomplete/:word/:pagesize', keystone.middleware.api, function (r
     //     }
     // });  
     
-    var regex = new RegExp('^' + req.params.word);
-    keystone.list('Word').model.find({name : regex}, 'name').sort({name: 1}).limit(req.params.pagesize).exec(function(err, words) {
-        if(err) return res.apiError('error', err);
-        console.log(words);     
+    var regex = new RegExp('^' + req.params.word, 'i');
+    var searchFilter = {name : regex};
+    var selectedFields = {name: 1, mainType: 1, phoneticSpelling: 1};
+    if(req.params.type === 'en-vi') {
+        searchFilter.mainViMean = {$exists: true};
+        selectedFields.mainViMean = 1;        
+    } else if(req.params.type === 'en-en') {
+        searchFilter.mainEnMean = {$exists: true};
+        selectedFields.mainEnMean = 1; 
+    } else if(req.params.type === 'vi-en') {
+        //TODO
+    }
+    
+    keystone.list('Word').model.find(searchFilter, selectedFields).sort({name: 1}).limit(req.params.pagesize).exec(function(err, words) {
+        if(err) return res.apiError('error', err);               
         res.apiResponse(words);
     });
 });

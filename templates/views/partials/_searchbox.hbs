@@ -1,19 +1,12 @@
 <div class="search-box">
     <form action="/search" method="GET" class="frmSearch">                                        
-            <input id="word" name="word" type="text" placeholder="English - English" value="{{word}}" autocomplete="off">
-            <div class="search-type">
-                {{!--<div class="select">
-                    <select name="type">
-                        <option value="vi">VI</option>
-                        <option value="en">EN</option>                                    
-                    </select>
-                    <div class="select__arrow"></div>
-                </div>     --}}
+            <input id="word" name="word" type="text" placeholder="English - Vietnamese" value="{{word}}" autocomplete="off">
+            <div class="search-type">                
                 <span class="select-icons">
                     <i class="glyphicon glyphicon-book"></i>
                     <i class="arrow down"></i>                    
                     <i class="arrow up"></i>
-                </span>
+                </span>                
             </div>
             <button type="submit" class="btn btn-search">
                 <i class="glyphicon glyphicon-search"></i>    
@@ -21,10 +14,11 @@
 
             <div class="select-types-content">
                 <ul class="dict-type">
-                    <li class="active">English - English</li>
-                    <li>English - Vietnamese</li>
-                    <li>Vietnamese - English</li>                    
+                    <li class="active" data-type="en-vi">English - Vietnamese</li>
+                    <li data-type="en-en">English - English</li>                    
+                    {{!--<li data-type="vi-en">Vietnamese - English</li>                    --}}
                 </ul>
+                <input id="hdfType" type="hidden" value="en-vi" />
             </div>
             <div id="search-suggestion"  class="search-suggestion">                                                    
             </div>                    

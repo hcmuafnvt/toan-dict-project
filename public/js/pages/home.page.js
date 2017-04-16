@@ -1,7 +1,7 @@
 'use strict';
 
 function init() {
-    console.log('Home Page');
+    //console.log('Home Page');
 }
 
 module.exports = {

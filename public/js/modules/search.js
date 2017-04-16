@@ -1,13 +1,15 @@
 'use strict';
 
+var util = require('../helpers/util');
+
 function searchAutocomplete() {
     // hide search result when hide device keyboard
-    document.addEventListener('focusout', function(e) {
-        $('#search-suggestion').hide().empty();
-    });
+    // document.addEventListener('focusout', function(e) {
+    //     $('#search-suggestion').hide().empty();
+    // });
 
-    $("#word").on('input', function() {
-        console.time('autocomplete');
+    $("#word").on('input', function() {    
+        console.time('autocomplete');    
         var $self = $(this);
         var word = $self.val().trim();
         if(word.length < 1) {
@@ -23,13 +25,12 @@ function searchAutocomplete() {
         }
 
         $.ajax({
-            url: "/api/vidict/autocomplete/" + $(this).val().trim() + '/' + pagesize,              
+            url: "/api/vidict/autocomplete/" + $(this).val().trim() + '/' + pagesize + '/' + $('#hdfType').val(),              
             method: "GET",
             dataType: "json",
-            success: function (data) { 
+            success: function (data) {
                 bindAutoComplete(data);                
-                console.timeEnd('autocomplete');               
-                
+                console.timeEnd('autocomplete');                
             }
         });     
     });    
@@ -45,36 +46,57 @@ function bindAutoComplete(data) {
         return;
     }
 
-    var len = data.length;
-    var result = '<ul>';    
-    // $.each(data, function(index, item) {        
-    //     result += '<li><a href="/search?word=' + item.select + '&type=vi">' + $(item.data).html() + '</a></li>';
-    // });
-    $.each(data, function(index, word) {        
-        result += '<li><a href="/search?word=' + word.name + '&type=vi">' + word.name + '</a></li>';
-    });
-    $searchSuggestion.append(result + '</ul>');
+    var tmplSearchSuggestion = 
+    '<ul>' +
+        '{{each words}}' +
+            '<li>' +
+                '<a href="/search?word=${name}&type=vi">' +
+                    '<p class="word-name">${name} <span class="phonetic-spelling">${phoneticSpelling}</span></p>' +
+                    '<p class="word-mean">{{if mainType}}<span class="main-type">[${mainType}]</span>{{/if}} {{if mainViMean}}{{html mainViMean}}{{else}}{{html mainEnMean}}{{/if}}</p>' +
+                '</a>' +                
+            '</li>' +
+        '{{/each}}' +
+    '</ul>';    
+    $.tmpl(tmplSearchSuggestion, {words: data}).appendTo('#search-suggestion');
     $searchSuggestion.show();
 }
 
 function selectSearchType() {
+    var $selectTypeContent = $('.select-types-content');
     $('.select-icons').on('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
         $(this).toggleClass('active');
-        $('.select-types-content').toggleClass('active');
+        $selectTypeContent.toggleClass('active');
     });
-
-    $('.select-types-content li').on('click', function(e) {
+    
+    $selectTypeContent.on('click', 'li', function(e) {
         e.preventDefault();
         var $self = $(this);
-        $('.select-types-content li').removeClass('active');
+        $selectTypeContent.find('li').removeClass('active');
         $self.addClass('active');
+        $selectTypeContent.find('#hdfType').val($self.data('type'));
+        $selectTypeContent.removeClass('active');
+        $('.select-icons').removeClass('active');
+        $('#word').attr('placeholder', $self.text());
+    });
+}
+
+function handleClickOnWindow() {  
+    if(/iP/i.test(navigator.userAgent)) {
+        $('*').css('cursor', 'pointer');
+    };
+    
+    $(document).click(function() {        
+        $('.select-types-content').removeClass('active');
+        $('.select-icons').removeClass('active');
     });
 }
 
 function init() {
     searchAutocomplete();   
     selectSearchType();
+    handleClickOnWindow();
 }
 
 module.exports = {

@@ -1,7 +1,7 @@
 .home-page {
     .search-section {
         position: relative;
-        background-color: #63634d;
+        background-color: #063540;
         padding-bottom: 20px;
 
         .container {
@@ -18,22 +18,15 @@
             background-repeat: no-repeat;
             background-position: 50% 50%;
             .backgroundSize(cover);
-            opacity: 0.3;
+            opacity: 0.15;
             filter: alpha(opacity=20);
         }
         
-        h2 {
+        h1 {
             color: #fff;
-            font-size: 2.1em;
-            margin-top: 35px;
-            font-weight: bold;
-        }
-
-        .sub-title {
-            font-size: 1.3em;
-            color: #a9a9a9;
-            line-height: 30px;
-        }       
+            font-size: 2em;
+            margin-top: 35px;            
+        }         
     }
 
     .about-section {
@@ -95,47 +88,11 @@
     -----------------------------------------------------------------------------------------------------------*/
     @media (min-width: 768px) {   
         .search-section {
-            h2 {
-                font-size: 3em;
-                margin-top: 100px;
+            h1 {
+                font-size: 2.5em;
+                margin-top: 70px;
                 letter-spacing: 2px;
-            }
-
-            .search-box {
-                width: 60%;
-                height: 50px;
-                margin: 50px auto;
-
-                input[type=text] {
-                    width: 72%;
-                    font-size: 1.5em;
-                }
-
-                .search-type {
-                    width: 15%;
-                    height: 90%;
-                    .select {                        
-                        select {
-                            font-size: 1.3em;
-                            padding: 9px 25px 7px 15px;
-                        }                        
-                        .select__arrow {
-                            top: 17px;
-                        }
-                    }
-                }
-
-                .btn-search {
-                    width: 13%;
-                    i {
-                        right: 0px;
-                    }
-                }
-            } // end .search-box
-
-            .search-suggestion {
-                top: 49px;
-            }
+            }            
         } // end .search-section
 
         .about-section {
@@ -175,45 +132,12 @@
                 background-position: 50% 33%;
             }
             
-            h2 {
-                font-size: 4em;                
+            h1 {
+                font-size: 3.5em;
                 letter-spacing: 4px;
+                margin-top: 100px;
             }
-
-            .sub-title {
-                font-size: 1.8em;
-                letter-spacing: 1px;
-            }
-
-            .search-box {
-                height: 60px;
-                width: 55%;
-
-                input[type=text] {
-                    font-size: 1.7em;
-                }
-
-                .search-type {
-                    .select {
-                        select {
-                            font-size: 1.6em;
-                            padding: 11px 25px 7px 20px !important;
-                        }
-
-                        .select__arrow {
-                            top: 21px;
-                            right: 15px;
-                            border-width: 11px 7px 0;
-                        }
-                    }
-                }
-            } // end .search-box
-
-            .search-suggestion {
-                top: 59px;
-                max-height: 300px;
-                overflow-y: auto;
-            }
+            
         } // end .search-section
 
         .about-section {

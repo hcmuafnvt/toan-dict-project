@@ -43,13 +43,14 @@
         border-left: 1px solid #ccc;
         height: 80%;
         margin-top: 4px;
+        text-align: center;
 
         .select-icons {
             padding: 5px;
             cursor: pointer;
             .glyphicon-book {
                 font-size: 1.3em;
-                margin: 8px 4px 0px 0px;
+                margin: 8px 4px 0 5px;
                 color: #585a5a;
             }
             .arrow {
@@ -111,7 +112,7 @@
     position: absolute;
     width: 100%;
     top: 44px;
-    background-color: #026aa7;
+    background-color: #59707d;
     z-index: 1000;
     border-radius: 0 0 3px 3px;
     text-align: left;
@@ -240,6 +241,10 @@
         .search-type {
             width: 15%;
         }
+
+        .select-icons {
+            margin: 8px 8px 0 5px;
+        }
     }
 }
 
@@ -249,20 +254,19 @@ Tablet display
 @media (min-width: 768px) { 
     .search-section {
         height: 100px;
-
     }  
     .search-box {
         margin-top: 25px;        
         height: 50px;       
 
         input[type=text] {
-            width: 70%;
+            width: 75%;
             font-size: 1.5em;
             padding: 0px 5px 0px 10px;
         }
 
         .search-type {
-            width: 16%;
+            width: 11%;
             height: 90%;
             margin-top: 2px;
             .select-icons {
@@ -309,8 +313,7 @@ Desktop display
     .search-section {
         height: auto;
         background: none;
-        top: 0;
-        z-index: 999999;
+        top: 0;        
         left: 170px;
     }
 
@@ -320,6 +323,7 @@ Desktop display
         width: 400px;        
 
         input[type=text] {
+            width: 70%;
             font-size: 1.5em;
             padding: 0 5px 2px 10px;
         }
@@ -332,10 +336,11 @@ Desktop display
         }
 
         .search-type {
+            width: 16%;
             .select-icons {
                 .glyphicon-book {
                     font-size: 1.3em;
-                    margin: 6px 4px 0 0;
+                    margin: 5px 4px 0 0;
                 }
                 .arrow {
                     margin: 0 0 7px 5px;
@@ -351,20 +356,13 @@ Desktop display
         }
 
         .select-types-content {
-            top: 59px;
+            top: 39px;
         }
 
         .search-suggestion {
-            top: 59px;
+            top: 39px;
             max-height: 400px;
             overflow-y: auto;
         }
     } // end .search-box    
 } // end @media (min-width: 1024px)
-
-/*-----------------------------------------------------------------------------------------------------------
-Wide (1366px) display
------------------------------------------------------------------------------------------------------------*/
-@media (min-width: 1366px) {
-    
-} // end @media (min-width: 1366px)

@@ -343,6 +343,7 @@ Desktop display
   border-left: 1px solid #ccc;
   height: 80%;
   margin-top: 4px;
+  text-align: center;
 }
 .search-box .search-type .select-icons {
   padding: 5px;
@@ -350,7 +351,7 @@ Desktop display
 }
 .search-box .search-type .select-icons .glyphicon-book {
   font-size: 1.3em;
-  margin: 8px 4px 0px 0px;
+  margin: 8px 4px 0 5px;
   color: #585a5a;
 }
 .search-box .search-type .select-icons .arrow {
@@ -412,7 +413,7 @@ Desktop display
   position: absolute;
   width: 100%;
   top: 44px;
-  background-color: #026aa7;
+  background-color: #59707d;
   z-index: 1000;
   border-radius: 0 0 3px 3px;
   text-align: left;
@@ -522,6 +523,9 @@ Desktop display
   .search-box .search-type {
     width: 15%;
   }
+  .search-box .select-icons {
+    margin: 8px 8px 0 5px;
+  }
 }
 /*-----------------------------------------------------------------------------------------------------------
 Tablet display
@@ -535,12 +539,12 @@ Tablet display
     height: 50px;
   }
   .search-box input[type=text] {
-    width: 70%;
+    width: 75%;
     font-size: 1.5em;
     padding: 0px 5px 0px 10px;
   }
   .search-box .search-type {
-    width: 16%;
+    width: 11%;
     height: 90%;
     margin-top: 2px;
   }
@@ -579,7 +583,6 @@ Desktop display
     height: auto;
     background: none;
     top: 0;
-    z-index: 999999;
     left: 170px;
   }
   .search-box {
@@ -588,6 +591,7 @@ Desktop display
     width: 400px;
   }
   .search-box input[type=text] {
+    width: 70%;
     font-size: 1.5em;
     padding: 0 5px 2px 10px;
   }
@@ -597,9 +601,12 @@ Desktop display
   .search-box .btn-search i {
     font-size: 1.9em;
   }
+  .search-box .search-type {
+    width: 16%;
+  }
   .search-box .search-type .select-icons .glyphicon-book {
     font-size: 1.3em;
-    margin: 6px 4px 0 0;
+    margin: 5px 4px 0 0;
   }
   .search-box .search-type .select-icons .arrow {
     margin: 0 0 7px 5px;
@@ -612,17 +619,14 @@ Desktop display
     margin-bottom: 1px;
   }
   .search-box .select-types-content {
-    top: 59px;
+    top: 39px;
   }
   .search-box .search-suggestion {
-    top: 59px;
+    top: 39px;
     max-height: 400px;
     overflow-y: auto;
   }
 }
-/*-----------------------------------------------------------------------------------------------------------
-Wide (1366px) display
------------------------------------------------------------------------------------------------------------*/
 .mfp-content {
   background-color: #fff;
 }
@@ -637,10 +641,16 @@ Wide (1366px) display
     Desktop display
     -----------------------------------------------------------------------------------------------------------*/
 }
+.home-page .search-section {
+  position: relative;
+  background-color: #2b2f14;
+  height: 180px;
+}
 .home-page .search-section .container {
   text-align: center;
 }
 .home-page .search-section .bg-img {
+  display: block;
   position: absolute;
   top: 0;
   left: 0;
@@ -653,16 +663,17 @@ Wide (1366px) display
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  opacity: 0.15;
-  filter: alpha(opacity=20);
+  opacity: 0.2;
+  filter: alpha(opacity=15);
 }
 .home-page .search-section h1 {
+  display: block;
   color: #fff;
   font-size: 2em;
   margin-top: 35px;
 }
-.home-page .search-section.fixed {
-  position: fixed;
+.home-page .search-section .search-box {
+  margin: 25px 15px 0px;
 }
 .home-page .about-section {
   background-color: #fff;
@@ -718,10 +729,23 @@ Wide (1366px) display
   color: #61bd4f;
 }
 @media (min-width: 768px) {
+  .home-page .search-section {
+    height: 270px;
+  }
   .home-page .search-section h1 {
     font-size: 2.5em;
     margin-top: 70px;
     letter-spacing: 2px;
+  }
+  .home-page .search-section .search-box {
+    width: 80%;
+    margin: 40px auto 0px;
+  }
+  .home-page .search-section .search-box input[type=text] {
+    width: 72%;
+  }
+  .home-page .search-section .search-box .search-type {
+    width: 14%;
   }
   .home-page .about-section .about {
     font-size: 2.5em;
@@ -745,13 +769,104 @@ Wide (1366px) display
   }
 }
 @media (min-width: 1024px) {
+  .home-page .search-section {
+    height: 300px;
+    left: 0;
+  }
   .home-page .search-section .bg-img {
-    background-position: 50% 33%;
+    background-position: 50% 25%;
   }
   .home-page .search-section h1 {
     font-size: 3.5em;
     letter-spacing: 4px;
-    margin-top: 100px;
+    margin-top: 70px;
+  }
+  .home-page .search-section .search-box {
+    width: 65%;
+    height: 60px;
+    margin: 50px auto;
+  }
+  .home-page .search-section .search-box input[type='text'] {
+    font-size: 1.8em;
+  }
+  .home-page .search-section .search-box .search-type {
+    margin-top: 3px;
+  }
+  .home-page .search-section .search-box .search-type .glyphicon-book {
+    font-size: 1.9em;
+    margin: 10px 5px 0 0;
+  }
+  .home-page .search-section .search-box .search-type .arrow {
+    padding: 5px;
+  }
+  .home-page .search-section .search-box .search-type .arrow.down {
+    margin-bottom: 10px;
+  }
+  .home-page .search-section .search-box .search-type .arrow.up {
+    margin-bottom: 8px;
+  }
+  .home-page .search-section .search-box .select-types-content {
+    top: 59px;
+  }
+  .home-page .search-section .search-box .search-suggestion {
+    top: 59px;
+  }
+  .home-page .search-section.fix-top {
+    position: fixed;
+    height: auto;
+    background: none;
+    top: 0;
+    left: 170px;
+  }
+  .home-page .search-section.fix-top .bg-img {
+    display: none;
+  }
+  .home-page .search-section.fix-top h1 {
+    display: none;
+  }
+  .home-page .search-section.fix-top .container {
+    margin: 0px;
+  }
+  .home-page .search-section.fix-top .search-box {
+    height: 40px;
+    margin: 19px 0px 0px;
+    width: 400px;
+  }
+  .home-page .search-section.fix-top .search-box input[type=text] {
+    width: 70%;
+    font-size: 1.5em;
+    padding: 0 5px 2px 10px;
+  }
+  .home-page .search-section.fix-top .search-box .btn-search {
+    height: 104%;
+  }
+  .home-page .search-section.fix-top .search-box .btn-search i {
+    font-size: 1.9em;
+  }
+  .home-page .search-section.fix-top .search-box .search-type {
+    width: 16%;
+  }
+  .home-page .search-section.fix-top .search-box .search-type .select-icons .glyphicon-book {
+    font-size: 1.3em;
+    margin: 5px 4px 0 0;
+  }
+  .home-page .search-section.fix-top .search-box .search-type .select-icons .arrow {
+    margin: 0 0 7px 5px;
+    padding: 4px;
+  }
+  .home-page .search-section.fix-top .search-box .search-type .select-icons .arrow.down {
+    margin-bottom: 5px;
+  }
+  .home-page .search-section.fix-top .search-box .search-type .select-icons .arrow.up {
+    margin-bottom: 1px;
+  }
+  .home-page .search-section.fix-top .search-box .select-types-content {
+    top: 39px;
+  }
+  .home-page .search-section.fix-top .search-box .search-suggestion {
+    top: 39px;
+    max-height: 400px;
+    overflow-y: auto;
   }
   .home-page .about-section .about {
     font-size: 3em;
@@ -770,6 +885,17 @@ Wide (1366px) display
     font-size: 1.5em;
     margin: 40px 0px 10px 0px;
     padding: 6px 15px;
+  }
+}
+@media (min-width: 1366px) {
+  .home-page .search-section {
+    height: 400px;
+  }
+  .home-page .search-section h1 {
+    margin-top: 120px;
+  }
+  .home-page .search-section .search-box {
+    margin: 60px auto;
   }
 }
 .signup-page .hero-title {

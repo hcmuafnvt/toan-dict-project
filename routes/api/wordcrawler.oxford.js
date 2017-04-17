@@ -8,7 +8,7 @@ var router = require('express').Router(),
 var listOfWords;
 var crawlingCount = 0;    
 
-Word.model.find({name: /^d/}).sort({name: 1}).exec(function(err, result) {
+Word.model.find({name: /^f/}).sort({name: 1}).exec(function(err, result) {
     listOfWords = result;
     console.log('list of words of oxford : ', listOfWords.length);
 });

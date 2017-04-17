@@ -86,7 +86,7 @@ function selectSearchType() {
         $selectTypeContent.find('#hdfType').val($self.data('type'));
         $selectTypeContent.removeClass('active');
         $('.select-icons').removeClass('active');
-        $('#word').attr('placeholder', $self.text());
+        $('#word').attr('placeholder', $self.text()).val('').data('word', '').focus();
     });
 }
 

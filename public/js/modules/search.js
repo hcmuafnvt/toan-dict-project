@@ -4,14 +4,15 @@ var util = require('../helpers/util');
 
 function searchAutocomplete() {
     // hide search result when hide device keyboard
-    // document.addEventListener('focusout', function(e) {
-    //     $('#search-suggestion').hide().empty();
-    // });
+    document.addEventListener('focusout', function(e) {
+        $('#search-suggestion').hide().empty();
+    });
 
-    $("#word").on('input', function() {    
+    $("#word").on('input', function(e) {        
         console.time('autocomplete');    
         var $self = $(this);
         var word = $self.val().trim();
+        $self.data('word', word);
         if(word.length < 1) {
             bindAutoComplete(null);
             return;
@@ -51,7 +52,7 @@ function bindAutoComplete(data) {
         '{{each words}}' +
             '<li>' +
                 '<a href="/search?word=${name}&type=vi">' +
-                    '<p class="word-name">${name} <span class="phonetic-spelling">${phoneticSpelling}</span></p>' +
+                    '<p class="word-name"><span class="name">${name}</span> <span class="phonetic-spelling">${phoneticSpelling}</span></p>' +
                     '<p class="word-mean">{{if mainType}}<span class="main-type">[${mainType}]</span>{{/if}} {{if mainViMean}}{{html mainViMean}}{{else}}{{html mainEnMean}}{{/if}}</p>' +
                 '</a>' +                
             '</li>' +
@@ -59,6 +60,13 @@ function bindAutoComplete(data) {
     '</ul>';    
     $.tmpl(tmplSearchSuggestion, {words: data}).appendTo('#search-suggestion');
     $searchSuggestion.show();
+
+    // $searchSuggestion.find('li').hover(function() {
+    //     $('#search-suggestion li').removeClass('active');
+    //     $(this).addClass('active');
+    // }, function() {
+    //     $('#search-suggestion li').removeClass('active');
+    // });
 }
 
 function selectSearchType() {
@@ -93,10 +101,57 @@ function handleClickOnWindow() {
     });
 }
 
+function handleKeyDown() {
+    if(util.isMobile()) { 
+        console.log('handleKeyDown : isMobile');
+        return;
+    }
+    
+    var $searchSuggestion = $('#search-suggestion');
+    var $inutWord = $('#word');    
+    $inutWord.on('keydown', function(e) {                     
+        if($searchSuggestion.css('display') === 'none') return;        
+
+        var originInputValue = $inutWord.data('word');
+
+        if(e.keyCode === 27) { //esc 
+             $searchSuggestion.hide().empty();
+             $inutWord.val(originInputValue);
+        }
+        
+        if(e.keyCode === 38) { //up
+            var $prev = $searchSuggestion.find('li.active').prev();
+            $searchSuggestion.find('li.active').removeClass('active');
+            if($prev.length > 0) {                
+                $prev.addClass('active');
+                $inutWord.val($prev.find('.name').text());
+            } else {
+                $inutWord.val(originInputValue);
+            }
+            e.preventDefault();
+        } else if(e.keyCode === 40) { //down
+            if($searchSuggestion.find('li.active').length > 0) {
+                 $searchSuggestion.find('li:not(:last-child).active').removeClass('active').next().addClass('active');                 
+            } else {
+                $searchSuggestion.find('li:first').addClass('active');
+            }
+            $inutWord.val($searchSuggestion.find('li.active:first').find('.name').text());
+            e.preventDefault();
+        }
+        var $currentItem = $searchSuggestion.find('li.active:first');
+        if($currentItem.length > 0) {
+            $searchSuggestion.scrollTop(0);            
+            $searchSuggestion.scrollTop(($currentItem.position().top - $searchSuggestion.height()) + $currentItem.height());            
+        }        
+    });
+}
+
 function init() {
+    $('#word').focus();
     searchAutocomplete();   
     selectSearchType();
-    handleClickOnWindow();
+    handleClickOnWindow();    
+    handleKeyDown();
 }
 
 module.exports = {

@@ -1,6 +1,14 @@
+.search-section {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    background-color: #999a9a;
+    z-index: 9999;
+}
+
 .search-box {
     position: relative;
-    margin: 30px 5px;        
+    margin: 17px 15px 0px 15px;        
     height: 45px;
     background-color: #fff;
     border: 1px solid #e4e4e4;  
@@ -167,6 +175,9 @@
             border-bottom: 1px solid #ccc;
             //margin-top: 7px;
             &:hover {
+                background-color: #f7f6f6;
+            }
+            &.active {
                 background-color: #e4e4e4;
             }
             a {
@@ -235,11 +246,14 @@
 /*-----------------------------------------------------------------------------------------------------------
 Tablet display
 -----------------------------------------------------------------------------------------------------------*/
-@media (min-width: 768px) {   
+@media (min-width: 768px) { 
+    .search-section {
+        height: 100px;
+
+    }  
     .search-box {
-        width: 65%;
-        height: 50px;
-        margin: 50px auto;
+        margin-top: 25px;        
+        height: 50px;       
 
         input[type=text] {
             width: 70%;
@@ -250,16 +264,22 @@ Tablet display
         .search-type {
             width: 16%;
             height: 90%;
+            margin-top: 2px;
             .select-icons {
                 .glyphicon-book {
                     font-size: 1.5em;
+                    top: 3px;
                 }
 
                 .arrow {
                     padding: 4px;
-                    &.down {
-                        
-                        margin-bottom: 8px;
+                    margin: 0 0 7px 6px;
+                    &.down {                        
+                        margin-bottom: 7px;
+                    }
+
+                    &.up {                        
+                        margin-bottom: 5px;
                     }
                 }
             }
@@ -286,32 +306,45 @@ Tablet display
 Desktop display
 -----------------------------------------------------------------------------------------------------------*/
 @media (min-width: 1024px) {
+    .search-section {
+        height: auto;
+        background: none;
+        top: 0;
+        z-index: 999999;
+        left: 170px;
+    }
+
     .search-box {
-        height: 60px;
-        width: 60%;
+        height: 40px;
+        margin-top: 19px;
+        width: 400px;        
 
         input[type=text] {
-            font-size: 1.7em;
+            font-size: 1.5em;
+            padding: 0 5px 2px 10px;
         }
 
         .btn-search {
-            height: 103%;
+            height: 104%;
             i {
-                font-size: 2.7em;
+                font-size: 1.9em;
             }
         }
 
         .search-type {
             .select-icons {
                 .glyphicon-book {
-                    font-size: 1.7em;
-                    margin: 12px 4px 0px 0px;
+                    font-size: 1.3em;
+                    margin: 6px 4px 0 0;
                 }
                 .arrow {
                     margin: 0 0 7px 5px;
-                    padding: 5px;
+                    padding: 4px;
                     &.down {
-                        margin-bottom: 9px;
+                        margin-bottom: 5px;
+                    }
+                    &.up {
+                        margin-bottom: 1px;
                     }
                 }
             }
@@ -328,3 +361,10 @@ Desktop display
         }
     } // end .search-box    
 } // end @media (min-width: 1024px)
+
+/*-----------------------------------------------------------------------------------------------------------
+Wide (1366px) display
+-----------------------------------------------------------------------------------------------------------*/
+@media (min-width: 1366px) {
+    
+} // end @media (min-width: 1366px)

@@ -35,7 +35,7 @@ keystone.init({
 	'auth': true,
 	'user model': 'User',
 
-	'host': '192.168.1.101',
+	//'host': '192.168.1.101',
 	'port': '3000'
 });
 

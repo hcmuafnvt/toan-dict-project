@@ -351,7 +351,7 @@ Desktop display
 }
 .search-box .search-type .select-icons .glyphicon-book {
   font-size: 1.3em;
-  margin: 8px 4px 0 5px;
+  margin: 8px 4px 0 2px;
   color: #585a5a;
 }
 .search-box .search-type .select-icons .arrow {
@@ -919,6 +919,176 @@ Desktop display
 }
 .lists-page .lists .item .title {
   font-weight: bold;
+}
+.searchresult-page {
+  margin-top: 80px;
+}
+.searchresult-page .breadcrumb {
+  padding: 8px 0px;
+}
+.searchresult-page .breadcrumb ol {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+.searchresult-page .breadcrumb ol li {
+  display: inline-block;
+}
+.searchresult-page .breadcrumb ol li.active a {
+  opacity: 1;
+}
+.searchresult-page .breadcrumb ol li.active span[itemprop="name"] {
+  font-weight: bold;
+}
+.searchresult-page .breadcrumb ol li a {
+  padding-right: 4px;
+  opacity: 0.7;
+}
+.searchresult-page .breadcrumb ol li span[itemprop="position"] {
+  color: #8c8a8a;
+  letter-spacing: 4px;
+}
+.searchresult-page .select-dict-type ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  border: 1px solid #ccc;
+  height: 30px;
+}
+.searchresult-page .select-dict-type ul li {
+  display: block;
+  float: left;
+  width: 49%;
+  font-size: 0.9em;
+  height: 100%;
+  text-align: center;
+}
+.searchresult-page .select-dict-type ul li.active {
+  background-color: #60ba4d;
+}
+.searchresult-page .select-dict-type ul li.active a.type {
+  color: #fff;
+}
+.searchresult-page .select-dict-type ul li a.type {
+  display: block;
+  padding: 6px;
+  text-decoration: none;
+  color: #585a5a;
+  letter-spacing: 0.5px;
+}
+.searchresult-page .select-dict-type ul li:first-child {
+  border-right: 1px solid #ccc;
+}
+.searchresult-page .search-result .main-word .word-name {
+  display: inline-block;
+  margin-right: 10px;
+  font-weight: bold;
+}
+.searchresult-page .search-result .main-word .sound-link {
+  text-decoration: none;
+}
+.searchresult-page .search-result .main-word .sound-link .glyphicon-volume-up {
+  font-size: 1.6em;
+  color: #c75858;
+  display: inline-block;
+  margin-right: 10px;
+}
+.searchresult-page .search-result .main-word .phonetic-spelling {
+  color: #d0a44c;
+  font-size: 1.6em;
+}
+.searchresult-page .search-result .type-of-word {
+  border-top: 2px solid #ccc;
+  margin-top: 10px;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding-top: 6px;
+  color: #d86f0f;
+}
+.searchresult-page .search-result .btn-more-exg {
+  color: #848484;
+  border: 1px dashed #ccc;
+  font-weight: bold;
+}
+.searchresult-page .search-result .l1-container {
+  margin-left: 30px;
+}
+.searchresult-page .search-result .l1-container .l1-mean {
+  font-size: 1.4em;
+  line-height: 25px;
+  font-weight: bold;
+  color: #484444;
+}
+.searchresult-page .search-result .l1-container .l1-mean .l1-index {
+  position: absolute;
+  margin-left: -30px;
+}
+.searchresult-page .search-result .l2-container {
+  margin-left: 40px;
+}
+.searchresult-page .search-result .l2-container .l2-mean {
+  font-size: 1.2em;
+  line-height: 25px;
+  font-weight: bold;
+  color: #484444;
+}
+.searchresult-page .search-result .l2-container .l2-mean .l2-index {
+  position: absolute;
+  margin-left: -40px;
+}
+.searchresult-page .search-result .ex {
+  font-size: 1.2em;
+  font-style: italic;
+  font-weight: 300;
+  color: #716c6c;
+  padding: 3px 0px;
+}
+.searchresult-page .search-result .gramb {
+  margin-bottom: 25px;
+}
+.searchresult-page .search-result .arrow {
+  border: solid #585a5a;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 5px;
+  margin: 0 0 4px 9px;
+}
+.searchresult-page .search-result .arrow.up {
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+  margin-bottom: 6px;
+  display: none;
+}
+.searchresult-page .search-result .arrow.down {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  display: inline-block;
+}
+.searchresult-page .search-result .etymology .type-of-word {
+  color: #b341de;
+}
+.searchresult-page .search-result .etymology .l1-container .l1-phase {
+  font-size: 1.4em;
+  line-height: 25px;
+  font-weight: bold;
+  color: #484444;
+}
+.searchresult-page .search-result .etymology .l1-container .l1-phase .l1-index {
+  position: absolute;
+  margin-left: -30px;
+}
+.searchresult-page .search-result .etymology .l1-container .l1-mean {
+  font-size: 1.2em;
+  line-height: 20px;
+  color: #848181;
+  margin-top: 15px;
+  border-left: 5px solid #ccc;
+  padding-left: 5px;
 }
 .learn-page .main-quiz-wrapper {
   background-color: #ccc;

@@ -65,8 +65,8 @@ function addWordToList() {
 }
 
 function init() {
-    openAddWordPopup();
-    addWordToList();
+    //openAddWordPopup();
+    //addWordToList();
 }
 
 module.exports = {

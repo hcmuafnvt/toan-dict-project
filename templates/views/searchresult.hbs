@@ -5,64 +5,144 @@
 
 </script>
 
-{{!--{{> _searchbox}}--}}
+<section class="search-section">
+    {{> _searchbox}}
+</section>
+
 <div class="searchresult-page" id="searchresult-page">
     {{!--<a href="#" id="addToList"><i class="glyphicon glyphicon-plus"></i> Add to list</a>--}}
+    <div class="breadcrumb">
+        <div class="container">
+            <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                    <a itemprop="item" href="/">
+                        <span itemprop="name">Home</span></a>
+                    <span itemprop="position" content="1">&gt;</span>
+                </li>
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                    <a itemprop="item" href="/english-english">
+                        <span itemprop="name">English - English</span></a>
+                    <span itemprop="position" content="2">&gt;</span>
+                </li>
+                <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                    <a itemprop="item" href="/definition/take?type=1">
+                        <span itemprop="name">take</span></a>
+                    <span itemprop="position" content="3"></span>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="select-dict-type">
+        <div class="container">
+            <ul>
+                <li class="active"><a class="type" href="#">English - English</a></li>                
+                <li><a class="type" href="#">English - Vietnamese</a></li>
+            </ul>
+        </div>        
+    </div>
+
     <div class="search-result">
         <div class="container">
-            <h1 class="word-name">{{data.searchResult.name}}</h1>
+            <div class="main-word">
+                <h1 class="word-name">{{data.searchResult.name}}</h1>
+                <a class="sound-link" onclick="this.firstElementChild.play();">
+                    <audio src="{{data.searchResult.soundLink}}">
+                    </audio>
+                    <i class="glyphicon glyphicon-volume-up"></i>
+                </a>
+                <span class="phonetic-spelling">{{data.searchResult.phoneticSpelling}}</span>
+            </div> <!-- end .main-word -->
+            
             <div class="grambs">
                 {{#data.searchResult.translateToEn.grambs}}
-                    <div class="gramb">
-                        <div class="type-of-word">{{typeOfWord}}</div>
-                        {{#level1}}                           
-                            <div class="l1-container">
-                                <h2 class="l1-mean"><span class="l1-index">{{incIndex @index}} </span>{{{mean}}}</h2>
-                                <div class="l1-examples">
-                                    {{#examples}}
-                                        <p class="ex">- {{{this}}}</p>
-                                    {{/examples}}
-                                </div>
-                                <div class="l2-container">
-                                    {{#level2}}
-                                        <h3 class="l2-mean"><span class="l2-index">{{incIndex @../index}}.{{incIndex @index}} </span>{{{mean}}}</h3>
-                                        <div class="l2-examples">
-                                            {{#examples}}
+                <div class="gramb">
+                    <div class="type-of-word">{{typeOfWord}}
+                        <i class="arrow down"></i>
+                        <i class="arrow up hide"></i>
+                    </div>
+                    <div class="l1-group">
+                        {{#level1}}
+                        <div class="l1-container">
+                            <h2 class="l1-mean"><span class="l1-index">{{incIndex @index}} </span>{{{mean}}}</h2>
+                            <div class="l1-examples">
+                                <p class="ex">- {{{examples.[0]}}}</p>                            
+                                <div class="more-examples">
+                                    <button class="btn btn-default btn-more-exg">+ More examples</button>
+                                    <div class="exg hide">
+                                        {{#examples}}
+                                            {{#ifeq @index 0}}
+                                            {{else}}
                                                 <p class="ex">- {{{this}}}</p>
-                                            {{/examples}}
-                                        </div>
-                                    {{/level2}}
+                                            {{/ifeq}}                                                                           
+                                        {{/examples}}
+                                    </div>
                                 </div>
                             </div>
+                            <div class="l2-container">
+                                {{#level2}}
+                                <h3 class="l2-mean"><span class="l2-index">{{incIndex @../index}}.{{incIndex @index}} </span>{{{mean}}}</h3>
+                                <div class="l2-examples">
+                                    <p class="ex">- {{{examples.[0]}}}</p>
+                                    <div class="more-examples">
+                                        <button class="btn btn-default btn-more-exg">+ More examples</button>
+                                        <div class="exg hide">
+                                            {{#examples}}                                
+                                                {{#ifeq @index 0}}
+                                                {{else}}
+                                                    <p class="ex">- {{{this}}}</p>
+                                                {{/ifeq}} 
+                                            {{/examples}}
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/level2}}
+                            </div>
+                        </div>
                         {{/level1}}
-                    </div>                    
-                {{/data.searchResult.translateToEn.grambs}}  
-            </div>
+                    </div>
+                    
+                </div>
+                {{/data.searchResult.translateToEn.grambs}}
+            </div> <!-- end .grambs -->
 
             <div class="etymologys">
                 {{#data.searchResult.translateToEn.etymologys}}
-                    <div class="etymology">
-                        <div class="type-of-word">{{typeOfWord}}</div>
-                        {{#level1}}                           
-                            <div class="l1-container">
-                                <h2 class="l1-phase">{{{phase}}}</h2>
-                                <h3 class="l1-mean">{{{mean}}}</h3>
-                                <div class="l1-examples">
+                <div class="etymology">
+                    <div class="type-of-word">{{typeOfWord}}
+                        <i class="arrow down"></i>
+                        <i class="arrow up hide"></i>
+                    </div>
+                    {{#level1}}
+                    <div class="l1-container">
+                        <h2 class="l1-phase"><span class="l1-index">{{incIndex @index}}</span> {{{phase}}}</h2>
+                        <h3 class="l1-mean">{{{mean}}}</h3>
+                        <div class="l1-examples">
+                            <p class="ex">- {{{examples.[0]}}}</p>                            
+                            <div class="more-examples">
+                                <button class="btn btn-default btn-more-exg">+ More examples</button>
+                                <div class="exg hide">
                                     {{#examples}}
-                                        <p class="ex">- {{{this}}}</p>
+                                        {{#ifeq @index 0}}
+                                        {{else}}
+                                            <p class="ex">- {{{this}}}</p>
+                                        {{/ifeq}}                                                                           
                                     {{/examples}}
-                                </div>                                
+                                </div>
                             </div>
-                        {{/level1}}
-                    </div>                    
-                {{/data.searchResult.translateToEn.etymologys}}  
-            </div> <!-- end .etymologys -->
-        </div>       
+                        </div>
+                    </div>
+                    {{/level1}}
+                </div>
+                {{/data.searchResult.translateToEn.etymologys}}
+            </div> <!-- end .etymologys -->            
+        </div>
     </div>
 </div>
 
 <!-- add to list popup -->
-{{!--<div class="add-to-list-popup mfp-hide container" id="add-to-list-popup">
+{{!--
+<div class="add-to-list-popup mfp-hide container" id="add-to-list-popup">
     <h1 class="hero-title">{{data.searchResult.word}}</h1>
     <div class="form-group">
         <label for="list">Choose a list</label>

@@ -1,3 +1,202 @@
 .searchresult-page {
-    
+    margin-top: 80px;
+
+    .breadcrumb {
+        padding: 8px 0px;        
+
+        ol {
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+            li {
+                display: inline-block;
+
+                &.active {
+                    a {
+                        opacity: 1;
+                    }
+                    span[itemprop="name"] {
+                        font-weight: bold;                        
+                    }
+                }
+
+                a {
+                    padding-right: 4px;
+                    opacity: 0.7;
+                }
+
+                span[itemprop="position"] {
+                    color: #8c8a8a;
+                    letter-spacing: 4px;
+                }
+            }
+        }
+    } //end .breadcrumb
+
+    .select-dict-type {
+        ul {
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+            border: 1px solid #ccc;
+            height: 30px;
+            li {                
+                display: block;
+                float: left;
+                width: 49%;
+                font-size: 0.9em;
+                height: 100%;
+                text-align: center;
+
+                &.active {
+                    background-color: #60ba4d;
+                    a.type {
+                        color: #fff;
+                    }
+                }
+
+                a.type {
+                    display: block;
+                    padding: 6px;
+                    text-decoration: none;
+                    color: #585a5a;
+                    letter-spacing: 0.5px;
+                }
+
+                &:first-child {
+                    border-right: 1px solid #ccc;
+                }
+            }
+        }
+    } //end .select-dict-type
+
+    .search-result {
+        .main-word {
+            .word-name {
+                display: inline-block;
+                margin-right: 10px;
+                font-weight: bold;
+            }
+            .sound-link {
+                text-decoration: none;
+                .glyphicon-volume-up {
+                    font-size: 1.6em;
+                    color: #c75858;
+                    display: inline-block;
+                    margin-right: 10px;
+                }
+            }
+            .phonetic-spelling {
+                color: #d0a44c;
+                font-size: 1.6em;
+            }
+        }
+
+        .type-of-word {
+            border-top: 2px solid #ccc;
+            margin-top: 10px;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            font-weight: bold;
+            padding-top: 6px;
+            color: #d86f0f;
+        }        
+
+        .btn-more-exg {
+            color: #848484;            
+            border: 1px dashed #ccc;            
+            font-weight: bold;
+        }
+
+        .l1-container {
+            margin-left: 30px;
+
+            .l1-mean {
+                font-size: 1.4em;
+                line-height: 25px;
+                font-weight: bold;
+                color: #484444;
+
+                .l1-index {
+                    position: absolute;                    
+                    margin-left: -30px;
+                }
+            }
+        }
+        
+        .l2-container {
+            margin-left: 40px;
+            .l2-mean {
+                font-size: 1.2em;
+                line-height: 25px;
+                font-weight: bold;
+                color: #484444;
+
+                .l2-index {
+                    position: absolute;                    
+                    margin-left: -40px;
+                }
+            }
+        }
+
+        .ex {
+            font-size: 1.2em;
+            font-style: italic;
+            font-weight: 300;
+            color: #716c6c;
+            padding: 3px 0px;
+        }
+
+        .gramb {
+            margin-bottom: 25px;
+        }
+
+        .arrow {
+            border: solid #585a5a;
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 5px;
+            margin: 0 0 4px 9px;
+
+            &.up {                
+                .transform(rotate(-135deg));
+                margin-bottom: 6px;
+                display: none;
+            }
+
+            &.down {                
+                .transform(rotate(45deg));
+                display: inline-block;
+            }
+        }
+
+        .etymology {
+            .type-of-word {
+                color: #b341de;                
+            }
+
+            .l1-container {
+                .l1-phase {
+                    font-size: 1.4em;
+                    line-height: 25px;
+                    font-weight: bold;
+                    color: #484444;
+
+                    .l1-index {
+                        position: absolute;                    
+                        margin-left: -30px;
+                    }
+                }
+
+                .l1-mean {
+                    font-size: 1.2em;
+                    line-height: 20px;                    
+                    color: #848181;
+                    margin-top: 15px;
+                    border-left: 5px solid #ccc;
+                    padding-left: 5px;                    
+                }                
+            }
+        }
+    }
 }

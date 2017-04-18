@@ -328,7 +328,7 @@ module.exports = function () {
 
 	//Customs
 	_helpers.incIndex = function(index) {
-		return
+		return index + 1;
 	}
 
 	return _helpers;

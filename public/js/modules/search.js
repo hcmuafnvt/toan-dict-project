@@ -4,9 +4,9 @@ var util = require('../helpers/util');
 
 function searchAutocomplete() {
     // hide search result when hide device keyboard
-    document.addEventListener('focusout', function(e) {
-        $('#search-suggestion').hide().empty();
-    });
+    // document.addEventListener('focusout', function(e) {
+    //     $('#search-suggestion').hide().empty();
+    // });
 
     $("#word").on('input', function(e) {        
         console.time('autocomplete');    
@@ -92,7 +92,7 @@ function selectSearchType() {
 
 function handleClickOnWindow() {  
     if(/iP/i.test(navigator.userAgent)) {
-        $('*').css('cursor', 'pointer');
+        $('*:not("a")').css('cursor', 'pointer');
     };
     
     $(document).click(function() {        
@@ -147,7 +147,7 @@ function handleKeyDown() {
 }
 
 function init() {
-    $('#word').focus();
+    $('#home-page #word').focus();
     searchAutocomplete();   
     selectSearchType();
     handleClickOnWindow();    

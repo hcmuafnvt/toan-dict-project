@@ -8,49 +8,17 @@ exports = module.exports = function(req, res) {
         locals = res.locals;
 
     locals.section = 'searchresult';
-    locals.word = req.query.word.trim();
+    locals.word = req.params.word.trim().toLowerCase();
+    locals.type = req.params.type;
     locals.data = {
         searchResult: 'No result found.'
     };
 
     view.on('init', function(next) {
-        if(!req.query.word || locals.word === '') return next();
+        if(locals.word === '') return next();        
 
-        // var options = {
-        //     host: 'dict.laban.vn',
-        //     port: 80,
-        //     path: '/ajax/find?type=1&query=' + locals.word,
-        //     method: 'GET',
-        //     headers: {
-        //         "Accept": "application/json",
-        //         "Accept-Encoding": "gzip,deflate,sdch"
-        //     }
-        // };
-
-        // var buffer = [];
-
-        // http.get(options, function (response) {        
-        //     var gunzip = zlib.createGunzip();
-        //     response.pipe(gunzip);
-
-        //     gunzip.on('data', function (chunk) {
-        //         buffer.push(chunk.toString());
-        //     })
-        //         .on('end', function () {
-        //             try {
-        //                 result = JSON.parse(buffer.join(""));
-        //             } catch (exp) {
-        //                 result = { 'status_code': 500, 'status_text': 'JSON Parse Failed' };
-        //             }                    
-        //             locals.data.searchResult = result.enViData.best;
-        //             next();
-        //         })
-        //         .on('error', function (err) {
-        //             next(err);
-        //         });
-        // });
-
-        Word.model.findOne({name: locals.word}, function(err, word) {
+        var regex = new RegExp('^' + locals.word + '$', 'i');
+        Word.model.findOne({name: regex}, function(err, word) {
             if(err) return next(err);            
             locals.data.searchResult = word;            
             next();

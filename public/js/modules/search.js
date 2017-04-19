@@ -3,25 +3,23 @@
 var util = require('../helpers/util');
 
 function searchAutocomplete() {
-    // hide search result when hide device keyboard
-    // document.addEventListener('focusout', function(e) {
-    //     $('#search-suggestion').hide().empty();
-    // });
-
     $("#word").on('input', function(e) {        
         console.time('autocomplete');    
         var $self = $(this);
         var word = $self.val().trim();
         $self.data('word', word);
         if(word.length < 1) {
+            //$('#btn-clearinput').removeClass('active');
             bindAutoComplete(null);
             return;
         } 
 
+        //$('#btn-clearinput').addClass('active');
+
         var pagesize = 5, wWidth = $(window).width();
         if(wWidth >= 768 && wWidth < 1024) {
             pagesize = 8;
-        } else {
+        } else if (wWidth >= 1024) {
             pagesize = 20;
         }
 
@@ -34,7 +32,12 @@ function searchAutocomplete() {
                 console.timeEnd('autocomplete');                
             }
         });     
-    });    
+    }); 
+
+    $('#btn-clearinput').on('click', function(e) {
+        e.preventDefault();
+        console.log('asdsa');
+    });
 }
 
 //private function
@@ -43,7 +46,7 @@ function bindAutoComplete(data) {
     $searchSuggestion.empty(); 
 
     if(data == null || data.length === 0) {
-        $searchSuggestion.hide().empty();
+        $searchSuggestion.trigger('hide');
         return;
     }
 
@@ -51,7 +54,7 @@ function bindAutoComplete(data) {
     '<ul>' +
         '{{each words}}' +
             '<li>' +
-                '<a href="/search?word=${name}&type=vi">' +
+                '<a class="autosearch-item" href="/search?word=${name}&type=vi">' +
                     '<p class="word-name"><span class="name">${name}</span> <span class="phonetic-spelling">${phoneticSpelling}</span></p>' +
                     '<p class="word-mean">{{if mainType}}<span class="main-type">[${mainType}]</span>{{/if}} {{if mainViMean}}{{html mainViMean}}{{else}}{{html mainEnMean}}{{/if}}</p>' +
                 '</a>' +                
@@ -59,14 +62,30 @@ function bindAutoComplete(data) {
         '{{/each}}' +
     '</ul>';    
     $.tmpl(tmplSearchSuggestion, {words: data}).appendTo('#search-suggestion');
-    $searchSuggestion.show();
+    $searchSuggestion.trigger('show');
+}
 
-    // $searchSuggestion.find('li').hover(function() {
-    //     $('#search-suggestion li').removeClass('active');
-    //     $(this).addClass('active');
-    // }, function() {
-    //     $('#search-suggestion li').removeClass('active');
-    // });
+function submitForm() {
+    $('.frmSearch').on('submit', function(e) {
+        //$('#word').attr('disabled', 'true');
+        e.preventDefault();
+        window.location.href = '/definition/' + $('#hdfType').val() + '/' + $('#word').val().trim();
+    });
+}
+
+function showHideSearchSuggestion() {
+    $('#search-suggestion').on('show', function(e) {
+        e.preventDefault();        
+        $(this).slideDown();
+        $('.search-section').css({'position': 'absolute'});
+
+    });
+
+    $('#search-suggestion').on('hide', function(e) {
+        e.preventDefault();
+        $(this).hide().empty();
+        $('.search-section').css({'position': 'fixed'});
+    });
 }
 
 function selectSearchType() {
@@ -75,7 +94,8 @@ function selectSearchType() {
         e.preventDefault();
         e.stopPropagation();
         $(this).toggleClass('active');
-        $selectTypeContent.toggleClass('active');
+        $('#search-suggestion').trigger('hide');
+        $selectTypeContent.toggleClass('active');        
     });
     
     $selectTypeContent.on('click', 'li', function(e) {
@@ -95,7 +115,8 @@ function handleClickOnWindow() {
         $('*:not("a")').css('cursor', 'pointer');
     };
     
-    $(document).click(function() {        
+    $(document).click(function() {
+        $('#search-suggestion').trigger('hide');
         $('.select-types-content').removeClass('active');
         $('.select-icons').removeClass('active');
     });
@@ -148,10 +169,13 @@ function handleKeyDown() {
 
 function init() {
     $('#home-page #word').focus();
-    searchAutocomplete();   
+    searchAutocomplete();
+    submitForm();
     selectSearchType();
     handleClickOnWindow();    
     handleKeyDown();
+    showHideSearchSuggestion();
+    //inputFocusOut();
 }
 
 module.exports = {

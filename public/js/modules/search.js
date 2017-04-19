@@ -2,6 +2,23 @@
 
 var util = require('../helpers/util');
 
+function initpage() {
+    //bind search input
+    var searchType = $('#hdfType').val();
+    var $wordInput = $('#word');
+    if(searchType === 'en-vi') { //en-vi
+        $wordInput.attr('placeholder', 'English - Vietnamese');
+    } else if(searchType === 'en-en') { //en-en
+        $wordInput.attr('placeholder', 'English - English');
+    } else if(searchType === 'vi-en') { //vi-en
+        $wordInput.attr('placeholder', 'Vietnamese - English');
+    }
+
+    //bind data for dict type
+    $('.dict-type li').removeClass('active');
+    $('.dict-type').find('li[data-type="' + searchType + '"]').addClass('active');
+}
+
 function searchAutocomplete() {
     $("#word").on('input', function(e) {        
         console.time('autocomplete');    
@@ -169,6 +186,7 @@ function handleKeyDown() {
 
 function init() {
     $('#home-page #word').focus();
+    initpage();
     searchAutocomplete();
     submitForm();
     selectSearchType();

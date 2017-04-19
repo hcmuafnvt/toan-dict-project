@@ -64,9 +64,24 @@ function addWordToList() {
     })
 }
 
+function selectDictType() {
+    $('.select-dict-type li').on('click', function(e) {
+        e.preventDefault();
+        window.location.href = '/definition/' + $(this).data('type') + '/' + $('.word-name').text().trim().toLowerCase();
+    })
+}
+
+function expandCollapseTypeOfWord() {
+    $('.type-of-word').on('click', function(e) {
+        e.preventDefault();
+        $(this).siblings('.l1-group').slideToggle();
+        $(this).toggleClass('collapsed');
+    })
+}
+
 function init() {
-    //openAddWordPopup();
-    //addWordToList();
+    selectDictType();
+    expandCollapseTypeOfWord();
 }
 
 module.exports = {

@@ -1011,6 +1011,34 @@ Desktop display
   padding-top: 6px;
   color: #d86f0f;
 }
+.searchresult-page .search-result .type-of-word.collapsed .arrow.up {
+  display: inline-block;
+}
+.searchresult-page .search-result .type-of-word.collapsed .arrow.down {
+  display: none;
+}
+.searchresult-page .search-result .type-of-word .arrow {
+  border: solid #585a5a;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 5px;
+  margin: 0 0 4px 9px;
+}
+.searchresult-page .search-result .type-of-word .arrow.up {
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+  margin-bottom: -4px;
+  display: none;
+}
+.searchresult-page .search-result .type-of-word .arrow.down {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  display: inline-block;
+}
 .searchresult-page .search-result .btn-more-exg {
   color: #848484;
   border: 1px dashed #ccc;
@@ -1051,28 +1079,6 @@ Desktop display
 }
 .searchresult-page .search-result .gramb {
   margin-bottom: 25px;
-}
-.searchresult-page .search-result .arrow {
-  border: solid #585a5a;
-  border-width: 0 2px 2px 0;
-  display: inline-block;
-  padding: 5px;
-  margin: 0 0 4px 9px;
-}
-.searchresult-page .search-result .arrow.up {
-  -webkit-transform: rotate(-135deg);
-  -moz-transform: rotate(-135deg);
-  -o-transform: rotate(-135deg);
-  transform: rotate(-135deg);
-  margin-bottom: 6px;
-  display: none;
-}
-.searchresult-page .search-result .arrow.down {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-  display: inline-block;
 }
 .searchresult-page .search-result .etymology .type-of-word {
   color: #b341de;

@@ -102,6 +102,37 @@
             font-weight: bold;
             padding-top: 6px;
             color: #d86f0f;
+
+            &.collapsed {
+                .arrow {
+                    &.up {                   
+                        display: inline-block;
+                    }
+
+                    &.down {                    
+                        display: none;
+                    }
+                }                
+            }
+
+            .arrow {
+                border: solid #585a5a;
+                border-width: 0 2px 2px 0;
+                display: inline-block;
+                padding: 5px;
+                margin: 0 0 4px 9px;
+
+                &.up {                
+                    .transform(rotate(-135deg));
+                    margin-bottom: -4px;
+                    display: none;
+                }
+
+                &.down {                
+                    .transform(rotate(45deg));
+                    display: inline-block;
+                }
+            }
         }        
 
         .btn-more-exg {
@@ -151,26 +182,7 @@
 
         .gramb {
             margin-bottom: 25px;
-        }
-
-        .arrow {
-            border: solid #585a5a;
-            border-width: 0 2px 2px 0;
-            display: inline-block;
-            padding: 5px;
-            margin: 0 0 4px 9px;
-
-            &.up {                
-                .transform(rotate(-135deg));
-                margin-bottom: 6px;
-                display: none;
-            }
-
-            &.down {                
-                .transform(rotate(45deg));
-                display: inline-block;
-            }
-        }
+        }        
 
         .etymology {
             .type-of-word {

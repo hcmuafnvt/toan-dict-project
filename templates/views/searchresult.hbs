@@ -25,8 +25,8 @@
                     <span itemprop="position" content="2">&gt;</span>
                 </li>
                 <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                    <a itemprop="item" href="/definition/en-en/take">
-                        <span itemprop="name">take</span></a>
+                    <a itemprop="item" href="/definition/{{type}}/{{word}}">
+                        <span itemprop="name">{{word}}</span></a>
                     <span itemprop="position" content="3"></span>
                 </li>
             </ol>
@@ -36,8 +36,8 @@
     <div class="select-dict-type">
         <div class="container">
             <ul>
-                <li class="active"><a class="type" href="#">English - Vietnamese</a></li>
-                <li><a class="type" href="#">English - English</a></li>                
+                <li data-type="en-vi" class="{{#ifeq type 'en-vi'}}active{{/ifeq}}"><a class="type" href="#">English - Vietnamese</a></li>
+                <li data-type="en-en" class="{{#ifeq type 'en-en'}}active{{/ifeq}}"><a class="type" href="#">English - English</a></li>                
             </ul>
         </div>        
     </div>
@@ -59,7 +59,7 @@
                 <div class="gramb">
                     <div class="type-of-word">{{typeOfWord}}
                         <i class="arrow down"></i>
-                        <i class="arrow up hide"></i>
+                        <i class="arrow up"></i>
                     </div>
                     <div class="l1-group">
                         {{#level1}}
@@ -111,28 +111,30 @@
                 <div class="etymology">
                     <div class="type-of-word">{{typeOfWord}}
                         <i class="arrow down"></i>
-                        <i class="arrow up hide"></i>
+                        <i class="arrow up"></i>
                     </div>
-                    {{#level1}}
-                    <div class="l1-container">
-                        <h2 class="l1-phase"><span class="l1-index">{{incIndex @index}}</span> {{{phase}}}</h2>
-                        <h3 class="l1-mean">{{{mean}}}</h3>
-                        <div class="l1-examples">
-                            <p class="ex">- {{{examples.[0]}}}</p>                            
-                            <div class="more-examples">
-                                <button class="btn btn-default btn-more-exg">+ More examples</button>
-                                <div class="exg hide">
-                                    {{#examples}}
-                                        {{#ifeq @index 0}}
-                                        {{else}}
-                                            <p class="ex">- {{{this}}}</p>
-                                        {{/ifeq}}                                                                           
-                                    {{/examples}}
+                    <div class="l1-group">
+                        {{#level1}}
+                        <div class="l1-container">
+                            <h2 class="l1-phase"><span class="l1-index">{{incIndex @index}}</span> {{{phase}}}</h2>
+                            <h3 class="l1-mean">{{{mean}}}</h3>
+                            <div class="l1-examples">
+                                <p class="ex">- {{{examples.[0]}}}</p>                            
+                                <div class="more-examples">
+                                    <button class="btn btn-default btn-more-exg">+ More examples</button>
+                                    <div class="exg hide">
+                                        {{#examples}}
+                                            {{#ifeq @index 0}}
+                                            {{else}}
+                                                <p class="ex">- {{{this}}}</p>
+                                            {{/ifeq}}                                                                           
+                                        {{/examples}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {{/level1}}
+                        {{/level1}}
+                    </div>                    
                 </div>
                 {{/data.searchResult.translateToEn.etymologys}}
             </div> <!-- end .etymologys -->            

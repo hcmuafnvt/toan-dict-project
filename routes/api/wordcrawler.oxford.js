@@ -51,7 +51,7 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
         console.log('redirectQueueItem : ', redirectQueueItem.url);
         var selectedWord = null;
         for(var i = 0; i < listOfWords.length; i++) {                
-            if('https://en.oxforddictionaries.com/definition/' + listOfWords[i].name.replace(/ /g, '_') === unescape(oldQueueItem.url)) {
+            if('https://en.oxforddictionaries.com/definition/' + listOfWords[i].name.replace(/ /g, '_') === decodeURI(oldQueueItem.url)) {
                 selectedWord = listOfWords[i];                                             
                 listOfWords.splice(i, 1);
                 break;                

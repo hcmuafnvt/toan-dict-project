@@ -3,6 +3,13 @@
 var util = require('../helpers/util'),
     ajax = require('../helpers/ajax');
 
+function initPage() {
+    var $moreExamples = $('.more-examples');
+    $moreExamples.each(function() {
+        if($(this).find('.ex').length === 0) $(this).remove();
+    });
+}
+
 function openAddWordPopup() {
     $('#addToList').on('click', function(e) {
         e.preventDefault();
@@ -79,9 +86,19 @@ function expandCollapseTypeOfWord() {
     })
 }
 
+function expandCollapseMoreExamples() {
+    $('.btn-more-exg').on('click', function(e) {
+        e.preventDefault();
+        $(this).siblings('.exg').slideToggle();
+        $(this).toggleClass('collapsed');
+    })
+}
+
 function init() {
+    initPage();
     selectDictType();
     expandCollapseTypeOfWord();
+    expandCollapseMoreExamples();
 }
 
 module.exports = {

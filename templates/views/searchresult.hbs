@@ -53,91 +53,141 @@
                 </a>
                 <span class="phonetic-spelling">{{data.searchResult.phoneticSpelling}}</span>
             </div> <!-- end .main-word -->
-            
-            <div class="grambs">
-                {{#data.searchResult.translateToEn.grambs}}
-                <div class="gramb">
-                    <div class="type-of-word">{{typeOfWord}}
-                        <i class="arrow down"></i>
-                        <i class="arrow up"></i>
-                    </div>
-                    <div class="l1-group">
-                        {{#level1}}
-                        <div class="l1-container">
-                            <h2 class="l1-mean"><span class="l1-index">{{incIndex @index}} </span>{{{mean}}}</h2>
-                            <div class="l1-examples">
-                                <p class="ex">- {{{examples.[0]}}}</p>                            
-                                <div class="more-examples">
-                                    <button class="btn btn-default btn-more-exg">+ More examples</button>
-                                    <div class="exg hide">
-                                        {{#examples}}
-                                            {{#ifeq @index 0}}
-                                            {{else}}
-                                                <p class="ex">- {{{this}}}</p>
-                                            {{/ifeq}}                                                                           
-                                        {{/examples}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="l2-container">
-                                {{#level2}}
-                                <h3 class="l2-mean"><span class="l2-index">{{incIndex @../index}}.{{incIndex @index}} </span>{{{mean}}}</h3>
-                                <div class="l2-examples">
-                                    <p class="ex">- {{{examples.[0]}}}</p>
-                                    <div class="more-examples">
-                                        <button class="btn btn-default btn-more-exg">+ More examples</button>
-                                        <div class="exg hide">
-                                            {{#examples}}                                
-                                                {{#ifeq @index 0}}
-                                                {{else}}
-                                                    <p class="ex">- {{{this}}}</p>
-                                                {{/ifeq}} 
-                                            {{/examples}}
+                        
+            {{#ifeq type 'en-en'}}
+            <div class="en-en">
+                <div class="grambs">
+                    {{#data.searchResult.translateToEn.grambs}}
+                    <div class="gramb">
+                        <div class="type-of-word">{{typeOfWord}}
+                            <i class="arrow down"></i>
+                            <i class="arrow up"></i>
+                        </div>
+                        <div class="l1-group">
+                            {{#level1}}
+                            <div class="l1-container">
+                                <h2 class="l1-mean"><span class="l1-index">{{incIndex @index}} </span>{{{mean}}}</h2>
+                                <div class="l1-examples">
+                                    {{#if examples}}
+                                        <p class="ex">- {{{examples.[0]}}}</p>                            
+                                        <div class="more-examples">
+                                            <button class="btn btn-default btn-more-exg"><i class="glyphicon glyphicon-plus"></i><i class="glyphicon glyphicon-minus"></i> More examples</button>
+                                            <div class="exg">
+                                                {{#examples}}
+                                                    {{#ifeq @index 0}}
+                                                    {{else}}
+                                                        <p class="ex">- {{{this}}}</p>
+                                                    {{/ifeq}}                                                                           
+                                                {{/examples}}
+                                            </div>
                                         </div>
-                                    </div>
+                                    {{/if}}                                    
                                 </div>
-                                {{/level2}}
+                                <div class="l2-container">
+                                    {{#level2}}
+                                    <h3 class="l2-mean"><span class="l2-index">{{incIndex @../index}}.{{incIndex @index}} </span>{{{mean}}}</h3>
+                                    <div class="l2-examples">
+                                        {{#if examples}}
+                                            <p class="ex">- {{{examples.[0]}}}</p>
+                                            <div class="more-examples">
+                                                <button class="btn btn-default btn-more-exg"><i class="glyphicon glyphicon-plus"></i><i class="glyphicon glyphicon-minus"></i> More examples</button>
+                                                <div class="exg">
+                                                    {{#examples}}                                
+                                                        {{#ifeq @index 0}}
+                                                        {{else}}
+                                                            <p class="ex">- {{{this}}}</p>
+                                                        {{/ifeq}} 
+                                                    {{/examples}}
+                                                </div>
+                                            </div>
+                                        {{/if}}                                        
+                                    </div>
+                                    {{/level2}}
+                                </div>
                             </div>
+                            {{/level1}}
                         </div>
-                        {{/level1}}
+                        
                     </div>
-                    
-                </div>
-                {{/data.searchResult.translateToEn.grambs}}
-            </div> <!-- end .grambs -->
+                    {{/data.searchResult.translateToEn.grambs}}
+                </div> <!-- end .grambs -->
 
-            <div class="etymologys">
-                {{#data.searchResult.translateToEn.etymologys}}
-                <div class="etymology">
-                    <div class="type-of-word">{{typeOfWord}}
-                        <i class="arrow down"></i>
-                        <i class="arrow up"></i>
-                    </div>
-                    <div class="l1-group">
-                        {{#level1}}
-                        <div class="l1-container">
-                            <h2 class="l1-phase"><span class="l1-index">{{incIndex @index}}</span> {{{phase}}}</h2>
-                            <h3 class="l1-mean">{{{mean}}}</h3>
-                            <div class="l1-examples">
-                                <p class="ex">- {{{examples.[0]}}}</p>                            
-                                <div class="more-examples">
-                                    <button class="btn btn-default btn-more-exg">+ More examples</button>
-                                    <div class="exg hide">
-                                        {{#examples}}
-                                            {{#ifeq @index 0}}
-                                            {{else}}
-                                                <p class="ex">- {{{this}}}</p>
-                                            {{/ifeq}}                                                                           
-                                        {{/examples}}
-                                    </div>
+                <div class="etymologys">
+                    {{#data.searchResult.translateToEn.etymologys}}
+                    <div class="etymology">
+                        <div class="type-of-word">{{typeOfWord}}
+                            <i class="arrow down"></i>
+                            <i class="arrow up"></i>
+                        </div>
+                        <div class="l1-group">
+                            {{#level1}}
+                            <div class="l1-container">
+                                <h2 class="l1-phase"><span class="l1-index">{{incIndex @index}}</span> {{{phase}}}</h2>
+                                <h3 class="l1-mean">{{{mean}}}</h3>
+                                <div class="l1-examples">
+                                    {{#if examples}}
+                                        <p class="ex">- {{{examples.[0]}}}</p>                         
+                                        <div class="more-examples">
+                                            <button class="btn btn-default btn-more-exg"><i class="glyphicon glyphicon-plus"></i><i class="glyphicon glyphicon-minus"></i> More examples</button>
+                                            <div class="exg">
+                                                {{#examples}}
+                                                    {{#ifeq @index 0}}
+                                                    {{else}}
+                                                        <p class="ex">- {{{this}}}</p>
+                                                    {{/ifeq}}                                                                           
+                                                {{/examples}}
+                                            </div>
+                                        </div>
+                                    {{/if}}
                                 </div>
                             </div>
-                        </div>
-                        {{/level1}}
-                    </div>                    
-                </div>
-                {{/data.searchResult.translateToEn.etymologys}}
-            </div> <!-- end .etymologys -->            
+                            {{/level1}}
+                        </div>                    
+                    </div>
+                    {{/data.searchResult.translateToEn.etymologys}}
+                </div> <!-- end .etymologys -->
+            </div>            
+            {{/ifeq}}
+
+            {{#ifeq type 'en-vi'}}
+            <div class="en-vi">
+                <div class="grambs">
+                    {{#data.searchResult.translateToVi.types}}
+                        {{#ifeq type 'gramb'}}
+                            <div class="type-of-word">{{name}}
+                                {{!--<i class="arrow down"></i>
+                                <i class="arrow up"></i>--}}
+                            </div>
+                        {{else ifeq type 'mean'}}
+                            <div class="gramb l1-container">
+                                <h2 class="l1-mean"><i class="l1-dot-icon"></i>{{{mean}}}</h2>
+                                <div class="sentences">
+                                    {{#each level2}}
+                                        <h3 class="l1-sentence">{{{sentence}}}</h3>
+                                        <p class="l1-translate">{{{mean}}}</p>
+                                    {{/each}}
+                                </div>                                
+                            </div>
+                        {{else}}
+                            <div class="idiom l1-container">
+                                <h2 class="l1-mean"><i class="l1-dot-icon"></i>{{{idiom}}}</h2>
+                                <div class="l2-container">
+                                    {{#each level2}}
+                                        <h3 class="l2-mean"><i class="l2-dot-icon"></i>{{{mean}}}</h3>
+                                        <div class="l3-container">
+                                            {{#each level3}}
+                                                <h4 class="l3-sentence">{{{sentence}}}</h4>
+                                                <p class="l3-translate">{{{mean}}}</p>
+                                            {{/each}}
+                                        </div>                                                                                
+                                    {{/each}}
+                                </div>                                                              
+                            </div>     
+                        {{/ifeq}}                        
+                    {{/data.searchResult.translateToVi.types}}
+                </div> <!-- end .grambs -->
+            </div>                
+            {{/ifeq}}          
         </div>
     </div>
 </div>

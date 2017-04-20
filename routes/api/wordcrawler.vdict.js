@@ -8,7 +8,7 @@ var router = require('express').Router(),
 var listOfWords;
 var crawlingCount = 0;    
 
-Word.model.find({name: /^a/}).sort({name: 1}).limit(10).exec(function(err, result) { //1
+Word.model.find({name: 'eat'}).sort({name: 1}).limit(10).exec(function(err, result) { //1
     listOfWords = result;
     console.log('list of words of vdict : ', listOfWords.length);
 });
@@ -202,28 +202,54 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
             }
 
             if($self.hasClass('list1')) {
-                var examples = [];
-                $self.find('.list2 li').each(function() {
-                    var $span = $(this).find('.example-original');
-                    var sentence = $span.text();
-                    $span.remove();
-                    examples.push({
-                        sentence: sentence,
-                        mean: $(this).text().trim()
-                    });
-                });
+                if($self.find('.idiom-meaning').length > 0) { //idioms
+                    var level2 = [];
+                    $self.find('.list2 > li').each(function() {
+                        var $level2 = $(this);
+                        var level2Obj = {};
+                        level2Obj.mean = $level2.find('b').text();                        
+                        var level3 = [];
+                        $level2.find('.list3 > li').each(function() {
+                            var $level3 = $(this);
+                            var level3Obj = {};
+                            var $span =  $level3.find('.example-original');
+                            var sentence = $span.text();
+                            $span.remove();
+                            level3Obj.sentence = sentence;
+                            level3Obj.mean = $level3.text().trim();
+                            level3.push(level3Obj);
+                        });
+                        level2Obj.level3 = level3;
+                        level2.push(level2Obj);                                                               
+                    });                      
 
-                types.push({
-                    type: 'mean',
-                    mean: $self.find('> li b').text(),
-                    examples: examples
-                });
+                    types.push({
+                        type: 'idiom',
+                        idiom: $self.find('.idiom-meaning').text(),
+                        level2: level2
+                    });
+                } else { //grambs
+                    var level2 = [];
+                    $self.find('.list2 li').each(function() {
+                        var $span = $(this).find('.example-original');
+                        var sentence = $span.text();
+                        $span.remove();
+                        level2.push({
+                            sentence: sentence,
+                            mean: $(this).text().trim()
+                        });
+                    });
+
+                    types.push({
+                        type: 'mean',
+                        mean: $self.find('> li b').text(),
+                        level2: level2
+                    });
+                }                
             }
         });
 
         translateToVi.types = types;        
-
-        
         
         var con = this.wait();
         selectedWord.mainViMean = $('#result-contents').find('> .list1').first().find('> li b').text();           

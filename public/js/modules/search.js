@@ -71,7 +71,7 @@ function bindAutoComplete(data) {
     '<ul>' +
         '{{each words}}' +
             '<li>' +
-                '<a class="autosearch-item" href="/search?word=${name}&type=vi">' +
+                '<a class="autosearch-item" href="/definition/' + $('#hdfType').val() + '/${name}">' +
                     '<p class="word-name"><span class="name">${name}</span> <span class="phonetic-spelling">${phoneticSpelling}</span></p>' +
                     '<p class="word-mean">{{if mainType}}<span class="main-type">[${mainType}]</span>{{/if}} {{if mainViMean}}{{html mainViMean}}{{else}}{{html mainEnMean}}{{/if}}</p>' +
                 '</a>' +                
@@ -100,7 +100,7 @@ function showHideSearchSuggestion() {
 
     $('#search-suggestion').on('hide', function(e) {
         e.preventDefault();
-        $(this).hide().empty();
+        $(this).hide();
         $('.search-section').css({'position': 'fixed'});
     });
 }

@@ -8,7 +8,7 @@ var router = require('express').Router(),
 var listOfWords;
 var crawlingCount = 0;    
 
-Word.model.find({translateToEn: {$exists: false}}).sort({name: 1}).limit(14262).exec(function(err, result) {
+Word.model.find({$and: [{translateToEn: {$exists: false}}, {isEnRedirected: {$exists: false}}]}).sort({name: 1}).limit(5000).exec(function(err, result) {
     listOfWords = result;
     console.log('list of words of oxford : ', listOfWords.length);
 });
@@ -30,7 +30,7 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
                 setTimeout(function() {
                     console.log('==============================start crawling======================');
                     crawler.start();
-                }, 180000);
+                }, 120000);
             }               
         }          
     });
@@ -238,8 +238,8 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
         }        
         
         var selectedWord = null;
-        for(var i = 0; i < listOfWords.length; i++) {                
-            if('https://en.oxforddictionaries.com/definition/' + listOfWords[i].name.replace(/ /g, '_') === unescape(queueItem.url)) {
+        for(var i = 0; i < listOfWords.length; i++) {             
+            if('https://en.oxforddictionaries.com/definition/' + listOfWords[i].name.replace(/ /g, '_') === decodeURI(queueItem.url)) {
                 selectedWord = listOfWords[i];                                             
                 listOfWords.splice(i, 1);
                 break;                
@@ -279,6 +279,7 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
     //crawler.maxConcurrency = 1;
     crawler.maxDepth = 2;    
     crawler.decodeResponses=true;
+    crawler.urlEncoding = 'unicode';
     crawler.start();
 });
 

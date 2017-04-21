@@ -33,7 +33,7 @@ function searchAutocomplete() {
 
         //$('#btn-clearinput').addClass('active');
 
-        var pagesize = 5, wWidth = $(window).width();
+        var pagesize = 5, wWidth = $(window).outerWidth();
         if(wWidth >= 768 && wWidth < 1024) {
             pagesize = 8;
         } else if (wWidth >= 1024) {
@@ -95,7 +95,6 @@ function showHideSearchSuggestion() {
         e.preventDefault();        
         $(this).slideDown();
         $('.search-section').css({'position': 'absolute'});
-
     });
 
     $('#search-suggestion').on('hide', function(e) {
@@ -184,7 +183,7 @@ function handleKeyDown() {
     });
 }
 
-function init() {
+function init() {    
     $('#home-page #word').focus();
     initpage();
     searchAutocomplete();

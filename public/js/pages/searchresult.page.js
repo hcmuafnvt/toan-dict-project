@@ -72,10 +72,10 @@ function addWordToList() {
 }
 
 function selectDictType() {
-    $('.select-dict-type li').on('click', function(e) {
+    $('.select-dict-type li, .menu-dict-type li').on('click', function(e) {
         e.preventDefault();
         window.location.href = '/definition/' + $(this).data('type') + '/' + $('.word-name').text().trim().toLowerCase();
-    })
+    });
 }
 
 function expandCollapseTypeOfWord() {

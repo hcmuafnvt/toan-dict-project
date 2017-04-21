@@ -30,6 +30,13 @@
                     <span itemprop="position" content="3"></span>
                 </li>
             </ol>
+
+            <div class="menu-dict-type">                
+                <ul>
+                    <li data-type="en-vi" class="{{#ifeq type 'en-vi'}}active{{/ifeq}}"><a class="type" href="#">English - Vietnamese</a></li>
+                    <li data-type="en-en" class="{{#ifeq type 'en-en'}}active{{/ifeq}}"><a class="type" href="#">English - English</a></li>                
+                </ul>                       
+            </div>
         </div>
     </div>
 
@@ -71,7 +78,7 @@
                                     {{#if examples}}
                                         <p class="ex">- {{{examples.[0]}}}</p>                            
                                         <div class="more-examples">
-                                            <button class="btn btn-default btn-more-exg"><i class="glyphicon glyphicon-plus"></i><i class="glyphicon glyphicon-minus"></i> More examples</button>
+                                            <p class="btn btn-default btn-more-exg">More examples</p>
                                             <div class="exg">
                                                 {{#examples}}
                                                     {{#ifeq @index 0}}
@@ -90,7 +97,7 @@
                                         {{#if examples}}
                                             <p class="ex">- {{{examples.[0]}}}</p>
                                             <div class="more-examples">
-                                                <button class="btn btn-default btn-more-exg"><i class="glyphicon glyphicon-plus"></i><i class="glyphicon glyphicon-minus"></i> More examples</button>
+                                                <p class="btn btn-default btn-more-exg">More examples</p>
                                                 <div class="exg">
                                                     {{#examples}}                                
                                                         {{#ifeq @index 0}}
@@ -128,7 +135,7 @@
                                     {{#if examples}}
                                         <p class="ex">- {{{examples.[0]}}}</p>                         
                                         <div class="more-examples">
-                                            <button class="btn btn-default btn-more-exg"><i class="glyphicon glyphicon-plus"></i><i class="glyphicon glyphicon-minus"></i> More examples</button>
+                                            <p class="btn btn-default btn-more-exg">More examples</p>
                                             <div class="exg">
                                                 {{#examples}}
                                                     {{#ifeq @index 0}}

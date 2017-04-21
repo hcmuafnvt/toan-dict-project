@@ -51,9 +51,9 @@
                 text-align: center;
 
                 &.active {
-                    background-color: #60ba4d;
+                    background-color: #eaeaea;
                     a.type {
-                        color: #fff;
+                        color: #000;
                     }
                 }
 
@@ -71,6 +71,10 @@
             }
         }
     } //end .select-dict-type
+
+    .menu-dict-type {
+        display: none;
+    }
 
     .search-result {
         .gramb, .etymology {
@@ -106,6 +110,7 @@
             font-weight: bold;
             padding-top: 6px;
             color: #d86f0f;
+            cursor: pointer;
 
             &.collapsed {
                 .arrow {
@@ -181,34 +186,34 @@
         .more-examples {
             .exg {
                 display: none;
+                padding-top: 15px;
             }            
         
             .btn-more-exg {
+                position: relative;
+                padding-left: 24px;
                 color: #848484;            
-                border: 1px dashed #ccc;            
-                font-weight: bold;
-                margin-bottom: 15px;
+                border: 1px dashed #ccc;
+                outline: none;
+                cursor: pointer;
 
-                i {
-                    font-size: 0.8em;
-                    padding-right: 2px;
+                &:active, &:hover {
+                    background-color: #fff;
+                }             
 
-                    &.glyphicon-plus {
-                        display: inline-block;
-                    }
-
-                    &.glyphicon-minus {
-                        display: none;
-                    }
-                }                
+                &:before {
+                    position: absolute;
+                    content: "+";
+                    top: -1px;                    
+                    left: 5px;
+                    font-size: 1.5em;
+                    color: #848484;
+                }                         
 
                 &.collapsed {
-                    .glyphicon-plus {
-                        display: none;
-                    }
-
-                    .glyphicon-minus {
-                        display: inline-block;
+                    &:before {
+                        content: "\2013";
+                        top: 1px;
                     }
                 }
             }           
@@ -307,6 +312,67 @@
                         }
                     }                    
                 }
+            }
+        }
+    }
+
+    @media (min-width: 768px) {
+        margin-top: 100px;
+        .select-dict-type {
+            ul {
+                height: 35px;
+                .type {
+                    padding-top: 9px;
+                    font-size: 1.2em;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 1024px) {
+        margin-top: 0px;
+        background-color: #E9E9E9;
+        .select-dict-type {
+            display: none;
+        }
+        .breadcrumb {
+            ol {
+                float: left;
+            }
+        }
+        .menu-dict-type {
+            display: block;
+            ul {
+                float: right;
+                list-style: none;
+                margin: 0px;
+                li {
+                    display: inline-block;
+                    &:first-child {
+                        border-right: 1px solid #ccc;
+                        padding-right: 5px;
+                    }
+
+                    a {
+                        color: #a29e9e;
+                        padding: 0px 3px;
+                    }
+
+                    &.active {
+                        a {
+                            color: #026aa7;
+                        }
+                    }
+                }
+            }
+        }
+
+        .search-result {
+            padding-top: 20px;
+            .container {
+                background-color: #fff;
+                border-radius: 10px;
+                .box-shadow(0 0 25px rgba(0,0,0,.04));
             }
         }
     }

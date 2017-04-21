@@ -186,12 +186,13 @@
     border-radius: 0px 0px 3px 3px;
     text-align: left;
     word-wrap: break-word;
-    box-shadow: 0px 3px 5px #ababab;
+    .box-shadow(0px 1px 4px #777777);
     margin-bottom: 20px;    
 
     ul {
         list-style: none;
         padding: 0px;
+        margin-bottom: 0px;
 
         li {
             border-bottom: 1px solid #ccc;
@@ -205,7 +206,8 @@
             a {
                 text-decoration: none;
                 display: inline-block;
-                margin: 5px 10px;
+                padding: 5px 10px;
+                width: 100%;
             }
             &:first-child {
                 margin-top: 0px;
@@ -336,6 +338,8 @@ Desktop display
         background: none;
         top: 0;        
         left: 170px;
+        z-index: 10001;
+        width: 415px;
     }
 
     .search-box {

@@ -137,7 +137,7 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
         console.log('redirectQueueItem : ', redirectQueueItem.url);
         var selectedWord = null;
         for(var i = 0; i < listOfWords.length; i++) {                
-            if('https://vdict.com' + listOfWords[i].vdictHref === unescape(queueItem.url)) {
+            if('https://vdict.com' + listOfWords[i].vdictHref === decodeURI(queueItem.url)) {
                 selectedWord = listOfWords[i];                                             
                 listOfWords.splice(i, 1);
                 break;                
@@ -157,7 +157,7 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
 
         var selectedWord = null;
         for(var i = 0; i < listOfWords.length; i++) {                
-            if('https://vdict.com' + listOfWords[i].vdictHref === unescape(queueItem.url)) {
+            if('https://vdict.com' + listOfWords[i].vdictHref === decodeURI(queueItem.url)) {
                 selectedWord = listOfWords[i];                                             
                 listOfWords.splice(i, 1);
                 break;                

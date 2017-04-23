@@ -175,6 +175,28 @@
             }
         }
 
+        .level1-strong-mean, .level2-strong-mean {
+            font-weight: bold;
+            &:before {
+                content: '(';
+                font-weight: normal;
+            }
+            &:after {
+                content: ') ';
+                font-weight: normal;
+            }
+        }
+
+        .no-object {
+            color: #23aba0;
+            &:before {
+                content: ' ['
+            }
+            &:after {
+                content: '] '
+            }
+        }
+
         .ex {
             font-size: 1.1em;
             font-style: italic;
@@ -330,8 +352,7 @@
     }
 
     @media (min-width: 1024px) {
-        margin-top: 0px;
-        background-color: #E9E9E9;
+        margin-top: 0px;        
         .select-dict-type {
             display: none;
         }

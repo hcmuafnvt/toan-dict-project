@@ -52,7 +52,7 @@
     <div class="search-result">
         <div class="container">
             <div class="main-word">
-                <h1 class="word-name">{{data.searchResult.name}}</h1>
+                <h1 class="word-name tooltipster" title="{{data.searchResult.name}}">{{data.searchResult.name}}</h1>
                 <a class="sound-link" onclick="this.firstElementChild.play();">
                     <audio src="{{data.searchResult.soundLink}}">
                     </audio>

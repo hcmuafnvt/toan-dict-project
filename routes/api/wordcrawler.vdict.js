@@ -8,7 +8,8 @@ var router = require('express').Router(),
 var listOfWords;
 var crawlingCount = 0;    
 
-Word.model.find({name: 'eat'}).sort({name: 1}).limit(10).exec(function(err, result) { //1
+//Word.model.find({$and: [{translateToVi: {$exists: false}}, {isViRedirected: {$exists: false}}]}).sort({name: 1}).limit(5000).exec(function(err, result) {
+Word.model.find({name: /^b/}).sort({name: 1}).limit(4000).exec(function(err, result) {
     listOfWords = result;
     console.log('list of words of vdict : ', listOfWords.length);
 });
@@ -110,14 +111,14 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
             crawlingCount++;
             console.log('====> (%d) fetchstart %s', crawlingCount, queueItem.url);
             console.time('fetchTime');            
-            if((crawlingCount % 500) === 0) {                
-                console.log('===============================Waiting 3 minutes=====================');
-                crawler.stop();
-                setTimeout(function() {
-                    console.log('==============================start crawling======================');
-                    crawler.start();
-                }, 90000);
-            }               
+            // if((crawlingCount % 500) === 0) {                
+            //     console.log('===============================Waiting 3 minutes=====================');
+            //     crawler.stop();
+            //     setTimeout(function() {
+            //         console.log('==============================start crawling======================');
+            //         crawler.start();
+            //     }, 90000);
+            // }               
         }          
     });
 

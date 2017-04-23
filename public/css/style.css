@@ -15,6 +15,9 @@ body.mobile-menu {
   position: fixed;
   overflow: hidden;
 }
+a {
+  cursor: pointer;
+}
 .main {
   position: relative;
   left: 0;
@@ -41,7 +44,56 @@ body.mobile-menu {
   position: absolute;
   background-color: #ffffff;
 }
+.translate-text {
+  position: fixed;
+  bottom: 10px;
+  right: -110px;
+  font-size: 1.2em;
+  color: #fff;
+  padding: 6px 12px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+  cursor: pointer;
+  opacity: 0;
+  background-color: #9755b7;
+  -webkit-transition: right 0.25s;
+  -moz-transition: right 0.25s;
+  -o-transition: right 0.25s;
+  transition: right 0.25s;
+}
+.translate-text.active {
+  right: 10px;
+  opacity: 1;
+}
+/*** Works on common browsers ***/
+::selection {
+  background-color: #9755b7;
+  color: #fff;
+}
+/*** For Webkit ***/
+::-webkit-selection {
+  background-color: #9755b7;
+  color: #fff;
+}
+/*** Mozilla based browsers ***/
+::-moz-selection {
+  background-color: #9755b7;
+  color: #fff;
+}
+/***For Other Browsers ***/
+::-o-selection {
+  background-color: #9755b7;
+  color: #fff;
+}
+::-ms-selection {
+  background-color: #9755b7;
+  color: #fff;
+}
 @media (min-width: 1024px) {
+  body {
+    background-color: #e9e9e9;
+  }
   .main {
     padding-top: 80px;
   }
@@ -1081,6 +1133,29 @@ Desktop display
   position: absolute;
   margin-left: -40px;
 }
+.searchresult-page .search-result .level1-strong-mean,
+.searchresult-page .search-result .level2-strong-mean {
+  font-weight: bold;
+}
+.searchresult-page .search-result .level1-strong-mean:before,
+.searchresult-page .search-result .level2-strong-mean:before {
+  content: '(';
+  font-weight: normal;
+}
+.searchresult-page .search-result .level1-strong-mean:after,
+.searchresult-page .search-result .level2-strong-mean:after {
+  content: ') ';
+  font-weight: normal;
+}
+.searchresult-page .search-result .no-object {
+  color: #23aba0;
+}
+.searchresult-page .search-result .no-object:before {
+  content: ' [';
+}
+.searchresult-page .search-result .no-object:after {
+  content: '] ';
+}
 .searchresult-page .search-result .ex {
   font-size: 1.1em;
   font-style: italic;
@@ -1212,7 +1287,6 @@ Desktop display
 @media (min-width: 1024px) {
   .searchresult-page {
     margin-top: 0px;
-    background-color: #E9E9E9;
   }
   .searchresult-page .select-dict-type {
     display: none;

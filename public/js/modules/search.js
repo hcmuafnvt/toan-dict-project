@@ -41,8 +41,8 @@ function searchAutocomplete() {
         }
 
         $.ajax({
-            url: "/api/vidict/autocomplete/" + $(this).val().trim() + '/' + pagesize + '/' + $('#hdfType').val(),              
-            method: "GET",
+            url: '/api/autocomplete/word/' + $('#hdfType').val() + '/' + pagesize + '/' + $(this).val().trim(),              
+            method: 'GET',
             dataType: "json",
             success: function (data) {
                 bindAutoComplete(data);                

@@ -14,6 +14,10 @@ body {
     }
 }
 
+a {
+    cursor: pointer;
+}
+
 .main {
     position: relative;
     left: 0;
@@ -43,8 +47,33 @@ body {
     background-color: rgb(255,255,255);
 }
 
+.translate-text {
+    position: fixed;
+    bottom: 10px;
+    right: -110px;
+    font-size: 1.2em;    
+    color: #fff;
+    padding: 6px 12px;    
+    .border-radius(1px);
+    cursor: pointer;
+    opacity: 0;    
+    background-color: #9755b7;
+    .transition(right 0.25s);
+
+    &.active {
+        right: 10px;
+        opacity: 1;
+    }
+}
+
+.selection(#9755b7, #fff);
+
 // desktop display
 @media (min-width: 1024px) {
+    body {
+        background-color: #e9e9e9;
+    }    
+
     .main {
         padding-top: 80px;
     }

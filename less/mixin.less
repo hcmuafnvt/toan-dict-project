@@ -87,3 +87,35 @@ CSS3 PROPERTIES
     -o-box-shadow: @boxShadow;
     box-shadow: @boxShadow;
 }
+
+.selection(@bgColor, @color) {
+    //#c347ca
+    /*** Works on common browsers ***/
+    ::selection {
+        background-color: @bgColor;
+        color: @color;
+    }
+
+    /*** For Webkit ***/
+    ::-webkit-selection {
+        background-color: @bgColor;
+        color: @color;
+    }
+
+    /*** Mozilla based browsers ***/
+    ::-moz-selection {
+        background-color: @bgColor;
+        color: @color;
+    }
+
+    /***For Other Browsers ***/
+    ::-o-selection {
+        background-color: @bgColor;
+        color: @color;
+    }
+
+    ::-ms-selection {
+        background-color: @bgColor;
+        color: @color;
+    }
+}

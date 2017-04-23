@@ -45,7 +45,8 @@ exports = module.exports = function (app) {
 	app.all('/lists/add', routes.views.list.add);
 
 	// api
-	app.use('/api/vidict', require('./api/dict.laban'));
+	app.use('/api/autocomplete', require('./api/autocomplete-search'));
+	app.use('/api/translate', require('./api/google-translate'));
 	app.use('/api/words', require('./api/word'));
 	app.use('/api/lists', require('./api/list'));
 	app.use('/api/crawlingvdict', require('./api/wordcrawler.vdict'));

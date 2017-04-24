@@ -9,7 +9,7 @@ var listOfWords;
 var crawlingCount = 0;    
 
 //Word.model.find({$and: [{translateToVi: {$exists: false}}, {isViRedirected: {$exists: false}}]}).sort({name: 1}).limit(5000).exec(function(err, result) {
-Word.model.find({name: /^b/}).sort({name: 1}).limit(4000).exec(function(err, result) {
+Word.model.find({translateToVi: {$exists: false}}).sort({name: 1}).limit(4000).exec(function(err, result) {
     listOfWords = result;
     console.log('list of words of vdict : ', listOfWords.length);
 });

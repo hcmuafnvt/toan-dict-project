@@ -5,5 +5,8 @@ module.exports = function(gulp) {
 
         gulp.src(['bower_components/bootstrap/dist/css/bootstrap.min.css'])
         .pipe(gulp.dest('./public/css/libs/'));
+
+        gulp.src(['bower_components/animate.css/animate.min.css'])
+        .pipe(gulp.dest('./public/css/libs/'));
     });
 };

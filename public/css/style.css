@@ -46,7 +46,7 @@ a {
 }
 .translate-text {
   position: fixed;
-  bottom: 100px;
+  bottom: 10px;
   right: -110px;
   font-size: 1.2em;
   color: #fff;
@@ -55,7 +55,7 @@ a {
   -moz-border-radius: 1px;
   border-radius: 1px;
   cursor: pointer;
-  opacity: 0;
+  display: none;
   background-color: #9755b7;
   -webkit-transition: right 0.25s;
   -moz-transition: right 0.25s;
@@ -64,7 +64,7 @@ a {
 }
 .translate-text.active {
   right: 0px;
-  opacity: 1;
+  display: inline-block;
 }
 .translate-text .glyphicon-hand-right {
   position: absolute;
@@ -76,10 +76,10 @@ a {
   -moz-animation-duration: 5s;
   -o-animation-duration: 5s;
   animation-duration: 5s;
-  -webkit-animation-delay: 1s;
-  -moz-animation-delay: 1s;
-  -o-animation-delay: 1s;
-  animation-delay: 1s;
+  -webkit-animation-delay: 0s;
+  -moz-animation-delay: 0s;
+  -o-animation-delay: 0s;
+  animation-delay: 0s;
   -webkit-animation-iteration-count: infinite;
   -moz-animation-iteration-count: infinite;
   -o-animation-iteration-count: infinite;
@@ -119,6 +119,10 @@ a {
   }
   .main {
     padding-top: 80px;
+  }
+  .translate-text {
+    position: absolute;
+    bottom: initial;
   }
 }
 /*-----------------------------------------------------------------------------------------------------------
@@ -1102,6 +1106,12 @@ Desktop display
   color: #d0a44c;
   font-size: 1.6em;
 }
+.searchresult-page .search-result .no-result {
+  margin-top: 30px;
+  line-height: 25px;
+  font-size: 1.1em;
+  color: #3b3c3c;
+}
 .searchresult-page .search-result .type-of-word {
   border-top: 2px solid #ccc;
   margin-top: 10px;
@@ -1351,11 +1361,16 @@ Desktop display
   }
   .searchresult-page .search-result .container {
     background-color: #fff;
+    min-height: 400px;
     border-radius: 10px;
     -webkit-box-shadow: 0 0 25px rgba(0, 0, 0, 0.04);
     -moz-box-shadow: 0 0 25px rgba(0, 0, 0, 0.04);
     -o-box-shadow: 0 0 25px rgba(0, 0, 0, 0.04);
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.04);
+  }
+  .searchresult-page .search-result .no-result {
+    font-size: 1.7em;
+    line-height: initial;
   }
 }
 .learn-page .main-quiz-wrapper {

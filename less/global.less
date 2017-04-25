@@ -49,20 +49,20 @@ a {
 
 .translate-text {
     position: fixed;
-    bottom: 100px;
-    right: -110px;
+    bottom: 10px;
+    right: -110px;    
     font-size: 1.2em;    
     color: #fff;
     padding: 6px 12px;    
     .border-radius(1px);
-    cursor: pointer;
-    opacity: 0;    
+    cursor: pointer;      
+    display: none;
     background-color: #9755b7;
     .transition(right 0.25s);
 
     &.active {
-        right: 0px;
-        opacity: 1;
+        right: 0px;       
+        display: inline-block;
     }
 
     .glyphicon-hand-right {
@@ -72,7 +72,7 @@ a {
         font-size: 1.5em;
         color: #000;
         .animation-duration(5s);
-        .animation-delay(1s);
+        .animation-delay(0s);
         .animation-iteration-count(infinite);        
     }    
 }
@@ -92,5 +92,10 @@ a {
 
     .main {
         padding-top: 80px;
+    }
+
+    .translate-text {
+        position: absolute;
+        bottom: initial;
     }
 }

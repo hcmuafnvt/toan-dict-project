@@ -21,6 +21,7 @@ function loadJavascriptForPage() {
 }
 
 function lookupHighlightText() {
+    var mouseDownTop, mouseUpTop, translateButtonPosition;
     if (util.isMobile()) {
         var selectionEndTimeout;
         document.onselectionchange = function () {
@@ -31,9 +32,12 @@ function lookupHighlightText() {
             }, 500);
         }
     } else {
-        $('body').on('mouseup', function (e) {
-            e.preventDefault();
-            showTranslateButton();
+        $('body').on('mousedown', function(e) {            
+            mouseDownTop = e.pageY;            
+        }).on('mouseup', function (e) {            
+            mouseUpTop = e.pageY;                    
+            translateButtonPosition = mouseDownTop + ((mouseUpTop - mouseDownTop) / 2) - 20;            
+            showTranslateButton(translateButtonPosition);            
         });
     }
 
@@ -100,7 +104,7 @@ function lookupHighlightText() {
     // })
 }
 
-function showTranslateButton() {
+function showTranslateButton(translateButtonPosition) {
     var $translateText = $('#translate-text');
     var text = '';
     if (window.getSelection) {
@@ -110,10 +114,13 @@ function showTranslateButton() {
     }
 
     if (text != '') {
-        $translateText.data('text', text);
+        $translateText.data('text', text);        
+        if(typeof translateButtonPosition !== 'undefined') {
+            $translateText.css({'top': translateButtonPosition});
+        }        
         $translateText.addClass('active');
     } else {
-        $translateText.removeClass('active');
+        $translateText.removeClass('active');        
     }
 }
 

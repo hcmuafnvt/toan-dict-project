@@ -35,7 +35,7 @@
         }
     } //end .breadcrumb
 
-    .select-dict-type {
+    .select-dict-type {        
         ul {
             list-style: none;
             padding: 0px;
@@ -77,28 +77,97 @@
     }
 
     .search-result {
+        .grambs, .etymologys {
+            padding: 0px 10px;
+        }
+
         .gramb, .etymology {
-            margin-bottom: 25px;
+            padding-bottom: 25px;            
         }  
 
         .main-word {
-            .word-name {
-                display: inline-block;
-                margin-right: 10px;
-                font-weight: bold;
+            cursor: pointer;
+            background-color: #fff;
+            padding: 10px;
+            .border-radius(3px);
+            .box-shadow('1px 1px 2px #ccc, -1px -1px 2px #dedddd');
+            text-align: center;
+
+            .word-name {          
+                font-size: 2.2em;      
+                font-weight: bold;                
+                margin: 0px;
             }
-            .sound-link {
-                text-decoration: none;
-                .glyphicon-volume-up {
-                    font-size: 1.6em;
-                    color: #c75858;
-                    display: inline-block;
-                    margin-right: 10px;
+            
+            .pronunciation {
+                margin-top: 7px;
+
+                .sound-link {
+                    text-decoration: none;
+                    .glyphicon-volume-up {
+                        font-size: 2em;
+                        color: #c75858;
+                        display: inline-block;                    
+                        top: 5px;
+                        left: 4px;
+                        &:hover {
+                            color: #942b2b;
+                        }
+                    }
+                }
+                .phonetic-spelling {
+                    color: #d0a44c;
+                    font-size: 1.5em;
+                    margin-left: 10px;
+                }
+            } //end .pronunciation
+
+            .btn-add-to-list {
+                border: 1px dashed #ccc;
+                border-radius: 3px;
+                font-size: 1.3em;                
+                color: #888686;
+                box-shadow: 1px 1px 1px #e8e8e8;
+                padding: 5px 7px;                
+                display: block;
+                width: 125px;
+                padding-left: 25px;
+                margin: 15px auto;
+                position: relative;
+
+                .glyphicon-plus {
+                    font-size: 0.8em;
+                    position: absolute;
+                    top: 10px;
+                    left: 9px;
+                    color: #b9b9b9;
                 }
             }
-            .phonetic-spelling {
-                color: #d0a44c;
-                font-size: 1.6em;
+        }
+
+        .mean-word {
+            .type-of-dict {
+                padding: 0px 10px 5px 10px;
+                p {
+                    color: #ccc;
+                    .type {
+                        color: #337ab7;
+                        opacity: 0.7;
+                    }
+                }                
+            }
+            cursor: pointer;
+            background-color: #fff;
+            .border-radius(3px);
+            .box-shadow('1px 1px 2px #ccc, -1px -1px 2px #dedddd');
+            margin-top: 10px;
+
+            .definition-in {
+                cursor: pointer;
+                padding: 20px 10px 0px;
+                display: block;
+                font-size: 1.1em;   
+                color: #585a5a;         
             }
         }
 
@@ -155,7 +224,7 @@
             margin-left: 30px;
 
             .l1-mean {
-                font-size: 1.3em;
+                font-size: 1.1em;
                 line-height: 25px;
                 font-weight: bold;
                 color: #484444;
@@ -170,7 +239,7 @@
         .l2-container {
             margin-left: 40px;
             .l2-mean {
-                font-size: 1.2em;
+                font-size: 1.1em;
                 line-height: 25px;
                 font-weight: bold;
                 color: #484444;
@@ -226,7 +295,7 @@
                 outline: none;
                 cursor: pointer;
 
-                &:active, &:hover {
+                &:active, &:hover, &:visited {
                     background-color: #fff;
                 }             
 

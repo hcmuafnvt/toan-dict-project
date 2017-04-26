@@ -19,8 +19,7 @@ exports = module.exports = function(req, res) {
 
         var regex = new RegExp('^' + locals.word + '$', 'i');
         Word.model.findOne({name: regex}, function(err, word) {
-            if(err) return next(err);
-            console.log(word);            
+            if(err) return next(err);             
             locals.data.searchResult = word;            
             next();
         });

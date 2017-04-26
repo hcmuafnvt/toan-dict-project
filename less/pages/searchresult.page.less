@@ -35,43 +35,6 @@
         }
     } //end .breadcrumb
 
-    .select-dict-type {        
-        ul {
-            list-style: none;
-            padding: 0px;
-            margin: 0px;
-            border: 1px solid #ccc;
-            height: 30px;
-            li {                
-                display: block;
-                float: left;
-                width: 50%;
-                font-size: 0.8em;
-                height: 100%;
-                text-align: center;
-
-                &.active {
-                    background-color: #eaeaea;
-                    a.type {
-                        color: #000;
-                    }
-                }
-
-                a.type {
-                    display: block;
-                    padding-top: 6px;
-                    text-decoration: none;
-                    color: #585a5a;
-                    letter-spacing: 0.5px;
-                }
-
-                &:first-child {
-                    border-right: 1px solid #ccc;
-                }
-            }
-        }
-    } //end .select-dict-type
-
     .menu-dict-type {
         display: none;
     }
@@ -82,7 +45,7 @@
         }
 
         .gramb, .etymology {
-            padding-bottom: 25px;            
+            padding-bottom: 5px;            
         }  
 
         .main-word {
@@ -122,30 +85,64 @@
                 }
             } //end .pronunciation
 
-            .btn-add-to-list {
-                border: 1px dashed #ccc;
-                border-radius: 3px;
-                font-size: 1.3em;                
-                color: #888686;
-                box-shadow: 1px 1px 1px #e8e8e8;
-                padding: 5px 7px;                
-                display: block;
-                width: 125px;
-                padding-left: 25px;
-                margin: 15px auto;
-                position: relative;
+            .actions {
+                cursor: pointer;
+                height: 35px;                
+                margin-top: 20px;
+                .shares {
+                    float: left;
+                    a {
+                        position: relative;
+                        width: 35px;
+                        height: 35px;
+                        border: 1px solid #ccc;
+                        border-radius: 50%;
+                        display: inline-block;
+                        margin-right: 3px;
+                        .fa {
+                            position: absolute;
+                            position: absolute;
+                            font-size: 1.5em;
+                            top: 6px;
+                            color: #7e8282;
+                            &.fa-facebook {
+                                left: 10px;                                
+                            }
+                            &.fa-twitter {
+                                left: 8px;
+                            }
+                            &.fa-google-plus {
+                                left: 5px;
+                            }
+                        }
+                    }
+                } // end .shares
 
-                .glyphicon-plus {
-                    font-size: 0.8em;
-                    position: absolute;
-                    top: 10px;
-                    left: 9px;
-                    color: #b9b9b9;
-                }
-            }
+                .btn-add-to-list {
+                    float: right;
+                    border: 1px dashed #ccc;
+                    border-radius: 3px;
+                    font-size: 1.1em;
+                    color: #888686;
+                    box-shadow: 0px 1px 5px #c7c7c7;
+                    padding: 4px 0px 4px 20px;
+                    display: block;
+                    width: 107px;                
+                    position: relative;
+
+                    .glyphicon-plus {
+                        font-size: 0.8em;
+                        position: absolute;
+                        top: 8px;
+                        left: 9px;
+                        color: #b9b9b9;
+                    }
+                } // end .btn-add-to-list
+            }            
         }
 
         .mean-word {
+            clear: both;
             .type-of-dict {
                 padding: 0px 10px 5px 10px;
                 p {
@@ -320,7 +317,7 @@
         .etymology {
             .l1-container {
                 .l1-phase {
-                    font-size: 1.3em;
+                    font-size: 1.1em;
                     line-height: 25px;
                     font-weight: bold;
                     color: #484444;
@@ -332,7 +329,7 @@
                 }
 
                 .l1-mean {
-                    font-size: 1.2em;
+                    font-size: 1.1em;
                     line-height: 20px;                    
                     color: #848181;
                     margin-top: 15px;

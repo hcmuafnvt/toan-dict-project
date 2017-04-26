@@ -1078,37 +1078,6 @@ Desktop display
   color: #8c8a8a;
   letter-spacing: 4px;
 }
-.searchresult-page .select-dict-type ul {
-  list-style: none;
-  padding: 0px;
-  margin: 0px;
-  border: 1px solid #ccc;
-  height: 30px;
-}
-.searchresult-page .select-dict-type ul li {
-  display: block;
-  float: left;
-  width: 50%;
-  font-size: 0.8em;
-  height: 100%;
-  text-align: center;
-}
-.searchresult-page .select-dict-type ul li.active {
-  background-color: #eaeaea;
-}
-.searchresult-page .select-dict-type ul li.active a.type {
-  color: #000;
-}
-.searchresult-page .select-dict-type ul li a.type {
-  display: block;
-  padding-top: 6px;
-  text-decoration: none;
-  color: #585a5a;
-  letter-spacing: 0.5px;
-}
-.searchresult-page .select-dict-type ul li:first-child {
-  border-right: 1px solid #ccc;
-}
 .searchresult-page .menu-dict-type {
   display: none;
 }
@@ -1118,7 +1087,7 @@ Desktop display
 }
 .searchresult-page .search-result .gramb,
 .searchresult-page .search-result .etymology {
-  padding-bottom: 25px;
+  padding-bottom: 5px;
 }
 .searchresult-page .search-result .main-word {
   cursor: pointer;
@@ -1159,27 +1128,59 @@ Desktop display
   font-size: 1.5em;
   margin-left: 10px;
 }
-.searchresult-page .search-result .main-word .btn-add-to-list {
+.searchresult-page .search-result .main-word .actions {
+  cursor: pointer;
+  height: 35px;
+  margin-top: 20px;
+}
+.searchresult-page .search-result .main-word .actions .shares {
+  float: left;
+}
+.searchresult-page .search-result .main-word .actions .shares a {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 3px;
+}
+.searchresult-page .search-result .main-word .actions .shares a .fa {
+  position: absolute;
+  font-size: 1.5em;
+  top: 6px;
+  color: #7e8282;
+}
+.searchresult-page .search-result .main-word .actions .shares a .fa.fa-facebook {
+  left: 10px;
+}
+.searchresult-page .search-result .main-word .actions .shares a .fa.fa-twitter {
+  left: 8px;
+}
+.searchresult-page .search-result .main-word .actions .shares a .fa.fa-google-plus {
+  left: 5px;
+}
+.searchresult-page .search-result .main-word .actions .btn-add-to-list {
+  float: right;
   border: 1px dashed #ccc;
   border-radius: 3px;
-  font-size: 1.3em;
+  font-size: 1.1em;
   color: #888686;
-  box-shadow: 1px 1px 1px #e8e8e8;
-  padding: 5px 7px;
+  box-shadow: 0px 1px 5px #c7c7c7;
+  padding: 4px 0px 4px 20px;
   display: block;
-  width: 125px;
-  padding-left: 25px;
-  margin: 15px auto;
+  width: 107px;
   position: relative;
 }
-.searchresult-page .search-result .main-word .btn-add-to-list .glyphicon-plus {
+.searchresult-page .search-result .main-word .actions .btn-add-to-list .glyphicon-plus {
   font-size: 0.8em;
   position: absolute;
-  top: 10px;
+  top: 8px;
   left: 9px;
   color: #b9b9b9;
 }
 .searchresult-page .search-result .mean-word {
+  clear: both;
   cursor: pointer;
   background-color: #fff;
   -webkit-border-radius: 3px;
@@ -1338,7 +1339,7 @@ Desktop display
   top: 1px;
 }
 .searchresult-page .search-result .etymology .l1-container .l1-phase {
-  font-size: 1.3em;
+  font-size: 1.1em;
   line-height: 25px;
   font-weight: bold;
   color: #484444;
@@ -1348,7 +1349,7 @@ Desktop display
   margin-left: -30px;
 }
 .searchresult-page .search-result .etymology .l1-container .l1-mean {
-  font-size: 1.2em;
+  font-size: 1.1em;
   line-height: 20px;
   color: #848181;
   margin-top: 15px;

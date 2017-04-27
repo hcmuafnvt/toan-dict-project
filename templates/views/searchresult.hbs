@@ -41,8 +41,8 @@
                         <div class="pronunciation">
                             <a class="sound-link" onclick="this.firstElementChild.play();">
                                 <audio src="{{data.searchResult.soundLink}}">
-                                </audio>
-                                <i class="glyphicon glyphicon-volume-up"></i>
+                                </audio>                                
+                                <i class="fa fa-volume-up" aria-hidden="true"></i>
                             </a>
                             <span class="phonetic-spelling">{{data.searchResult.phoneticSpelling}}</span>
                         </div>
@@ -53,7 +53,7 @@
                                 <a class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                                 <a class="googleplus"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                             </div>
-                            <a class="btn-add-to-list"><i class="glyphicon glyphicon-plus"></i> Add to list</a> 
+                            <a class="btn-add-to-list"><i class="glyphicon glyphicon-plus"></i><i class="fa fa-plus" aria-hidden="true"></i> Add to list</a> 
                         </div>
                                                
                     </div> <!-- end .main-word -->
@@ -70,7 +70,7 @@
                             {{/ifeq}}
                         </p>
                         <div class="type-of-dict">
-                            <p>Others: 
+                            <p>Others : 
                                 {{#ifeq type 'en-en'}}
                                     <a href="/definition/en-vi/{{word}}" class="type">Vietnamese</a> ,
                                     <a href="/definition/thesaurus/{{word}}" class="type">Thesaurus</a>                                    

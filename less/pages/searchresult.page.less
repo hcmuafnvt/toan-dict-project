@@ -2,7 +2,9 @@
     margin-top: 80px;
 
     .breadcrumb {
-        padding: 8px 0px;        
+        padding: 6px 0px;        
+        margin-bottom: 15px;
+        .box-shadow(0px 1px 2px #d8cece);
 
         ol {
             list-style: none;
@@ -47,7 +49,7 @@
         .main-word {
             cursor: pointer;
             background-color: #fff;
-            padding: 10px;
+            padding: 20px;
             .border-radius(3px);
             .box-shadow('1px 1px 2px #ccc, -1px -1px 2px #dedddd');
             text-align: center;
@@ -55,7 +57,7 @@
             .word-name {          
                 font-size: 2.2em;      
                 font-weight: bold;                
-                margin: 0px;
+                margin: 10px;
             }
             
             .pronunciation {
@@ -63,14 +65,12 @@
 
                 .sound-link {
                     text-decoration: none;
-                    .glyphicon-volume-up {
-                        font-size: 2em;
-                        color: #c75858;
-                        display: inline-block;                    
-                        top: 5px;
-                        left: 4px;
+                    .fa-volume-up {
+                        font-size: 1.7em;
+                        color: #026aa7;
+                        display: inline-block;                                            
                         &:hover {
-                            color: #942b2b;
+                            color: #025a8e;
                         }
                     }
                 }
@@ -91,7 +91,7 @@
                         position: relative;
                         width: 35px;
                         height: 35px;
-                        border: 1px solid #ccc;
+                        border: 1px solid #ab2e18;
                         border-radius: 50%;
                         display: inline-block;
                         margin-right: 3px;
@@ -100,7 +100,7 @@
                             position: absolute;
                             font-size: 1.5em;
                             top: 6px;
-                            color: #7e8282;
+                            color: #ab2e18;
                             &.fa-facebook {
                                 left: 10px;                                
                             }
@@ -119,19 +119,18 @@
                     border: 1px dashed #ccc;
                     .border-radius(3px);
                     font-size: 1.1em;
-                    color: #888686;
-                    //.box-shadow(0px 1px 5px #c7c7c7);
+                    color: #6d6c6c;                    
                     padding: 4px 0px 4px 20px;
                     display: block;
                     width: 107px;                
                     position: relative;
 
-                    .glyphicon-plus {
+                    .fa-plus {
                         font-size: 0.8em;
                         position: absolute;
-                        top: 8px;
+                        top: 9px;
                         left: 9px;
-                        color: #b9b9b9;
+                        color: #6d6c6c;
                     }
                 } // end .btn-add-to-list
             }            
@@ -142,7 +141,7 @@
             .type-of-dict {
                 padding: 0px 10px 5px 10px;
                 p {
-                    color: #ccc;
+                    color: #888;
                     .type {
                         color: #337ab7;
                         opacity: 0.7;
@@ -277,7 +276,7 @@
             font-size: 1.1em;
             font-style: italic;
             font-weight: 300;
-            color: #716c6c;
+            color: #585454;
             padding: 3px 0px;
         }   
 
@@ -373,7 +372,7 @@
                     .l1-sentence {
                         font-size: 1.1em;
                         line-height: 20px;
-                        color: #848181;
+                        color: #656363;
                         margin-top: 15px;
                         border-left: 5px solid #ccc;
                         padding-left: 5px;
@@ -424,15 +423,18 @@
 
     @media (min-width: 768px) {
         margin-top: 100px;
+        .breadcrumb {
+            margin-bottom: 20px;
+        }
         .search-result {
             .main-word {
                 .word-name {
-                    font-size: 3em;
+                    font-size: 3em;                    
                 }
 
                 .pronunciation {
                     .sound-link {
-                        .glyphicon-volume-up {
+                        .fa-volume-up {
                             font-size: 2.5em;
                             top: 7px;
                             left: 0px;
@@ -471,7 +473,7 @@
                         font-size: 1.5em;
                         padding: 5px 0 5px 20px;
                         width: 145px;
-                        .glyphicon-plus {
+                        .fa-plus {
                             top: 12px;
                         }
                     }
@@ -479,10 +481,13 @@
             } //end .main-word
 
             .mean-word {
+                padding: 20px;
                 .definition-in {
+                    padding: 0px;
                     font-size: 1.3em;
                 }
                 .type-of-dict {
+                    padding: 0px 0px 5px 0px;
                     font-size: 1.1em;
                 }
             } //end .mean-word
@@ -491,57 +496,64 @@
                 font-size: 1.3em;
             }
 
+            .grambs, .etymologys {
+                padding: 0px;
+            }
+
             .l1-container {
-                margin-left: 30px;
+                margin-left: 35px;
                 .l1-mean {
-                    font-size: 1.3em;
+                    font-size: 1.4em;
                     .l1-index {
-                        margin-left: -30px;
+                        margin-left: -35px;
                     }
                 }
             }
 
             .l2-container {
-                margin-left: 40px;
+                margin-left: 45px;
                 .l2-mean {
-                    font-size: 1.2em;
+                    font-size: 1.3em;
                     .l2-index {
-                        margin-left: -40px;
+                        margin-left: -45px;
                     }
                 }
             }
 
             .ex {
-                font-size: 1.2em;
+                font-size: 1.3em;
             }
 
             .etymology {
                 .l1-container {
                     .l1-phase {
-                        font-size: 1.3em;
-                        .li-index {
-                            margin-left: -30px;
+                        font-size: 1.4em;
+                        .l1-index {
+                            margin-left: -35px;
                         }
                     }
 
                     .l1-mean {
-                        font-size: 1.2em;
+                        font-size: 1.3em;
                     }
                 }
             }
 
             .en-vi {
+                .grambs {
+                    padding: 0px;
+                }
                 .l1-container {                    
                     .l1-mean {
-                        font-size: 1.3em;
+                        font-size: 1.4em;
                     }
                     .sentences {
                         .l1-sentence {
-                            font-size: 1.2em;
+                            font-size: 1.3em;
                         }
 
                         .l1-translate {
-                            font-size: 1.1em;
+                            font-size: 1.2em;
                         }
                     }
                 }

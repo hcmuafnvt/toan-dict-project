@@ -9,8 +9,7 @@
     {{> _searchbox}}
 </section>
 
-<div class="searchresult-page" id="searchresult-page">
-    {{!--<a href="#" id="addToList"><i class="glyphicon glyphicon-plus"></i> Add to list</a>--}}
+<div class="searchresult-page" id="searchresult-page">    
     <div class="breadcrumb">
         <div class="container">
             <ol itemscope itemtype="http://schema.org/BreadcrumbList">
@@ -29,25 +28,9 @@
                         <span itemprop="name">{{word}}</span></a>
                     <span itemprop="position" content="3"></span>
                 </li>
-            </ol>
-
-            <div class="menu-dict-type">                
-                <ul>
-                    <li data-type="en-vi" class="{{#ifeq type 'en-vi'}}active{{/ifeq}}"><a class="type" href="#">English - Vietnamese</a></li>
-                    <li data-type="en-en" class="{{#ifeq type 'en-en'}}active{{/ifeq}}"><a class="type" href="#">English - English</a></li>                
-                </ul>                       
-            </div>
+            </ol>            
         </div>
-    </div>
-
-    {{!--<div class="select-dict-type">
-        <div class="container">
-            <ul>
-                <li data-type="en-vi" class="{{#ifeq type 'en-vi'}}active{{/ifeq}}"><a class="type">English - Vietnamese</a></li>
-                <li data-type="en-en" class="{{#ifeq type 'en-en'}}active{{/ifeq}}"><a class="type">English - English</a></li>                
-            </ul>
-        </div>        
-    </div>--}}
+    </div>    
 
     <div class="search-result">
         <div class="container">
@@ -66,7 +49,7 @@
 
                         <div class="actions">                            
                             <div class="shares">
-                                <a ontouchstart="" class="fb"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a class="fb"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                 <a class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                                 <a class="googleplus"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                             </div>
@@ -75,10 +58,32 @@
                                                
                     </div> <!-- end .main-word -->
 
-                    <div class="mean-word">
-                        <p class="definition-in">Definition of <i>"{{word}}"</i> in English:</p>
+                    <div class="mean-word">                       
+                        <p class="definition-in">
+                            Definition of <i>"{{word}}"</i> in 
+                            {{#ifeq type 'en-en'}}
+                                English:
+                            {{else ifeq type 'en-vi'}}
+                                Vietnamese:
+                            {{else}}
+                                Thesaurus:
+                            {{/ifeq}}
+                        </p>
                         <div class="type-of-dict">
-                            <p>Others: <a class="type">Vietnamese</a> ,  <a class="type">Thesaurus</a></p>
+                            <p>Others: 
+                                {{#ifeq type 'en-en'}}
+                                    <a href="/definition/en-vi/{{word}}" class="type">Vietnamese</a> ,
+                                    <a href="/definition/thesaurus/{{word}}" class="type">Thesaurus</a>                                    
+                                {{/ifeq}}
+                                {{#ifeq type 'en-vi'}}
+                                    <a href="/definition/en-en/{{word}}" class="type">English</a> ,
+                                    <a href="/definition/thesaurus/{{word}}" class="type">Thesaurus</a>                                    
+                                {{/ifeq}}
+                                {{#ifeq type 'thesaurus'}}
+                                    <a href="/definition/en-vi/{{word}}" class="type">Vietnamese</a> ,
+                                    <a href="/definition/en-en/{{word}}" class="type">English</a>                                    
+                                {{/ifeq}}                               
+                            </p>
                         </div>                          
                         {{#ifeq type 'en-en'}}
                         <div class="en-en">
@@ -216,7 +221,9 @@
                         {{/ifeq}}
                     </div>            
                 {{else}}
-                    <h1 class="no-result">No exact matches found for "<span class="word-name">{{word}}</span>"</h1>    
+                    <div class="no-result">
+                        <h1>No exact matches found for "<span class="word-name">{{word}}</span>"</h1> 
+                    </div>                       
                 {{/if}}
             </div>
             <div class="right-menu col-md-4">

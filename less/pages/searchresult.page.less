@@ -33,11 +33,7 @@
                 }
             }
         }
-    } //end .breadcrumb
-
-    .menu-dict-type {
-        display: none;
-    }
+    } //end .breadcrumb    
 
     .search-result {
         .grambs, .etymologys {
@@ -45,7 +41,7 @@
         }
 
         .gramb, .etymology {
-            padding-bottom: 5px;            
+            padding-bottom: 15px;            
         }  
 
         .main-word {
@@ -121,10 +117,10 @@
                 .btn-add-to-list {
                     float: right;
                     border: 1px dashed #ccc;
-                    border-radius: 3px;
+                    .border-radius(3px);
                     font-size: 1.1em;
                     color: #888686;
-                    box-shadow: 0px 1px 5px #c7c7c7;
+                    //.box-shadow(0px 1px 5px #c7c7c7);
                     padding: 4px 0px 4px 20px;
                     display: block;
                     width: 107px;                
@@ -168,11 +164,18 @@
             }
         }
 
-        .no-result {
-            margin-top: 30px;
-            line-height: 25px;
-            font-size: 1.1em;
-            color: #3b3c3c;
+        .no-result {            
+            background-color: #fff;
+            border-radius: 3px;            
+            min-height: 100px;
+            h1 {
+                margin: 0px;
+                padding: 20px 10px;
+                line-height: 25px;
+                font-size: 1.1em;
+                color: #3b3c3c;
+                font-weight: normal;
+            }            
         }
 
         .type-of-word {
@@ -218,23 +221,23 @@
         }        
 
         .l1-container {
-            margin-left: 30px;
+            margin-left: 25px;
 
             .l1-mean {
-                font-size: 1.1em;
+                font-size: 1.2em;
                 line-height: 25px;
                 font-weight: bold;
                 color: #484444;
 
                 .l1-index {
                     position: absolute;                    
-                    margin-left: -30px;
+                    margin-left: -25px;
                 }
             }
         }
         
         .l2-container {
-            margin-left: 40px;
+            margin-left: 37px;
             .l2-mean {
                 font-size: 1.1em;
                 line-height: 25px;
@@ -243,7 +246,7 @@
 
                 .l2-index {
                     position: absolute;                    
-                    margin-left: -40px;
+                    margin-left: -37px;
                 }
             }
         }
@@ -324,7 +327,7 @@
 
                     .l1-index {
                         position: absolute;                    
-                        margin-left: -30px;
+                        margin-left: -25px;
                     }
                 }
 
@@ -340,6 +343,9 @@
         }
 
         .en-vi { //for en-vi section
+            .gramb {
+                padding-bottom: 0px;
+            }
             .type-of-word {
                 margin-top: 25px;
                 &:first-child {
@@ -348,9 +354,10 @@
             }
 
             .l1-container {
-                margin-left: 0px;                
+                position: relative;
+                margin-left: 20px;           
                 .l1-mean {
-                    font-size: 1.3em;
+                    font-size: 1.2em;
                 }
                 .l1-dot-icon {
                     width: 8px;
@@ -358,12 +365,13 @@
                     background-color: #d86f0f;
                     display: inline-block;
                     .border-radius(50%);
-                    margin-right: 10px;
+                    position: absolute;
+                    margin-left: -20px;
+                    top: 10px;
                 }
-                .sentences {
-                    margin-left: 20px;
+                .sentences {                    
                     .l1-sentence {
-                        font-size: 1.2em;
+                        font-size: 1.1em;
                         line-height: 20px;
                         color: #848181;
                         margin-top: 15px;
@@ -376,9 +384,16 @@
                     }
                 }
 
-                &.idiom {
+                &:last-child {
+                    padding-bottom: 15px;
+                }
+
+                &.idiom {                    
                     .l2-container {
-                         margin-left: 20px;
+                         margin-left: 0px;
+                         .l2-mean {
+                             margin-top: 0px;
+                         }
                     }
                     .l2-dot-icon {
                         width: 6px;
@@ -390,7 +405,7 @@
                     .l3-container {
                         margin-left: 15px;
                         .l3-sentence {
-                            font-size: 1.2em;
+                            font-size: 1.1em;
                             line-height: 20px;
                             color: #848181;
                             margin-top: 15px;
@@ -409,53 +424,138 @@
 
     @media (min-width: 768px) {
         margin-top: 100px;
-        .select-dict-type {
-            ul {
-                height: 35px;
-                .type {
-                    padding-top: 9px;
-                    font-size: 1.2em;
+        .search-result {
+            .main-word {
+                .word-name {
+                    font-size: 3em;
+                }
+
+                .pronunciation {
+                    .sound-link {
+                        .glyphicon-volume-up {
+                            font-size: 2.5em;
+                            top: 7px;
+                            left: 0px;
+                        }
+                    }
+                    .phonetic-spelling {
+                        font-size: 2em;
+                    }
+                }
+
+                .actions {
+                    height: 45px;
+                    margin-top: 30px;
+                    .shares {
+                        a {
+                            width: 45px;
+                            height: 45px;
+                            margin-right: 8px;
+
+                            .fa {
+                                top: 10px;
+                                font-size: 1.9em;
+                                &.fa-facebook {
+                                    left: 13px;
+                                }
+                                &.fa-twitter {
+                                    left: 11px;
+                                }
+                                &.fa-google-plus {
+                                    left: 7px;
+                                }
+                            }
+                        }
+                    }
+                    .btn-add-to-list {
+                        font-size: 1.5em;
+                        padding: 5px 0 5px 20px;
+                        width: 145px;
+                        .glyphicon-plus {
+                            top: 12px;
+                        }
+                    }
+                }
+            } //end .main-word
+
+            .mean-word {
+                .definition-in {
+                    font-size: 1.3em;
+                }
+                .type-of-dict {
+                    font-size: 1.1em;
+                }
+            } //end .mean-word
+
+            .type-of-word {
+                font-size: 1.3em;
+            }
+
+            .l1-container {
+                margin-left: 30px;
+                .l1-mean {
+                    font-size: 1.3em;
+                    .l1-index {
+                        margin-left: -30px;
+                    }
                 }
             }
-        }
-    }
 
-    @media (min-width: 1024px) {
-        margin-top: 0px;        
-        .select-dict-type {
-            display: none;
-        }
-        .breadcrumb {
-            ol {
-                float: left;
+            .l2-container {
+                margin-left: 40px;
+                .l2-mean {
+                    font-size: 1.2em;
+                    .l2-index {
+                        margin-left: -40px;
+                    }
+                }
             }
-        }
-        .menu-dict-type {
-            display: block;
-            ul {
-                float: right;
-                list-style: none;
-                margin: 0px;
-                li {
-                    display: inline-block;
-                    &:first-child {
-                        border-right: 1px solid #ccc;
-                        padding-right: 5px;
+
+            .ex {
+                font-size: 1.2em;
+            }
+
+            .etymology {
+                .l1-container {
+                    .l1-phase {
+                        font-size: 1.3em;
+                        .li-index {
+                            margin-left: -30px;
+                        }
                     }
 
-                    a {
-                        color: #a29e9e;
-                        padding: 0px 3px;
+                    .l1-mean {
+                        font-size: 1.2em;
                     }
+                }
+            }
 
-                    &.active {
-                        a {
-                            color: #026aa7;
+            .en-vi {
+                .l1-container {                    
+                    .l1-mean {
+                        font-size: 1.3em;
+                    }
+                    .sentences {
+                        .l1-sentence {
+                            font-size: 1.2em;
+                        }
+
+                        .l1-translate {
+                            font-size: 1.1em;
                         }
                     }
                 }
             }
-        }
+        }      
+    }
+
+    @media (min-width: 1024px) {
+        margin-top: 0px;                
+        .breadcrumb {
+            ol {
+                float: left;
+            }
+        }        
 
         .search-result {
             padding-top: 20px;

@@ -292,11 +292,11 @@ header .right-menu .btn-signup {
   padding: 4px 7px;
 }
 header .toggle-menu {
-  font-size: 2.2em;
+  font-size: 2.5em;
   margin: 15px 20px 0px 10px;
   color: #fff;
 }
-header .toggle-menu.glyphicon-remove {
+header .toggle-menu.fa-times {
   display: none;
 }
 /*-----------------------------------------------------------------------------------------------------------
@@ -308,10 +308,10 @@ Mobile
 .mobile-menu header .btn-signup {
   display: none;
 }
-.mobile-menu header .toggle-menu.glyphicon-menu-hamburger {
+.mobile-menu header .toggle-menu.fa-bars {
   display: none;
 }
-.mobile-menu header .toggle-menu.glyphicon-remove {
+.mobile-menu header .toggle-menu.fa-times {
   display: block;
 }
 .mobile-menu .main-menu {
@@ -456,8 +456,8 @@ Desktop display
   padding: 5px;
   cursor: pointer;
 }
-.search-box .search-type .select-icons .glyphicon-book {
-  font-size: 1.3em;
+.search-box .search-type .select-icons .fa-book {
+  font-size: 1.5em;
   margin: 8px 4px 0 2px;
   color: #585a5a;
 }
@@ -663,8 +663,8 @@ Tablet display
     height: 90%;
     margin-top: 2px;
   }
-  .search-box .search-type .select-icons .glyphicon-book {
-    font-size: 1.5em;
+  .search-box .search-type .select-icons .fa-book {
+    font-size: 1.7em;
     top: 3px;
   }
   .search-box .search-type .select-icons .arrow {
@@ -721,8 +721,8 @@ Desktop display
   .search-box .search-type {
     width: 16%;
   }
-  .search-box .search-type .select-icons .glyphicon-book {
-    font-size: 1.3em;
+  .search-box .search-type .select-icons fa-book {
+    font-size: 1.5em;
     margin: 5px 4px 0 0;
   }
   .search-box .search-type .select-icons .arrow {
@@ -920,8 +920,8 @@ Desktop display
   .home-page .search-section .search-box .search-type {
     margin-top: 3px;
   }
-  .home-page .search-section .search-box .search-type .glyphicon-book {
-    font-size: 1.9em;
+  .home-page .search-section .search-box .search-type .fa-book {
+    font-size: 2.1em;
     margin: 10px 5px 0 0;
   }
   .home-page .search-section .search-box .search-type .arrow {
@@ -974,8 +974,8 @@ Desktop display
   .home-page .search-section.fix-top .search-box .search-type {
     width: 16%;
   }
-  .home-page .search-section.fix-top .search-box .search-type .select-icons .glyphicon-book {
-    font-size: 1.3em;
+  .home-page .search-section.fix-top .search-box .search-type .select-icons .fa-book {
+    font-size: 1.5em;
     margin: 5px 4px 0 0;
   }
   .home-page .search-section.fix-top .search-box .search-type .select-icons .arrow {
@@ -1078,16 +1078,13 @@ Desktop display
   color: #8c8a8a;
   letter-spacing: 4px;
 }
-.searchresult-page .menu-dict-type {
-  display: none;
-}
 .searchresult-page .search-result .grambs,
 .searchresult-page .search-result .etymologys {
   padding: 0px 10px;
 }
 .searchresult-page .search-result .gramb,
 .searchresult-page .search-result .etymology {
-  padding-bottom: 5px;
+  padding-bottom: 15px;
 }
 .searchresult-page .search-result .main-word {
   cursor: pointer;
@@ -1163,10 +1160,11 @@ Desktop display
 .searchresult-page .search-result .main-word .actions .btn-add-to-list {
   float: right;
   border: 1px dashed #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
   border-radius: 3px;
   font-size: 1.1em;
   color: #888686;
-  box-shadow: 0px 1px 5px #c7c7c7;
   padding: 4px 0px 4px 20px;
   display: block;
   width: 107px;
@@ -1210,10 +1208,17 @@ Desktop display
   color: #585a5a;
 }
 .searchresult-page .search-result .no-result {
-  margin-top: 30px;
+  background-color: #fff;
+  border-radius: 3px;
+  min-height: 100px;
+}
+.searchresult-page .search-result .no-result h1 {
+  margin: 0px;
+  padding: 20px 10px;
   line-height: 25px;
   font-size: 1.1em;
   color: #3b3c3c;
+  font-weight: normal;
 }
 .searchresult-page .search-result .type-of-word {
   border-top: 2px solid #ccc;
@@ -1254,20 +1259,20 @@ Desktop display
   display: inline-block;
 }
 .searchresult-page .search-result .l1-container {
-  margin-left: 30px;
+  margin-left: 25px;
 }
 .searchresult-page .search-result .l1-container .l1-mean {
-  font-size: 1.1em;
+  font-size: 1.2em;
   line-height: 25px;
   font-weight: bold;
   color: #484444;
 }
 .searchresult-page .search-result .l1-container .l1-mean .l1-index {
   position: absolute;
-  margin-left: -30px;
+  margin-left: -25px;
 }
 .searchresult-page .search-result .l2-container {
-  margin-left: 40px;
+  margin-left: 37px;
 }
 .searchresult-page .search-result .l2-container .l2-mean {
   font-size: 1.1em;
@@ -1277,7 +1282,7 @@ Desktop display
 }
 .searchresult-page .search-result .l2-container .l2-mean .l2-index {
   position: absolute;
-  margin-left: -40px;
+  margin-left: -37px;
 }
 .searchresult-page .search-result .level1-strong-mean,
 .searchresult-page .search-result .level2-strong-mean {
@@ -1346,7 +1351,7 @@ Desktop display
 }
 .searchresult-page .search-result .etymology .l1-container .l1-phase .l1-index {
   position: absolute;
-  margin-left: -30px;
+  margin-left: -25px;
 }
 .searchresult-page .search-result .etymology .l1-container .l1-mean {
   font-size: 1.1em;
@@ -1356,6 +1361,9 @@ Desktop display
   border-left: 5px solid #ccc;
   padding-left: 5px;
 }
+.searchresult-page .search-result .en-vi .gramb {
+  padding-bottom: 0px;
+}
 .searchresult-page .search-result .en-vi .type-of-word {
   margin-top: 25px;
 }
@@ -1363,10 +1371,11 @@ Desktop display
   margin-top: 10px;
 }
 .searchresult-page .search-result .en-vi .l1-container {
-  margin-left: 0px;
+  position: relative;
+  margin-left: 20px;
 }
 .searchresult-page .search-result .en-vi .l1-container .l1-mean {
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 .searchresult-page .search-result .en-vi .l1-container .l1-dot-icon {
   width: 8px;
@@ -1376,13 +1385,12 @@ Desktop display
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  margin-right: 10px;
-}
-.searchresult-page .search-result .en-vi .l1-container .sentences {
-  margin-left: 20px;
+  position: absolute;
+  margin-left: -20px;
+  top: 10px;
 }
 .searchresult-page .search-result .en-vi .l1-container .sentences .l1-sentence {
-  font-size: 1.2em;
+  font-size: 1.1em;
   line-height: 20px;
   color: #848181;
   margin-top: 15px;
@@ -1392,8 +1400,14 @@ Desktop display
 .searchresult-page .search-result .en-vi .l1-container .sentences .l1-translate {
   margin-left: 10px;
 }
+.searchresult-page .search-result .en-vi .l1-container:last-child {
+  padding-bottom: 15px;
+}
 .searchresult-page .search-result .en-vi .l1-container.idiom .l2-container {
-  margin-left: 20px;
+  margin-left: 0px;
+}
+.searchresult-page .search-result .en-vi .l1-container.idiom .l2-container .l2-mean {
+  margin-top: 0px;
 }
 .searchresult-page .search-result .en-vi .l1-container.idiom .l2-dot-icon {
   width: 6px;
@@ -1406,7 +1420,7 @@ Desktop display
   margin-left: 15px;
 }
 .searchresult-page .search-result .en-vi .l1-container.idiom .l3-container .l3-sentence {
-  font-size: 1.2em;
+  font-size: 1.1em;
   line-height: 20px;
   color: #848181;
   margin-top: 15px;
@@ -1420,45 +1434,102 @@ Desktop display
   .searchresult-page {
     margin-top: 100px;
   }
-  .searchresult-page .select-dict-type ul {
-    height: 35px;
+  .searchresult-page .search-result .main-word .word-name {
+    font-size: 3em;
   }
-  .searchresult-page .select-dict-type ul .type {
-    padding-top: 9px;
+  .searchresult-page .search-result .main-word .pronunciation .sound-link .glyphicon-volume-up {
+    font-size: 2.5em;
+    top: 7px;
+    left: 0px;
+  }
+  .searchresult-page .search-result .main-word .pronunciation .phonetic-spelling {
+    font-size: 2em;
+  }
+  .searchresult-page .search-result .main-word .actions {
+    height: 45px;
+    margin-top: 30px;
+  }
+  .searchresult-page .search-result .main-word .actions .shares a {
+    width: 45px;
+    height: 45px;
+    margin-right: 8px;
+  }
+  .searchresult-page .search-result .main-word .actions .shares a .fa {
+    top: 10px;
+    font-size: 1.9em;
+  }
+  .searchresult-page .search-result .main-word .actions .shares a .fa.fa-facebook {
+    left: 13px;
+  }
+  .searchresult-page .search-result .main-word .actions .shares a .fa.fa-twitter {
+    left: 11px;
+  }
+  .searchresult-page .search-result .main-word .actions .shares a .fa.fa-google-plus {
+    left: 7px;
+  }
+  .searchresult-page .search-result .main-word .actions .btn-add-to-list {
+    font-size: 1.5em;
+    padding: 5px 0 5px 20px;
+    width: 145px;
+  }
+  .searchresult-page .search-result .main-word .actions .btn-add-to-list .glyphicon-plus {
+    top: 12px;
+  }
+  .searchresult-page .search-result .mean-word .definition-in {
+    font-size: 1.3em;
+  }
+  .searchresult-page .search-result .mean-word .type-of-dict {
+    font-size: 1.1em;
+  }
+  .searchresult-page .search-result .type-of-word {
+    font-size: 1.3em;
+  }
+  .searchresult-page .search-result .l1-container {
+    margin-left: 30px;
+  }
+  .searchresult-page .search-result .l1-container .l1-mean {
+    font-size: 1.3em;
+  }
+  .searchresult-page .search-result .l1-container .l1-mean .l1-index {
+    margin-left: -30px;
+  }
+  .searchresult-page .search-result .l2-container {
+    margin-left: 40px;
+  }
+  .searchresult-page .search-result .l2-container .l2-mean {
     font-size: 1.2em;
+  }
+  .searchresult-page .search-result .l2-container .l2-mean .l2-index {
+    margin-left: -40px;
+  }
+  .searchresult-page .search-result .ex {
+    font-size: 1.2em;
+  }
+  .searchresult-page .search-result .etymology .l1-container .l1-phase {
+    font-size: 1.3em;
+  }
+  .searchresult-page .search-result .etymology .l1-container .l1-phase .li-index {
+    margin-left: -30px;
+  }
+  .searchresult-page .search-result .etymology .l1-container .l1-mean {
+    font-size: 1.2em;
+  }
+  .searchresult-page .search-result .en-vi .l1-container .l1-mean {
+    font-size: 1.3em;
+  }
+  .searchresult-page .search-result .en-vi .l1-container .sentences .l1-sentence {
+    font-size: 1.2em;
+  }
+  .searchresult-page .search-result .en-vi .l1-container .sentences .l1-translate {
+    font-size: 1.1em;
   }
 }
 @media (min-width: 1024px) {
   .searchresult-page {
     margin-top: 0px;
   }
-  .searchresult-page .select-dict-type {
-    display: none;
-  }
   .searchresult-page .breadcrumb ol {
     float: left;
-  }
-  .searchresult-page .menu-dict-type {
-    display: block;
-  }
-  .searchresult-page .menu-dict-type ul {
-    float: right;
-    list-style: none;
-    margin: 0px;
-  }
-  .searchresult-page .menu-dict-type ul li {
-    display: inline-block;
-  }
-  .searchresult-page .menu-dict-type ul li:first-child {
-    border-right: 1px solid #ccc;
-    padding-right: 5px;
-  }
-  .searchresult-page .menu-dict-type ul li a {
-    color: #a29e9e;
-    padding: 0px 3px;
-  }
-  .searchresult-page .menu-dict-type ul li.active a {
-    color: #026aa7;
   }
   .searchresult-page .search-result {
     padding-top: 20px;

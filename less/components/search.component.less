@@ -132,10 +132,11 @@
 .select-types-content {
     position: absolute;
     width: 100%;
-    top: 44px;
-    background-color: #59707d;
+    top: 44px;    
     z-index: 1000;
-    border-radius: 0 0 3px 3px;
+    background-color: #fff;
+    border-radius: 0px 0px 3px 3px;    
+    .box-shadow(0px 1px 4px #777777);
     text-align: left;
     word-wrap: break-word;
     display: none;
@@ -149,11 +150,15 @@
         margin-bottom: 0px;
         li {
             position: relative;
-            color: #fff;
+            color: #585a5a;
             padding: 12px 0px 12px 10px;
             border-bottom: 1px solid #c0bdbc;
             font-size: 1.2em;
             cursor: pointer;
+
+            &:hover {
+                background-color: #f7f6f6;
+            }            
 
             &:last-child {
                 border: none;
@@ -165,7 +170,7 @@
                     display: block;
                     width: 8px;
                     height: 15px;
-                    border: solid #fff;
+                    border: solid #585a5a;
                     border-width: 0 2px 2px 0;
                     .transform(rotate(45deg));
                     position: absolute;
@@ -364,7 +369,7 @@ Desktop display
         .search-type {
             width: 16%;
             .select-icons {
-                fa-book {
+                .fa-book {
                     font-size: 1.5em;
                     margin: 5px 4px 0 0;
                 }

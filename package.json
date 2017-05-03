@@ -11,7 +11,8 @@
     "handlebars": "^4.0.6",
     "keystone": "^0.3.19",
     "lodash": "^4.13.1",
-    "simplecrawler": "^1.1.1"
+    "simplecrawler": "^1.1.1",
+    "word-list": "^2.0.0"
   },
   "devDependencies": {
     "eslint": "^2.12.0",

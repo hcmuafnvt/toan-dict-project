@@ -69,7 +69,7 @@ a {
   right: 0px;
   display: inline-block;
 }
-.translate-text .glyphicon-hand-right {
+.translate-text .fa-hand-o-right {
   position: absolute;
   left: -40px;
   top: 6px;
@@ -128,7 +128,6 @@ a {
     bottom: initial;
   }
   .main-content {
-    background-color: #fff;
     min-height: 400px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -520,9 +519,13 @@ Desktop display
   position: absolute;
   width: 100%;
   top: 44px;
-  background-color: #59707d;
   z-index: 1000;
-  border-radius: 0 0 3px 3px;
+  background-color: #fff;
+  border-radius: 0px 0px 3px 3px;
+  -webkit-box-shadow: 0px 1px 4px #777777;
+  -moz-box-shadow: 0px 1px 4px #777777;
+  -o-box-shadow: 0px 1px 4px #777777;
+  box-shadow: 0px 1px 4px #777777;
   text-align: left;
   word-wrap: break-word;
   display: none;
@@ -537,11 +540,14 @@ Desktop display
 }
 .select-types-content .dict-type li {
   position: relative;
-  color: #fff;
+  color: #585a5a;
   padding: 12px 0px 12px 10px;
   border-bottom: 1px solid #c0bdbc;
   font-size: 1.2em;
   cursor: pointer;
+}
+.select-types-content .dict-type li:hover {
+  background-color: #f7f6f6;
 }
 .select-types-content .dict-type li:last-child {
   border: none;
@@ -551,7 +557,7 @@ Desktop display
   display: block;
   width: 8px;
   height: 15px;
-  border: solid #fff;
+  border: solid #585a5a;
   border-width: 0 2px 2px 0;
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -722,7 +728,7 @@ Desktop display
   .search-box .search-type {
     width: 16%;
   }
-  .search-box .search-type .select-icons fa-book {
+  .search-box .search-type .select-icons .fa-book {
     font-size: 1.5em;
     margin: 5px 4px 0 0;
   }
@@ -942,6 +948,7 @@ Desktop display
   }
   .home-page .search-section.fix-top {
     position: fixed !important;
+    width: 415px;
     height: auto;
     background: none;
     top: 0;
@@ -1093,7 +1100,6 @@ Desktop display
   padding-bottom: 15px;
 }
 .searchresult-page .search-result .main-word {
-  cursor: pointer;
   background-color: #fff;
   padding: 20px;
   -webkit-border-radius: 3px;
@@ -1130,7 +1136,6 @@ Desktop display
   margin-left: 10px;
 }
 .searchresult-page .search-result .main-word .actions {
-  cursor: pointer;
   height: 35px;
   margin-top: 20px;
 }
@@ -1173,6 +1178,7 @@ Desktop display
   display: block;
   width: 107px;
   position: relative;
+  text-decoration: none;
 }
 .searchresult-page .search-result .main-word .actions .btn-add-to-list .fa-plus {
   font-size: 0.8em;
@@ -1183,7 +1189,6 @@ Desktop display
 }
 .searchresult-page .search-result .mean-word {
   clear: both;
-  cursor: pointer;
   background-color: #fff;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -1205,7 +1210,6 @@ Desktop display
   opacity: 0.7;
 }
 .searchresult-page .search-result .mean-word .definition-in {
-  cursor: pointer;
   padding: 20px 10px 0px;
   display: block;
   font-size: 1.1em;
@@ -1445,7 +1449,7 @@ Desktop display
     font-size: 3em;
   }
   .searchresult-page .search-result .main-word .pronunciation .sound-link .fa-volume-up {
-    font-size: 2.5em;
+    font-size: 2em;
     top: 7px;
     left: 0px;
   }
@@ -1551,7 +1555,35 @@ Desktop display
     float: left;
   }
   .searchresult-page .search-result {
-    padding-top: 20px;
+    padding-top: 10px;
+  }
+  .searchresult-page .search-result .l1-container .l1-mean {
+    font-size: 1.3em;
+  }
+  .searchresult-page .search-result .ex {
+    font-size: 1.1em;
+  }
+  .searchresult-page .search-result .l2-container .l2-mean {
+    font-size: 1.1em;
+  }
+  .searchresult-page .search-result .etymology .l1-container .l1-phase {
+    font-size: 1.3em;
+  }
+  .searchresult-page .search-result .etymology .l1-container .l1-mean {
+    font-size: 1.1em;
+    color: #656363;
+  }
+  .searchresult-page .search-result .en-vi .l1-container .l1-mean {
+    font-size: 1.2em;
+  }
+  .searchresult-page .search-result .en-vi .l1-container .sentences .l1-sentence {
+    font-size: 1.1em;
+  }
+  .searchresult-page .search-result .en-vi .l1-container .sentences .l1-translate {
+    font-size: 1.1em;
+  }
+  .searchresult-page .search-result .en-vi .l1-container.idiom .l2-container .l2-mean {
+    font-size: 1.1em;
   }
   .searchresult-page .search-result .no-result {
     font-size: 1.7em;

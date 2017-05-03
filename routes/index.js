@@ -51,6 +51,7 @@ exports = module.exports = function (app) {
 	app.use('/api/lists', require('./api/list'));
 	app.use('/api/crawlingvdict', require('./api/wordcrawler.vdict'));
 	app.use('/api/crawlingoxford', require('./api/wordcrawler.oxford'));
+	app.use('/api/getwordlist', require('./api/word-list'));
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

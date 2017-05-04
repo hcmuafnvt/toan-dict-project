@@ -19,9 +19,9 @@ Word.add({
 	vdictHref: { type: String, default: '' },	
 	createdBy: { type: Types.Relationship, ref: 'User', index: true, many: false },
 	createdAt: { type: Types.Datetime, default: Date.now },
-	UpdatedAt: { type: Types.Datetime, default: Date.now },
-	isEnRedirected: { type: Types.Boolean, default: false },
-	isViRedirected: { type: Types.Boolean, default: false }
+	UpdatedAt: { type: Types.Datetime, default: Date.now }
+	//isEnRedirected: { type: Types.Boolean, default: false },
+	//isViRedirected: { type: Types.Boolean, default: false }
 });
 
 Word.schema.add({

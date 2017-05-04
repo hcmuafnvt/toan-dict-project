@@ -119,6 +119,46 @@ a {
 .main-content {
   padding: 0px;
 }
+.breadcrumb {
+  padding: 6px 0px;
+  margin-bottom: 15px;
+  -webkit-box-shadow: 0px 1px 2px #d8cece;
+  -moz-box-shadow: 0px 1px 2px #d8cece;
+  -o-box-shadow: 0px 1px 2px #d8cece;
+  box-shadow: 0px 1px 2px #d8cece;
+}
+.breadcrumb ol {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+.breadcrumb ol li {
+  display: inline-block;
+}
+.breadcrumb ol li:last-child a {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.breadcrumb ol li:last-child span[itemprop="name"] {
+  font-weight: bold;
+}
+.breadcrumb ol li:last-child .arrow {
+  display: none;
+}
+.breadcrumb ol li a {
+  padding-right: 4px;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+.breadcrumb ol li span[itemprop="position"] {
+  color: #8c8a8a;
+  letter-spacing: 4px;
+}
+@media (min-width: 768px) {
+  .breadcrumb {
+    margin-bottom: 20px;
+  }
+}
 @media (min-width: 1024px) {
   .main {
     padding-top: 80px;
@@ -126,6 +166,9 @@ a {
   .translate-text {
     position: absolute;
     bottom: initial;
+  }
+  .breadcrumb ol {
+    float: left;
   }
   .main-content {
     min-height: 400px;
@@ -1059,38 +1102,6 @@ Desktop display
 .searchresult-page {
   margin-top: 80px;
 }
-.searchresult-page .breadcrumb {
-  padding: 6px 0px;
-  margin-bottom: 15px;
-  -webkit-box-shadow: 0px 1px 2px #d8cece;
-  -moz-box-shadow: 0px 1px 2px #d8cece;
-  -o-box-shadow: 0px 1px 2px #d8cece;
-  box-shadow: 0px 1px 2px #d8cece;
-}
-.searchresult-page .breadcrumb ol {
-  list-style: none;
-  padding: 0px;
-  margin: 0px;
-}
-.searchresult-page .breadcrumb ol li {
-  display: inline-block;
-}
-.searchresult-page .breadcrumb ol li.active a {
-  opacity: 1;
-  filter: alpha(opacity=100);
-}
-.searchresult-page .breadcrumb ol li.active span[itemprop="name"] {
-  font-weight: bold;
-}
-.searchresult-page .breadcrumb ol li a {
-  padding-right: 4px;
-  opacity: 0.7;
-  filter: alpha(opacity=70);
-}
-.searchresult-page .breadcrumb ol li span[itemprop="position"] {
-  color: #8c8a8a;
-  letter-spacing: 4px;
-}
 .searchresult-page .search-result .grambs,
 .searchresult-page .search-result .etymologys {
   padding: 0px 10px;
@@ -1442,9 +1453,6 @@ Desktop display
   .searchresult-page {
     margin-top: 100px;
   }
-  .searchresult-page .breadcrumb {
-    margin-bottom: 20px;
-  }
   .searchresult-page .search-result .main-word .word-name {
     font-size: 3em;
   }
@@ -1551,9 +1559,6 @@ Desktop display
   .searchresult-page {
     margin-top: 0px;
   }
-  .searchresult-page .breadcrumb ol {
-    float: left;
-  }
   .searchresult-page .search-result {
     padding-top: 10px;
   }
@@ -1589,6 +1594,88 @@ Desktop display
     font-size: 1.7em;
     line-height: initial;
   }
+}
+.user-page {
+  margin-top: 80px;
+}
+.user-page .search-list .txtListName {
+  width: 100%;
+  height: 35px;
+  padding: 0px 5px;
+  border: 0px;
+  border-radius: 2px;
+  box-shadow: 0 0 12px #9a1b1b;
+}
+.user-page .lists .title {
+  position: relative;
+  color: #c16109;
+  font-size: 1.5em;
+  margin: 10px 0px 20px;
+  padding-left: 25px;
+}
+.user-page .lists .title .fa-user {
+  bottom: 5px;
+  position: absolute;
+  left: 0px;
+}
+.user-page .lists .list {
+  padding: 0px;
+  background-color: #fff;
+  margin-bottom: 30px;
+  -webkit-box-shadow: 0 0 5px #a7a1a1;
+  -moz-box-shadow: 0 0 5px #a7a1a1;
+  -o-box-shadow: 0 0 5px #a7a1a1;
+  box-shadow: 0 0 5px #a7a1a1;
+}
+.user-page .lists .list:hover {
+  -webkit-box-shadow: 0 0 25px #a7a1a1;
+  -moz-box-shadow: 0 0 25px #a7a1a1;
+  -o-box-shadow: 0 0 25px #a7a1a1;
+  box-shadow: 0 0 25px #a7a1a1;
+}
+.user-page .lists .list .list-img {
+  width: 100%;
+  height: 150px;
+}
+.user-page .lists .list .list-img img {
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+.user-page .lists .list .list-title {
+  text-align: center;
+}
+.user-page .lists .list .list-title h2 {
+  font-size: 1.4em;
+  margin: 15px 0px;
+  padding: 0px 5px;
+  line-height: 30px;
+  color: #6f7171;
+}
+.user-page .lists .list .list-footer {
+  border-top: 1px solid #dedbdb;
+}
+.user-page .lists .list .list-footer p {
+  padding: 10px;
+  text-align: center;
+}
+.user-page .lists .list .list-footer p .learned-point,
+.user-page .lists .list .list-footer p .unlearned-point {
+  display: block;
+  font-size: 1.8em;
+}
+.user-page .lists .list .list-footer p .learned-point {
+  color: #60ba4d;
+}
+.user-page .lists .list .list-footer p .unlearned-point {
+  color: #e6431a;
+}
+.user-page .lists .list .list-footer .pull-left,
+.user-page .lists .list .list-footer .pull-right {
+  width: 50%;
+}
+.user-page .lists .list .list-footer .pull-left {
+  border-right: 1px solid #dedbdb;
 }
 .learn-page .main-quiz-wrapper {
   background-color: #ccc;

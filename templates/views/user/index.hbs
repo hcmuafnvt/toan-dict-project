@@ -1,0 +1,81 @@
+<script>
+    var pageContext = {
+        pageName: 'userpage'
+    }
+
+</script>
+
+<section class="search-section">
+    {{> _searchbox}}
+</section>
+
+<div class="user-page" id="user-page">
+    {{> _breadcrumb}}
+
+    <div class="container">
+        <div class="main-content col-md-8">
+            <div class="search-list">
+                <form method="GET" id="frmSearchList">
+                    <input type="text" id="txtListName" class="txtListName" placeholder="Nhập tên bộ từ cần tìm">
+                </form>
+            </div>
+            <div class="lists my-lists">
+                <p class="title">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    Những bộ từ của bạn
+                </p>
+                <div class="list col-md-4">
+                    <div class="list-img">
+                        <img src="images/listword/botu-1.jpeg" alt="bo tu 1" />
+                    </div>
+                    <div class="list-title">
+                        <h2>100 Words Every Middle Schooler Should Know</h2>
+                    </div>
+                    <div class="list-footer">
+                        <div class="pull-left">
+                            <p>
+                                <span class="learned-point">9</span>
+                                <span class="learned-text">Từ đã thuộc</span>
+                            </p>
+                        </div>
+                        <div class="pull-right">
+                            <p>
+                                <span class="unlearned-point">11</span>
+                                <span class="lunearned-text">Từ chưa thuộc</span>
+                            </p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="list col-md-4">
+                    <div class="list-img">
+                        <img src="images/listword/botu-2.jpeg" alt="bo tu 1" />
+                    </div>
+                    <div class="list-title">
+                        <h2>I Love You</h2>
+                    </div>
+                    <div class="list-footer">
+                        <div class="pull-left">
+                            <p>
+                                <span class="learned-point">9</span>
+                                <span class="learned-text">Từ đã thuộc</span>
+                            </p>
+                        </div>
+                        <div class="pull-right">
+                            <p>
+                                <span class="unlearned-point">11</span>
+                                <span class="lunearned-text">Từ chưa thuộc</span>
+                            </p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <div class="right-menu col-md-4 hide">
+            <section class="">
+                right side
+            </section>
+        </div>
+    </div>
+</div>

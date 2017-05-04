@@ -8,7 +8,7 @@ var router = require('express').Router(),
 var listOfWords;
 var crawlingCount = 0;    
 
-Word.model.find({$and: [{translateToEn: {$exists: false}}, {isEnRedirected: {$exists: false}}]}).sort({name: 1}).limit(5000).exec(function(err, result) {
+Word.model.find({$and: [{translateToEn: {$exists: false}}, {isEnRedirected: {$exists: false}}, {translateToVi: {$exists: false}}]}).sort({name: 1}).limit(100).exec(function(err, result) {
     listOfWords = result;
     console.log('list of words of oxford : ', listOfWords.length);
 });
@@ -19,20 +19,29 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
     var crawler = new simplecrawler('https://en.oxforddictionaries.com/');
 
     crawler.on('fetchstart', function(queueItem, resources) {        
-        if(queueItem.depth === 2) {
-            crawlingCount++;
-            console.log('====> (%d) fetchstart %s', crawlingCount, queueItem.url);
-            console.time('fetchTime');           
-           
-            if((crawlingCount % 100) === 0) {                
-                console.log('===============================Waiting 3 minutes=====================');
-                crawler.stop();
-                setTimeout(function() {
+        if(queueItem.url === 'https://en.oxforddictionaries.com/') return;
+        crawlingCount++;
+        console.log('====> (%d) fetchstart %s', crawlingCount, queueItem.url);
+        console.time('fetchTime');           
+        
+        if((crawlingCount % 100) === 0) {                
+            console.log('===============================Waiting 3 minutes=====================');
+            crawler.stop();
+            setTimeout(function() {
+                Word.model.find({$and: [{translateToEn: {$exists: false}}, {isEnRedirected: {$exists: false}}, {translateToVi: {$exists: false}}]}).sort({name: 1}).limit(100).exec(function(err, result) {
+                    listOfWords = result;
+                    crawlingCount = 0;
+                    console.log('list of words of oxford : ', listOfWords.length);
+                    var foundURLs =listOfWords.map(function(word) {
+                        return 'https://en.oxforddictionaries.com/definition/' + word.name.replace(/ /g, '_');
+                    });       
+                    foundURLs.forEach(crawler.queueURL.bind(crawler));           
+                    
                     console.log('==============================start crawling======================');
                     crawler.start();
-                }, 120000);
-            }               
-        }          
+                });                    
+            }, 120000);
+        }                  
     });
 
     crawler.on('queueadd', function(queueItem) {
@@ -46,7 +55,7 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
     };
 
     crawler.on('fetchredirect', function(oldQueueItem, redirectQueueItem, responseObject) {
-        console.log('fetchredirect');
+        console.log('>>>>> fetchredirect');
         console.log('oldQueueItem : ', oldQueueItem.url);
         console.log('redirectQueueItem : ', redirectQueueItem.url);
         var selectedWord = null;
@@ -58,15 +67,14 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
             }
         }
         if(selectedWord !== null) {
-            selectedWord.isEnRedirected = true;
-            selectedWord.save(function() {            
-                //TODO sth
+            selectedWord.remove(function() {
+                console.log('xxxxxxxxxx-removed : ' + selectedWord.name);
             });
         }        
     });
 
     crawler.on("fetchcomplete", function(queueItem, responseBody, response) {        
-        if(queueItem.depth === 1) return;        
+        if(queueItem.url === 'https://en.oxforddictionaries.com/') return;       
 
         console.log('--------' + queueItem.url.substring(queueItem.url.lastIndexOf('/') + 1, queueItem.url.length) + '---------------');
         console.timeEnd('fetchTime');
@@ -261,7 +269,7 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
         selectedWord.phoneticSpelling = $mainContents.find('.phoneticspelling').first().text();
         selectedWord.soundLink = $mainContents.find('.speaker').first().find('audio').attr('src');
         selectedWord.mainType = $mainContents.find('.pos').first().text();
-        selectedWord.translateToEn = translateToEn;
+        selectedWord.translateToEn = translateToEn;        
         selectedWord.save(function(err) {
             if(err) console.log(err);
             console.timeEnd('fetchcomplete');

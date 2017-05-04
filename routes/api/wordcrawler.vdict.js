@@ -9,10 +9,10 @@ var listOfWords;
 var crawlingCount = 0;    
 
 //Word.model.find({$and: [{translateToVi: {$exists: false}}, {isViRedirected: {$exists: false}}]}).sort({name: 1}).limit(5000).exec(function(err, result) {
-Word.model.find({translateToVi: {$exists: false}}).sort({name: 1}).limit(4000).exec(function(err, result) {
-    listOfWords = result;
-    console.log('list of words of vdict : ', listOfWords.length);
-});
+// Word.model.find({translateToVi: {$exists: false}}).sort({name: 1}).limit(4000).exec(function(err, result) {
+//     listOfWords = result;
+//     console.log('list of words of vdict : ', listOfWords.length);
+// });
 
 // crawling words
 router.post('/', keystone.middleware.api, function (req, res) {

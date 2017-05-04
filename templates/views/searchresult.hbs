@@ -10,27 +10,7 @@
 </section>
 
 <div class="searchresult-page" id="searchresult-page">    
-    <div class="breadcrumb">
-        <div class="container">
-            <ol itemscope itemtype="http://schema.org/BreadcrumbList">
-                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                    <a itemprop="item" href="/">
-                        <span itemprop="name">Home</span></a>
-                    <span itemprop="position" content="1">&gt;</span>
-                </li>
-                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                    <a itemprop="item" href="/english-english">
-                        <span itemprop="name">English - English</span></a>
-                    <span itemprop="position" content="2">&gt;</span>
-                </li>
-                <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                    <a itemprop="item" href="/definition/{{type}}/{{word}}">
-                        <span itemprop="name">{{word}}</span></a>
-                    <span itemprop="position" content="3"></span>
-                </li>
-            </ol>            
-        </div>
-    </div>    
+    {{> _breadcrumb}}
 
     <div class="search-result">
         <div class="container">

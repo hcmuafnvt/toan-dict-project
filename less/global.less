@@ -88,7 +88,6 @@ a {
     padding: 0px;
 }
 
-// breadcrumb
 .breadcrumb {
     padding: 6px 0px;        
     margin-bottom: 15px;
@@ -126,7 +125,38 @@ a {
             }           
         }
     }
-} //end .breadcrumb    
+} //end .breadcrumb   
+
+.custom-arrow {
+    i {
+        border: solid #585a5a;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 4px;
+        margin: 0 0 4px 9px;
+
+        &.up {                
+            .transform(rotate(-135deg));
+            margin-bottom: -4px;
+            display: none;
+        }
+
+        &.down {                
+            .transform(rotate(45deg));
+            display: inline-block;
+        }
+    }    
+
+    &.collapsed {
+        .up {                   
+            display: inline-block;
+        }
+
+        .down {                    
+            display: none;
+        }              
+    }     
+} // end .arrow
 
 // tablet display
 @media (min-width: 768px) {    

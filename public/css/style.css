@@ -154,6 +154,34 @@ a {
   color: #8c8a8a;
   letter-spacing: 4px;
 }
+.custom-arrow i {
+  border: solid #585a5a;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 4px;
+  margin: 0 0 4px 9px;
+}
+.custom-arrow i.up {
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+  margin-bottom: -4px;
+  display: none;
+}
+.custom-arrow i.down {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  display: inline-block;
+}
+.custom-arrow.collapsed .up {
+  display: inline-block;
+}
+.custom-arrow.collapsed .down {
+  display: none;
+}
 @media (min-width: 768px) {
   .breadcrumb {
     margin-bottom: 20px;
@@ -448,22 +476,6 @@ Desktop display
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
-.search-box ::-webkit-input-placeholder {
-  /* Chrome/Opera/Safari */
-  color: #bbb8b8;
-}
-.search-box ::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #bbb8b8;
-}
-.search-box :-ms-input-placeholder {
-  /* IE 10+ */
-  color: #bbb8b8;
-}
-.search-box :-moz-placeholder {
-  /* Firefox 18- */
-  color: #bbb8b8;
-}
 .search-box .frmSearch {
   height: 100%;
 }
@@ -484,7 +496,22 @@ Desktop display
 .search-box input[type='text']::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   font-size: 0.9em;
-  color: #7b7b7b;
+  color: #bbb8b8;
+}
+.search-box input[type='text']::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: 0.9em;
+  color: #bbb8b8;
+}
+.search-box input[type='text']::-ms-input-placeholder {
+  /* IE 10+ */
+  font-size: 0.9em;
+  color: #bbb8b8;
+}
+.search-box input[type='text']::-moz-placeholder {
+  /* Firefox 18- */
+  font-size: 0.9em;
+  color: #bbb8b8;
 }
 .search-box .search-type {
   float: left;
@@ -1249,34 +1276,6 @@ Desktop display
   color: #d86f0f;
   cursor: pointer;
 }
-.searchresult-page .search-result .type-of-word.collapsed .arrow.up {
-  display: inline-block;
-}
-.searchresult-page .search-result .type-of-word.collapsed .arrow.down {
-  display: none;
-}
-.searchresult-page .search-result .type-of-word .arrow {
-  border: solid #585a5a;
-  border-width: 0 2px 2px 0;
-  display: inline-block;
-  padding: 4px;
-  margin: 0 0 4px 9px;
-}
-.searchresult-page .search-result .type-of-word .arrow.up {
-  -webkit-transform: rotate(-135deg);
-  -moz-transform: rotate(-135deg);
-  -o-transform: rotate(-135deg);
-  transform: rotate(-135deg);
-  margin-bottom: -4px;
-  display: none;
-}
-.searchresult-page .search-result .type-of-word .arrow.down {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-  display: inline-block;
-}
 .searchresult-page .search-result .l1-container {
   margin-left: 25px;
 }
@@ -1598,28 +1597,63 @@ Desktop display
 .user-page {
   margin-top: 80px;
 }
+.user-page .search-list {
+  margin: 10px 0px 20px;
+}
 .user-page .search-list .txtListName {
+  font-size: 1.5em;
   width: 100%;
-  height: 35px;
-  padding: 0px 5px;
-  border: 0px;
+  height: 45px;
+  padding: 0px 10px;
+  border: 1px solid #ccc;
+  background-color: #f3f1f1;
   border-radius: 2px;
-  box-shadow: 0 0 12px #9a1b1b;
+  outline: none;
+}
+.user-page .search-list .txtListName::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  font-size: 0.9em;
+  color: #bbb8b8;
+}
+.user-page .search-list .txtListName::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: 0.9em;
+  color: #bbb8b8;
+}
+.user-page .search-list .txtListName::-ms-input-placeholder {
+  /* IE 10+ */
+  font-size: 0.9em;
+  color: #bbb8b8;
+}
+.user-page .search-list .txtListName::-moz-placeholder {
+  /* Firefox 18- */
+  font-size: 0.9em;
+  color: #bbb8b8;
+}
+.user-page .search-list .txtListName:hover {
+  -webkit-box-shadow: 0px 0px 5px #cacaca;
+  -moz-box-shadow: 0px 0px 5px #cacaca;
+  -o-box-shadow: 0px 0px 5px #cacaca;
+  box-shadow: 0px 0px 5px #cacaca;
+  background-color: #fff;
 }
 .user-page .lists .title {
   position: relative;
   color: #c16109;
-  font-size: 1.5em;
+  text-transform: uppercase;
+  font-size: 1.2em;
   margin: 10px 0px 20px;
-  padding-left: 25px;
+  padding-left: 22px;
 }
 .user-page .lists .title .fa-user {
   bottom: 5px;
   position: absolute;
   left: 0px;
 }
-.user-page .lists .list {
+.user-page .lists .list-wrapper {
   padding: 0px;
+}
+.user-page .lists .list {
   background-color: #fff;
   margin-bottom: 30px;
   -webkit-box-shadow: 0 0 5px #a7a1a1;
@@ -1634,19 +1668,46 @@ Desktop display
   box-shadow: 0 0 25px #a7a1a1;
 }
 .user-page .lists .list .list-img {
+  position: relative;
   width: 100%;
-  height: 150px;
+  height: 170px;
+  overflow: hidden;
 }
 .user-page .lists .list .list-img img {
   width: 100%;
-  max-width: 100%;
-  max-height: 100%;
+}
+.user-page .lists .list .list-img .list-actions {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.user-page .lists .list .list-img .list-actions .action {
+  display: block;
+  width: 30px;
+  height: 30px;
+  color: #fff;
+  text-align: center;
+  padding-top: 5px;
+  cursor: pointer;
+  margin-bottom: 3px;
+}
+.user-page .lists .list .list-img .list-actions .action.facebook {
+  background-color: #4E71A8;
+}
+.user-page .lists .list .list-img .list-actions .action.twitter {
+  background-color: #1CB7EB;
+}
+.user-page .lists .list .list-img .list-actions .action.google-plus {
+  background-color: #E3411F;
 }
 .user-page .lists .list .list-title {
   text-align: center;
 }
 .user-page .lists .list .list-title h2 {
+  max-height: 100px;
+  overflow: hidden;
   font-size: 1.4em;
+  font-weight: bold;
   margin: 15px 0px;
   padding: 0px 5px;
   line-height: 30px;
@@ -1658,6 +1719,7 @@ Desktop display
 .user-page .lists .list .list-footer p {
   padding: 10px;
   text-align: center;
+  color: #6f7171;
 }
 .user-page .lists .list .list-footer p .learned-point,
 .user-page .lists .list .list-footer p .unlearned-point {
@@ -1676,6 +1738,23 @@ Desktop display
 }
 .user-page .lists .list .list-footer .pull-left {
   border-right: 1px solid #dedbdb;
+}
+@media (min-width: 768px) {
+  .user-page {
+    margin-top: 100px;
+  }
+  .user-page .lists {
+    margin: 0px -15px;
+  }
+  .user-page .lists .title {
+    margin: 10px 15px 20px;
+  }
+  .user-page .lists .list-wrapper {
+    padding: 0px 15px;
+  }
+  .user-page .lists .list .list-title {
+    height: 100px;
+  }
 }
 .learn-page .main-quiz-wrapper {
   background-color: #ccc;

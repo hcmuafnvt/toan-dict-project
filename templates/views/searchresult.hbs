@@ -71,8 +71,10 @@
                                 {{#data.searchResult.translateToEn.grambs}}
                                 <div class="gramb">
                                     <div class="type-of-word">{{typeOfWord}}
-                                        <i class="arrow down"></i>
-                                        <i class="arrow up"></i>
+                                        <span class="custom-arrow">
+                                            <i class="down"></i>
+                                            <i class="up"></i>
+                                        </span>
                                     </div>
                                     <div class="l1-group">
                                         {{#level1}}
@@ -127,8 +129,10 @@
                                 {{#data.searchResult.translateToEn.etymologys}}
                                 <div class="etymology">
                                     <div class="type-of-word">{{typeOfWord}}
-                                        <i class="arrow down"></i>
-                                        <i class="arrow up"></i>
+                                        <span class="custom-arrow">
+                                            <i class="down"></i>
+                                            <i class="up"></i>
+                                        </span>
                                     </div>
                                     <div class="l1-group">
                                         {{#level1}}
@@ -165,9 +169,7 @@
                             <div class="grambs">
                                 {{#data.searchResult.translateToVi.types}}
                                     {{#ifeq type 'gramb'}}
-                                        <div class="type-of-word">{{name}}
-                                            {{!--<i class="arrow down"></i>
-                                            <i class="arrow up"></i>--}}
+                                        <div class="type-of-word">{{name}}                                            
                                         </div>
                                     {{else ifeq type 'mean'}}
                                         <div class="gramb l1-container">

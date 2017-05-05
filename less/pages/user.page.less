@@ -2,23 +2,32 @@
     margin-top: 80px;
 
     .search-list {
+        margin: 10px 0px 20px;
         .txtListName {
+            font-size: 1.5em;
             width: 100%;
-            height: 35px;
-            padding: 0px 5px;
-            border: 0px;
-            border-radius: 2px;
-            box-shadow: 0 0 12px #9a1b1b;
+            height: 45px;
+            padding: 0px 10px;
+            border: 1px solid #ccc;
+            background-color: #f3f1f1;
+            border-radius: 2px;            
+            .placeholdercolor();
+            outline: none;
+            &:hover {
+                .box-shadow(0px 0px 5px #cacaca);
+                background-color: #fff;
+            }
         }
     }
-
+    
     .lists {
         .title {
             position: relative;
             color: #c16109;
-            font-size: 1.5em;
+            text-transform: uppercase;
+            font-size: 1.2em;
             margin: 10px 0px 20px;
-            padding-left: 25px;
+            padding-left: 22px;
             .fa-user {
                 bottom: 5px;
                 position: absolute;
@@ -26,29 +35,59 @@
             }
         }
 
-        .list {
+        .list-wrapper {
             padding: 0px;
+        }
+        .list {            
             background-color: #fff;
             margin-bottom: 30px;
             .box-shadow(0 0 5px #a7a1a1);
 
             &:hover {
                 .box-shadow(0 0 25px #a7a1a1);
-            }            
+            }               
 
             .list-img {
+                position: relative;
                 width: 100%;
-                height: 150px;
+                height: 170px;
+                overflow: hidden;
                 img {
-                    width: 100%;
-                    max-width: 100%;
-                    max-height: 100%;
+                    width: 100%;                    
                 }
+
+                .list-actions {
+                    position: absolute;                        
+                    top: 5px;                    
+                    right: 5px;
+                    .action {
+                        display: block;
+                        width: 30px;
+                        height: 30px;
+                        color: #fff;
+                        text-align: center;
+                        padding-top: 5px; 
+                        cursor: pointer;
+                        margin-bottom: 3px;
+                        &.facebook {
+                            background-color: #4E71A8;
+                        }
+                        &.twitter {
+                            background-color: #1CB7EB;
+                        }
+                        &.google-plus {
+                            background-color: #E3411F;
+                        }
+                    }
+                }  
             }
-            .list-title {
+            .list-title {                
                 text-align: center;
                 h2 {
-                    font-size: 1.4em;                    
+                    max-height: 100px;
+                    overflow: hidden;
+                    font-size: 1.4em;
+                    font-weight: bold;                 
                     margin: 15px 0px;
                     padding: 0px 5px;
                     line-height: 30px;
@@ -60,6 +99,7 @@
                 p {
                     padding: 10px;
                     text-align: center;
+                    color: #6f7171;
                     .learned-point, .unlearned-point {
                         display: block;
                         font-size: 1.8em;
@@ -80,4 +120,22 @@
             }
         }
     } // end .list
+
+    @media (min-width: 768px) {
+        margin-top: 100px;
+        .lists {
+            margin: 0px -15px;
+            .title {
+                margin: 10px 15px 20px;
+            }
+            .list-wrapper {
+                padding: 0px 15px;
+            }
+            .list {
+                .list-title {
+                    height: 100px;                    
+                }
+            }
+        }
+    }
 }

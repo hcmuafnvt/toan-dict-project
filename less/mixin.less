@@ -51,17 +51,21 @@ CSS3 PROPERTIES
 }
 
 // placeholder color
-.placeholdercolor(@color: #bbb8b8) {
-    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+.placeholdercolor(@fontSize: 0.9em, @color: #bbb8b8) {
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        font-size: @fontSize;
+        color: @color;        
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+        font-size: @fontSize;
         color: @color;
     }
-    ::-moz-placeholder { /* Firefox 19+ */
+    &::-ms-input-placeholder { /* IE 10+ */
+        font-size: @fontSize;
         color: @color;
     }
-    :-ms-input-placeholder { /* IE 10+ */
-        color: @color;
-    }
-    :-moz-placeholder { /* Firefox 18- */
+    &::-moz-placeholder { /* Firefox 18- */
+        font-size: @fontSize;
         color: @color;
     }
 }

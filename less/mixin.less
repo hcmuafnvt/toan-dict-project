@@ -36,10 +36,10 @@ CSS3 PROPERTIES
 
 // Transition
 .transition(@transition) {
-    -webkit-transition: @transition;
-       -moz-transition: @transition;
-         -o-transition: @transition;
-            transition: @transition;
+    -webkit-transition: ~"@{transition}";
+       -moz-transition: ~"@{transition}";
+         -o-transition: ~"@{transition}";
+            transition: ~"@{transition}";
 }
 
 // -moz-background-size

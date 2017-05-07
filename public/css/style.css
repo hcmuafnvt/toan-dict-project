@@ -1594,94 +1594,222 @@ Desktop display
     line-height: initial;
   }
 }
-.user-page {
+.libraries-page {
   margin-top: 80px;
 }
-.user-page .search-list {
+.libraries-page .search-list {
+  height: 40px;
   margin: 10px 0px 20px;
-}
-.user-page .search-list .txtListName {
-  font-size: 1.5em;
-  width: 100%;
-  height: 45px;
-  padding: 0px 10px;
   border: 1px solid #ccc;
-  background-color: #f3f1f1;
+  position: relative;
+}
+.libraries-page .search-list .txtListName {
+  font-size: 1.3em;
+  width: 100%;
+  height: 40px;
+  padding: 0px 55px 0px 10px;
+  border: 0;
+  background-color: transparent;
   border-radius: 2px;
   outline: none;
 }
-.user-page .search-list .txtListName::-webkit-input-placeholder {
+.libraries-page .search-list .txtListName::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   font-size: 0.9em;
   color: #bbb8b8;
 }
-.user-page .search-list .txtListName::-moz-placeholder {
+.libraries-page .search-list .txtListName::-moz-placeholder {
   /* Firefox 19+ */
   font-size: 0.9em;
   color: #bbb8b8;
 }
-.user-page .search-list .txtListName::-ms-input-placeholder {
+.libraries-page .search-list .txtListName::-ms-input-placeholder {
   /* IE 10+ */
   font-size: 0.9em;
   color: #bbb8b8;
 }
-.user-page .search-list .txtListName::-moz-placeholder {
+.libraries-page .search-list .txtListName::-moz-placeholder {
   /* Firefox 18- */
   font-size: 0.9em;
   color: #bbb8b8;
 }
-.user-page .search-list .txtListName:hover {
+.libraries-page .search-list .txtListName:hover {
   -webkit-box-shadow: 0px 0px 5px #cacaca;
   -moz-box-shadow: 0px 0px 5px #cacaca;
   -o-box-shadow: 0px 0px 5px #cacaca;
   box-shadow: 0px 0px 5px #cacaca;
   background-color: #fff;
 }
-.user-page .lists .title {
+.libraries-page .search-list .filter-lib {
+  position: absolute;
+  top: 3px;
+  right: 0;
+  width: 55px;
+  height: 30px;
+  border-left: 1px solid #ccc;
+  text-align: center;
+}
+.libraries-page .search-list .filter-lib .custom-arrow i {
+  margin: 7px 0px 0px;
+  padding: 6px;
+}
+.libraries-page .search-list .filter-lib .custom-arrow i.down {
+  display: inline-block;
+}
+.libraries-page .search-list .filter-lib .custom-arrow i.up {
+  margin: 12px 0px 0px;
+  display: none;
+}
+.libraries-page .search-list .filter-lib.active .custom-arrow i.down {
+  display: none;
+}
+.libraries-page .search-list .filter-lib.active .custom-arrow i.up {
+  display: inline-block;
+}
+.libraries-page .search-list .filter-lib .selected {
+  display: none;
+  color: #ccc;
+}
+.libraries-page .search-list .lib-types {
+  display: none;
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+  top: 40px;
+  left: 0px;
+  width: 100%;
+  list-style: none;
+  background-color: #fff;
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 1px 4px #777;
+  z-index: 1;
+}
+.libraries-page .search-list .lib-types.active {
+  display: block;
+}
+.libraries-page .search-list .lib-types li {
+  position: relative;
+  color: #585a5a;
+  padding: 12px 0 12px 10px;
+  border-bottom: 1px solid #c0bdbc;
+  font-size: 1.2em;
+}
+.libraries-page .search-list .lib-types li:last-child {
+  border: none;
+}
+.libraries-page .search-list .lib-types li:hover {
+  background-color: #f7f6f6;
+}
+.libraries-page .search-list .lib-types li.active:after {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 15px;
+  border: solid #585a5a;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+.libraries-page .lists {
+  clear: both;
+}
+.libraries-page .lists .title {
   position: relative;
   color: #c16109;
   text-transform: uppercase;
   font-size: 1.2em;
   margin: 10px 0px 20px;
-  padding-left: 22px;
 }
-.user-page .lists .title .fa-user {
-  bottom: 5px;
-  position: absolute;
-  left: 0px;
+.libraries-page .lists .title .list-number {
+  display: inline-block;
+  min-width: 10px;
+  padding: 2px 7px;
+  font-size: 1em;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #c16109;
+  border-radius: 10px;
+  margin-right: 5px;
 }
-.user-page .lists .list-wrapper {
+.libraries-page .lists .title .exp-col {
+  display: inline-block;
+  padding-left: 5px;
+}
+.libraries-page .lists .title .exp-col i {
+  color: #999a9a;
+  font-size: 1.2em;
+}
+.libraries-page .lists .list-wrapper {
   padding: 0px;
 }
-.user-page .lists .list {
+.libraries-page .lists .list-wrapper:last-child .list:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0.7;
+}
+.libraries-page .lists .list-wrapper:last-child .list:after {
+  content: "XEM \a TẤT CẢ";
+  white-space: pre;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: solid 3px #fff;
+  background-color: #5fb94c;
+  top: 50%;
+  left: 50%;
+  margin: -50px 0 0 -50px;
+  border-radius: 50%;
+  padding-top: 30px;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
+  line-height: 22px;
+  z-index: 2;
+}
+.libraries-page .lists .list {
+  position: relative;
+  cursor: pointer;
   background-color: #fff;
   margin-bottom: 30px;
+  top: 0px;
   -webkit-box-shadow: 0 0 5px #a7a1a1;
   -moz-box-shadow: 0 0 5px #a7a1a1;
   -o-box-shadow: 0 0 5px #a7a1a1;
   box-shadow: 0 0 5px #a7a1a1;
+  -webkit-transition: top .35s ease-out, box-shadow .35s ease-out;
+  -moz-transition: top .35s ease-out, box-shadow .35s ease-out;
+  -o-transition: top .35s ease-out, box-shadow .35s ease-out;
+  transition: top .35s ease-out, box-shadow .35s ease-out;
 }
-.user-page .lists .list:hover {
-  -webkit-box-shadow: 0 0 25px #a7a1a1;
-  -moz-box-shadow: 0 0 25px #a7a1a1;
-  -o-box-shadow: 0 0 25px #a7a1a1;
-  box-shadow: 0 0 25px #a7a1a1;
-}
-.user-page .lists .list .list-img {
+.libraries-page .lists .list .list-img {
   position: relative;
   width: 100%;
   height: 170px;
   overflow: hidden;
 }
-.user-page .lists .list .list-img img {
+.libraries-page .lists .list .list-img img {
   width: 100%;
 }
-.user-page .lists .list .list-img .list-actions {
+.libraries-page .lists .list .list-img .list-actions {
   position: absolute;
   top: 5px;
   right: 5px;
 }
-.user-page .lists .list .list-img .list-actions .action {
+.libraries-page .lists .list .list-img .list-actions .action {
   display: block;
   width: 30px;
   height: 30px;
@@ -1691,19 +1819,19 @@ Desktop display
   cursor: pointer;
   margin-bottom: 3px;
 }
-.user-page .lists .list .list-img .list-actions .action.facebook {
+.libraries-page .lists .list .list-img .list-actions .action.facebook {
   background-color: #4E71A8;
 }
-.user-page .lists .list .list-img .list-actions .action.twitter {
+.libraries-page .lists .list .list-img .list-actions .action.twitter {
   background-color: #1CB7EB;
 }
-.user-page .lists .list .list-img .list-actions .action.google-plus {
+.libraries-page .lists .list .list-img .list-actions .action.google-plus {
   background-color: #E3411F;
 }
-.user-page .lists .list .list-title {
+.libraries-page .lists .list .list-title {
   text-align: center;
 }
-.user-page .lists .list .list-title h2 {
+.libraries-page .lists .list .list-title h2 {
   max-height: 100px;
   overflow: hidden;
   font-size: 1.4em;
@@ -1711,49 +1839,96 @@ Desktop display
   margin: 15px 0px;
   padding: 0px 5px;
   line-height: 30px;
-  color: #6f7171;
+  color: #575858;
 }
-.user-page .lists .list .list-footer {
+.libraries-page .lists .list .list-footer {
   border-top: 1px solid #dedbdb;
 }
-.user-page .lists .list .list-footer p {
-  padding: 10px;
+.libraries-page .lists .list .list-footer p {
+  padding: 5px;
   text-align: center;
   color: #6f7171;
 }
-.user-page .lists .list .list-footer p .learned-point,
-.user-page .lists .list .list-footer p .unlearned-point {
+.libraries-page .lists .list .list-footer p .learned-point,
+.libraries-page .lists .list .list-footer p .unlearned-point {
   display: block;
   font-size: 1.8em;
 }
-.user-page .lists .list .list-footer p .learned-point {
+.libraries-page .lists .list .list-footer p .learned-point {
   color: #60ba4d;
 }
-.user-page .lists .list .list-footer p .unlearned-point {
+.libraries-page .lists .list .list-footer p .unlearned-point {
   color: #e6431a;
 }
-.user-page .lists .list .list-footer .pull-left,
-.user-page .lists .list .list-footer .pull-right {
+.libraries-page .lists .list .list-footer .pull-left,
+.libraries-page .lists .list .list-footer .pull-right {
   width: 50%;
 }
-.user-page .lists .list .list-footer .pull-left {
+.libraries-page .lists .list .list-footer .pull-left {
   border-right: 1px solid #dedbdb;
 }
+.libraries-page .right-menu {
+  display: none;
+}
 @media (min-width: 768px) {
-  .user-page {
+  .libraries-page {
     margin-top: 100px;
   }
-  .user-page .lists {
+  .libraries-page .lists {
+    float: left;
+    padding-top: 5px;
     margin: 0px -15px;
   }
-  .user-page .lists .title {
-    margin: 10px 15px 20px;
+  .libraries-page .lists .title {
+    margin: 15px 15px 20px;
   }
-  .user-page .lists .list-wrapper {
+  .libraries-page .lists .list-wrapper {
     padding: 0px 15px;
   }
-  .user-page .lists .list .list-title {
+  .libraries-page .lists .list .list-title {
     height: 100px;
+  }
+}
+@media (min-width: 1024px) {
+  .libraries-page {
+    margin-top: 0px;
+  }
+  .libraries-page .main-content {
+    background-color: #fff;
+  }
+  .libraries-page .search-list {
+    margin: 30px 15px 20px;
+  }
+  .libraries-page .search-list .txtListName {
+    height: 40px;
+    font-size: 1.3em;
+  }
+  .libraries-page .lists {
+    margin: 0px;
+  }
+  .libraries-page .lists .list:hover:hover {
+    top: -5px;
+    -webkit-box-shadow: 0 0 25px #a7a1a1;
+    -moz-box-shadow: 0 0 25px #a7a1a1;
+    -o-box-shadow: 0 0 25px #a7a1a1;
+    box-shadow: 0 0 25px #a7a1a1;
+  }
+  .libraries-page .lists .list:hover .list-img .list-actions {
+    display: block;
+  }
+  .libraries-page .lists .list .list-title h2 {
+    font-size: 1.1em;
+    line-height: 25px;
+  }
+  .libraries-page .lists .list .list-img .list-actions {
+    display: none;
+  }
+  .libraries-page .right-menu {
+    display: block;
+  }
+  .libraries-page .right-menu .section-user-info {
+    background-color: #fff;
+    height: 200px;
   }
 }
 .learn-page .main-quiz-wrapper {

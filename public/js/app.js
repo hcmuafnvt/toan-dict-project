@@ -7,6 +7,7 @@ var pages = {
     homepage: require('./pages/home.page'),
     searchresultpage: require('./pages/searchresult.page'),
     learnpage: require('./pages/learn.page'),
+    librariespage: require('./pages/libraries.page'),
     wordcrawlerpage: require('./pages/wordcrawler.page')
 }
 

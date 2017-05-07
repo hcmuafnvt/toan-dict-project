@@ -38,7 +38,7 @@ exports = module.exports = function (app) {
 	app.all('/signup', routes.views.auth.signup);
 	app.all('/signin', routes.views.auth.signin);
 	app.get('/signout', routes.views.auth.signout);
-	app.get('/user', routes.views.user);
+	app.get('/libraries', routes.views.libraries);
 	app.get('/definition/:type/:word', routes.views.searchresult);
 	app.get('/learn', routes.views.learn);
 	app.get('/wordcrawler', routes.views.wordcrawler);

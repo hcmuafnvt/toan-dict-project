@@ -1,15 +1,18 @@
-.user-page {
-    margin-top: 80px;
+.libraries-page {
+    margin-top: 80px;    
 
     .search-list {
+        height: 40px;
         margin: 10px 0px 20px;
+        border: 1px solid #ccc;
+        position: relative;
         .txtListName {
-            font-size: 1.5em;
+            font-size: 1.3em;
             width: 100%;
-            height: 45px;
-            padding: 0px 10px;
-            border: 1px solid #ccc;
-            background-color: #f3f1f1;
+            height: 40px;
+            padding: 0px 55px 0px 10px;
+            border: 0;
+            background-color: transparent;
             border-radius: 2px;            
             .placeholdercolor();
             outline: none;
@@ -18,34 +21,177 @@
                 background-color: #fff;
             }
         }
+
+        .filter-lib {
+            position: absolute;
+            top: 3px;
+            right: 0;
+            width: 55px;
+            height: 30px;
+            border-left: 1px solid #ccc;
+            text-align: center;
+
+            .custom-arrow {
+                i {
+                    margin: 7px 0px 0px;
+                    padding: 6px;
+                    &.down {
+                        display: inline-block;
+                    }
+                    &.up {
+                        margin: 12px 0px 0px;
+                        display: none;
+                    }
+                }
+            }
+
+            &.active {
+                .custom-arrow {
+                    i {                        
+                        &.down {
+                            display: none;
+                        }
+                        &.up {
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+
+            .selected {
+                display: none;
+                color: #ccc;
+            }            
+        }
+
+        .lib-types {
+            display: none;
+            position: absolute;
+            margin: 0px;
+            padding: 0px;
+            top: 40px;
+            left: 0px;
+            width: 100%;
+            list-style: none;
+            background-color: #fff;
+            border-radius: 0 0 3px 3px;
+            box-shadow: 0 1px 4px #777;
+            z-index: 1;
+            &.active {
+                display: block;
+            }
+            li {
+                position: relative;
+                color: #585a5a;
+                padding: 12px 0 12px 10px;
+                border-bottom: 1px solid #c0bdbc;
+                font-size: 1.2em;
+                &:last-child {
+                    border: none;
+                }
+                &:hover {
+                    background-color: #f7f6f6;
+                }
+                &.active {
+                    &:after {
+                        content: '';
+                        display: block;
+                        width: 8px;
+                        height: 15px;
+                        border: solid #585a5a;
+                        border-width: 0 2px 2px 0;
+                        -webkit-transform: rotate(45deg);
+                        -moz-transform: rotate(45deg);
+                        -o-transform: rotate(45deg);
+                        transform: rotate(45deg);
+                        position: absolute;
+                        right: 15px;
+                        top: 15px;
+                    }
+                }
+            }
+        } //end .lib-types
     }
+
+    
     
     .lists {
+        clear: both;
         .title {
             position: relative;
             color: #c16109;
             text-transform: uppercase;
             font-size: 1.2em;
-            margin: 10px 0px 20px;
-            padding-left: 22px;
-            .fa-user {
-                bottom: 5px;
-                position: absolute;
-                left: 0px;
+            margin: 10px 0px 20px;            
+            .list-number {
+                display: inline-block;
+                min-width: 10px;
+                padding: 2px 7px;
+                font-size: 1em;
+                line-height: 1;
+                color: #fff;
+                text-align: center;
+                white-space: nowrap;                
+                background-color: #c16109;
+                border-radius: 10px;
+                margin-right: 5px;
+            }
+            .exp-col {
+                display: inline-block;
+                padding-left: 5px;
+                i {
+                    color: #999a9a;
+                    font-size: 1.2em;
+                }
             }
         }
 
         .list-wrapper {
-            padding: 0px;
+            padding: 0px;            
+            &:last-child {
+                .list {
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background-color: #000;
+                        top: 0;
+                        left: 0;
+                        z-index: 1;
+                        opacity: 0.7;
+                    }
+                    &:after {
+                        content: "XEM \a TẤT CẢ";
+                        white-space: pre;
+                        position: absolute;
+                        width: 100px;
+                        height: 100px;
+                        border: solid 3px #fff;
+                        background-color: #5fb94c;
+                        top: 50%;
+                        left: 50%;
+                        margin: -50px 0 0 -50px;
+                        border-radius: 50%;
+                        padding-top: 30px;
+                        text-align: center;
+                        font-weight: bold;
+                        color: #fff;
+                        letter-spacing: 1px;
+                        line-height: 22px;
+                        z-index: 2;
+                    }
+                }
+            }      
         }
-        .list {            
+        .list {        
+            position: relative;   
+            cursor: pointer; 
             background-color: #fff;
             margin-bottom: 30px;
-            .box-shadow(0 0 5px #a7a1a1);
-
-            &:hover {
-                .box-shadow(0 0 25px #a7a1a1);
-            }               
+            top: 0px;
+            .box-shadow(0 0 5px #a7a1a1); 
+            .transition('top .35s ease-out, box-shadow .35s ease-out');             
 
             .list-img {
                 position: relative;
@@ -91,13 +237,13 @@
                     margin: 15px 0px;
                     padding: 0px 5px;
                     line-height: 30px;
-                    color: #6f7171;
+                    color: #575858;
                 }
             }
             .list-footer {
                 border-top: 1px solid #dedbdb;
                 p {
-                    padding: 10px;
+                    padding: 5px;
                     text-align: center;
                     color: #6f7171;
                     .learned-point, .unlearned-point {
@@ -121,12 +267,19 @@
         }
     } // end .list
 
+    .right-menu {
+        display: none;
+    } //end .right-menu
+    
+
     @media (min-width: 768px) {
         margin-top: 100px;
-        .lists {
+        .lists {      
+            float: left;      
+            padding-top: 5px;
             margin: 0px -15px;
             .title {
-                margin: 10px 15px 20px;
+                margin: 15px 15px 20px;
             }
             .list-wrapper {
                 padding: 0px 15px;
@@ -135,6 +288,59 @@
                 .list-title {
                     height: 100px;                    
                 }
+            }
+        }
+    }
+
+    @media (min-width: 1024px) {
+        margin-top: 0px;
+        .main-content {
+            background-color: #fff;
+        }
+        .search-list {
+            margin: 30px 15px 20px;
+        }
+        .search-list {
+            .txtListName {
+                height: 40px;
+                font-size: 1.3em;
+            }
+        }
+
+        .lists {
+            margin: 0px;    
+            .list {                
+                &:hover {
+                    &:hover {
+                        top: -5px;
+                        .box-shadow(0 0 25px #a7a1a1);
+                    }  
+
+                    .list-img {
+                        .list-actions {
+                            display: block;
+                        }
+                    }
+                }
+                .list-title {                         
+                    h2 {
+                        font-size: 1.1em;
+                        line-height: 25px;
+                    }
+                }
+                .list-img {
+                    .list-actions {
+                        display: none;                        
+                    }
+                }
+            }            
+        }
+
+        .right-menu {
+            display: block;
+            .section-user-info {
+                background-color: #fff;
+                height: 200px;                
             }
         }
     }

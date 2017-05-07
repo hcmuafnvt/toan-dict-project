@@ -6,9 +6,10 @@ var router = require('express').Router(),
     async = require('async');
 
 var listOfWords;
-var crawlingCount = 0;    
+var crawlingCount = 0;
+var stopCrawler = false;   
 
-Word.model.find({$and: [{translateToEn: {$exists: false}}, {isEnRedirected: {$exists: false}}, {translateToVi: {$exists: false}}]}).sort({name: 1}).limit(100).exec(function(err, result) {
+Word.model.find({$and: [{translateToEn: {$exists: false}}, {isEnRedirected: {$exists: false}}, {translateToVi: {$exists: false}}]}).sort({name: 1}).limit(1000).exec(function(err, result) {
     listOfWords = result;
     console.log('list of words of oxford : ', listOfWords.length);
 });
@@ -24,24 +25,36 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
         console.log('====> (%d) fetchstart %s', crawlingCount, queueItem.url);
         console.time('fetchTime');           
         
-        if((crawlingCount % 100) === 0) {                
-            console.log('===============================Waiting 3 minutes=====================');
+        if(stopCrawler || crawlingCount === 1000) {              
+            console.log('===============================Waiting 60000 ms=====================');
             crawler.stop();
             setTimeout(function() {
-                Word.model.find({$and: [{translateToEn: {$exists: false}}, {isEnRedirected: {$exists: false}}, {translateToVi: {$exists: false}}]}).sort({name: 1}).limit(100).exec(function(err, result) {
+                Word.model.find({$and: [{translateToEn: {$exists: false}}, {isEnRedirected: {$exists: false}}, {translateToVi: {$exists: false}}]}).sort({name: 1}).limit(1000).exec(function(err, result) {
                     listOfWords = result;
                     crawlingCount = 0;
+                    stopCrawler = false;
                     console.log('list of words of oxford : ', listOfWords.length);
+                    console.log('queuequeuequeuequeuequeuequeuequeue before : ', crawler.queue.length);
+                    crawler.queue = new simplecrawler.queue();
+                    console.log('queuequeuequeuequeuequeuequeuequeue clear : ', crawler.queue.length);
                     var foundURLs =listOfWords.map(function(word) {
                         return 'https://en.oxforddictionaries.com/definition/' + word.name.replace(/ /g, '_');
                     });       
                     foundURLs.forEach(crawler.queueURL.bind(crawler));           
-                    
-                    console.log('==============================start crawling======================');
+                    console.log('queuequeuequeuequeuequeuequeuequeue after : ', crawler.queue.length);
+                    console.log('==============================start crawling======================');                    
                     crawler.start();
                 });                    
-            }, 120000);
+            }, 100000);
         }                  
+    });
+
+    crawler.on('fetchheaders', function(queueItem, resources) {
+        console.log(':::::::::::::code : ', queueItem.stateData.code);
+        if(queueItem.stateData.code === 429) {
+            stopCrawler = true;
+            console.log(':::::::::::::too many requests : ', queueItem.stateData.code);
+        }
     });
 
     crawler.on('queueadd', function(queueItem) {
@@ -66,14 +79,16 @@ router.get('/getword', keystone.middleware.api, function (req, res) {
                 break;                
             }
         }
-        if(selectedWord !== null) {
+        if(selectedWord !== null) {            
             selectedWord.remove(function() {
                 console.log('xxxxxxxxxx-removed : ' + selectedWord.name);
             });
-        }        
+        } else {
+            console.log('null null null null null null null');
+        }     
     });
 
-    crawler.on("fetchcomplete", function(queueItem, responseBody, response) {        
+    crawler.on("fetchcomplete", function(queueItem, responseBody, response) {           
         if(queueItem.url === 'https://en.oxforddictionaries.com/') return;       
 
         console.log('--------' + queueItem.url.substring(queueItem.url.lastIndexOf('/') + 1, queueItem.url.length) + '---------------');

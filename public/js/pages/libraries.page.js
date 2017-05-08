@@ -22,8 +22,22 @@ function selectSearchType() {
     });
 }
 
+function handleSearchList() {
+    $('#txtListName').on('focus blur', function(e) {
+        e.preventDefault();        
+        $('.lib-types').slideDown();
+         $(this).attr('placeholder', 'Nhập tên bộ từ  cần tìm');
+    });
+    $('#txtListName').on('blur', function(e) {
+        e.preventDefault();        
+        $('.lib-types').slideUp();
+        $(this).attr('placeholder', 'Tìm kiếm bộ từ');
+    })
+}
+
 function init() {
     selectSearchType();
+    handleSearchList();
 }
 
 module.exports = {

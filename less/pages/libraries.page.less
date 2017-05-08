@@ -1,119 +1,5 @@
 .libraries-page {
-    margin-top: 80px;    
-
-    .search-list {
-        height: 40px;
-        margin: 10px 0px 20px;
-        border: 1px solid #ccc;
-        position: relative;
-        .txtListName {
-            font-size: 1.3em;
-            width: 100%;
-            height: 40px;
-            padding: 0px 55px 0px 10px;
-            border: 0;
-            background-color: transparent;
-            border-radius: 2px;            
-            .placeholdercolor();
-            outline: none;
-            &:hover {
-                .box-shadow(0px 0px 5px #cacaca);
-                background-color: #fff;
-            }
-        }
-
-        .filter-lib {
-            position: absolute;
-            top: 4px;
-            right: 0;
-            width: 55px;
-            height: 30px;
-            border-left: 1px solid #ccc;
-            text-align: center;
-
-            .custom-arrow {
-                i {
-                    margin: 7px 0px 0px;
-                    padding: 6px;
-                    &.down {
-                        display: inline-block;
-                    }
-                    &.up {
-                        margin: 12px 0px 0px;
-                        display: none;
-                    }
-                }
-            }
-
-            &.active {
-                .custom-arrow {
-                    i {                        
-                        &.down {
-                            display: none;
-                        }
-                        &.up {
-                            display: inline-block;
-                        }
-                    }
-                }
-            }
-
-            .selected {
-                display: none;
-                color: #ccc;
-            }            
-        }
-
-        .lib-types {
-            display: none;
-            position: absolute;
-            margin: 0px;
-            padding: 0px;
-            top: 40px;
-            left: 0px;
-            width: 100%;
-            list-style: none;
-            background-color: #fff;
-            border-radius: 0 0 3px 3px;
-            box-shadow: 0 1px 4px #777;
-            z-index: 1;
-            &.active {
-                display: block;
-            }
-            li {
-                position: relative;
-                color: #585a5a;
-                padding: 12px 0 12px 10px;
-                border-bottom: 1px solid #c0bdbc;
-                font-size: 1.2em;
-                &:last-child {
-                    border: none;
-                }
-                &:hover {
-                    background-color: #f7f6f6;
-                }
-                &.active {
-                    &:after {
-                        content: '';
-                        display: block;
-                        width: 8px;
-                        height: 15px;
-                        border: solid #585a5a;
-                        border-width: 0 2px 2px 0;
-                        -webkit-transform: rotate(45deg);
-                        -moz-transform: rotate(45deg);
-                        -o-transform: rotate(45deg);
-                        transform: rotate(45deg);
-                        position: absolute;
-                        right: 15px;
-                        top: 15px;
-                    }
-                }
-            }
-        } //end .lib-types
-    }
-
-    
+    margin-top: 80px;     
     
     .lists {
         clear: both;
@@ -339,8 +225,10 @@
         .right-menu {
             display: block;
             .section-user-info {
-                background-color: #fff;
-                height: 200px;                
+                height: 200px;
+                border: 2px solid #ccc;
+                border-radius: 5px;
+                margin-top: 20px;                
             }
         }
     }

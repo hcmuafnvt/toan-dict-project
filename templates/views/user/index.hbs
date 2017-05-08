@@ -10,13 +10,23 @@
 </section>
 
 <div class="libraries-page" id="libraries-page">
-    {{> _breadcrumb}}
+    <div class="sub-menu">
+        <div class="container">
+            <div class="breadcrumb-wrapper pull-left">
+                {{> _breadcrumb}}
+            </div>        
+            <div class="task-bar-wrapper pull-right">
+
+            </div>
+        </div>        
+    </div>
+    
 
     <div class="container">
         <div class="main-content col-md-8">
             <div class="search-list">                
                 <form method="GET" id="frmSearchList">
-                    <input type="text" id="txtListName" class="txtListName" placeholder="Nhập tên bộ từ cần tìm">
+                    <input type="text" id="txtListName" class="txtListName" placeholder="Tìm kiếm bộ từ">
                 </form>
 
                 <div class="filter-lib">
@@ -42,8 +52,8 @@
                     </span>
                     Bộ từ của bạn
                     <span class="exp-col">
-                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
-                        <i class="fa fa-chevron-circle-up hide" aria-hidden="true"></i>
+                        <i class="fa fa-minus" aria-hidden="true"></i>
+                        <i class="fa fa-plus hide" aria-hidden="true"></i>
                     </span>                    
                 </p>
                 <div class="list-wrapper col-sm-4 col-md-4">
@@ -162,9 +172,9 @@
                     </span>
                     Bộ từ của Elvoca
                     <span class="exp-col">
-                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
-                        <i class="fa fa-chevron-circle-up hide" aria-hidden="true"></i>
-                    </span> 
+                        <i class="fa fa-minus" aria-hidden="true"></i>
+                        <i class="fa fa-plus hide" aria-hidden="true"></i>
+                    </span>  
                     
                 </p>
                 <div class="list-wrapper col-sm-6 col-md-4">

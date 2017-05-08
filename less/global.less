@@ -88,22 +88,39 @@ a {
     padding: 0px;
 }
 
-.breadcrumb {
-    padding: 6px 0px;        
+.sub-menu {
+    height: 40px;
+    .box-shadow(0px 1px 5px #d0cdcd);
     margin-bottom: 15px;
-    .box-shadow(0px 1px 2px #d8cece);
+}
 
+.breadcrumb-wrapper {
+    margin-top: 8px;
+}
+
+.breadcrumb {
     ol {
         list-style: none;
         padding: 0px;
         margin: 0px;
         li {
             display: inline-block;
+            a {
+                padding-right: 4px;
+                opacity: 0.7;
+                filter: alpha(opacity=70);
+                font-size: 1.1em;
+                color: #1CAFF6;
+            }
 
+            span[itemprop="position"] {
+                color: #8c8a8a;
+                letter-spacing: 4px;                
+            }        
             &:last-child {
                 a {
                     opacity: 1;
-                    filter: alpha(opacity=100);
+                    filter: alpha(opacity=100);                    
                 }
                 span[itemprop="name"] {
                     font-weight: bold;                        
@@ -111,18 +128,7 @@ a {
                 .arrow {
                     display: none;
                 }
-            }            
-
-            a {
-                padding-right: 4px;
-                opacity: 0.7;
-                filter: alpha(opacity=70);
-            }
-
-            span[itemprop="position"] {
-                color: #8c8a8a;
-                letter-spacing: 4px;                
-            }           
+            }               
         }
     }
 } //end .breadcrumb   
@@ -160,9 +166,7 @@ a {
 
 // tablet display
 @media (min-width: 768px) {    
-    .breadcrumb {
-        margin-bottom: 20px;
-    }
+    
 }
 
 // desktop display
@@ -175,18 +179,29 @@ a {
         position: absolute;
         bottom: initial;
     }
-
-    .breadcrumb {
-        ol {
-            float: left;
-        }
-    }     
-
-    .main-content {        
-        min-height: 400px;
-        .border-radius(10px);
-        .box-shadow(0 0 25px rgba(0,0,0,.04));
+    
+    .sub-menu {
+        height: 50px;
     }
+
+    .breadcrumb-wrapper {
+        margin-top: 13px;
+    }
+    .breadcrumb {        
+        ol {
+            li {
+                a {
+                    font-size: 1.2em;
+                }
+            }
+        }
+    }       
+
+    // .main-content {        
+    //     min-height: 400px;
+    //     .border-radius(10px);
+    //     .box-shadow(0 0 25px rgba(0,0,0,.04));
+    // }
 
     .right-menu {
         padding: 0px 0px 0px 40px;

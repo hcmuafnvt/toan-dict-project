@@ -1,13 +1,11 @@
 <div class="breadcrumb">
-    <div class="container">
-        <ol itemscope itemtype="http://schema.org/BreadcrumbList">
-            {{#each breadcrumb}}
-                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                    <a itemprop="item" href="{{link}}">
-                        <span itemprop="name">{{name}}</span></a>
-                    <span itemprop="position" content="{{level}}"><span class="arrow">&gt;</span></span>
-                </li>
-            {{/each}}            
-        </ol>
-    </div>
+    <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+        {{#each breadcrumb}}
+            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                <a itemprop="item" href="{{link}}">
+                    <span itemprop="name">{{name}}</span></a>
+                <span itemprop="position" content="{{level}}"><span class="arrow">&gt;</span></span>
+            </li>
+        {{/each}}            
+    </ol>
 </div>

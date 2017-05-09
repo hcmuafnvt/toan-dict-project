@@ -769,18 +769,55 @@ Desktop display
   }
 }
 .sub-menu {
-  height: 40px;
+  height: 50px;
   -webkit-box-shadow: 0px 1px 5px #d0cdcd;
   -moz-box-shadow: 0px 1px 5px #d0cdcd;
   -o-box-shadow: 0px 1px 5px #d0cdcd;
   box-shadow: 0px 1px 5px #d0cdcd;
   margin-bottom: 15px;
 }
+.sub-menu.active-search .breadcrumb-wrapper {
+  display: none;
+}
+.sub-menu.active-search .btn-search-list input {
+  width: 205px;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
 .breadcrumb-wrapper {
-  margin-top: 8px;
+  margin-top: 15px;
+}
+.breadcrumb ol {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+.breadcrumb ol li {
+  display: inline-block;
+}
+.breadcrumb ol li a {
+  padding-right: 4px;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+  font-size: 1.2em;
+  color: #1CAFF6;
+}
+.breadcrumb ol li span[itemprop="position"] {
+  color: #8c8a8a;
+  letter-spacing: 4px;
+}
+.breadcrumb ol li:last-child a {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.breadcrumb ol li:last-child span[itemprop="name"] {
+  font-weight: bold;
+}
+.breadcrumb ol li:last-child .arrow {
+  display: none;
 }
 .task-bar-wrapper {
-  margin-top: 15px;
+  margin-top: 8px;
 }
 .task-bar .lib-types {
   display: none;
@@ -837,31 +874,35 @@ Desktop display
 .task-bar ul li {
   display: inline-block;
   border-radius: 3px;
-  margin-left: 20px;
+  margin-left: 5px;
+  width: 35px;
+  height: 33px;
   position: relative;
 }
 .task-bar ul li.btn-search-list input {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  position: absolute;
+  top: 2px;
+  right: 0px;
   border: 0;
   background-color: transparent;
   border-bottom: 1px solid #d0a44c;
   height: 30px;
-  width: 130px;
+  width: 0px;
   outline: none;
-  -webkit-transition: width .35s;
-  -moz-transition: width .35s;
-  -o-transition: width .35s;
-  transition: width .35s;
-}
-.task-bar ul li.btn-search-list input:focus {
-  width: 300px;
+  -webkit-transition: width .35s, opacity .35s;
+  -moz-transition: width .35s, opacity .35s;
+  -o-transition: width .35s, opacity .35s;
+  transition: width .35s, opacity .35s;
 }
 .task-bar ul li.btn-search-list .fa-search {
   position: absolute;
-  top: 5px;
+  top: 2px;
   right: 0px;
-  font-size: 1.3em;
   color: #d8940d;
   cursor: pointer;
+  font-size: 2em;
 }
 .task-bar ul li.btn-add-list {
   background-color: #5fb84c;
@@ -886,42 +927,13 @@ Desktop display
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 33px;
-  height: 30px;
-  padding: 8px 0px 0px 11px;
-  border-radius: 3px 0px 0px 3px;
+  width: 35px;
+  height: 33px;
+  font-size: 1.4em;
+  padding: 8px 0 0 10px;
+  border-radius: 3px;
 }
 .task-bar ul li a span {
-  display: inline-block;
-  padding-left: 32px;
-}
-.breadcrumb ol {
-  list-style: none;
-  padding: 0px;
-  margin: 0px;
-}
-.breadcrumb ol li {
-  display: inline-block;
-}
-.breadcrumb ol li a {
-  padding-right: 4px;
-  opacity: 0.7;
-  filter: alpha(opacity=70);
-  font-size: 1.1em;
-  color: #1CAFF6;
-}
-.breadcrumb ol li span[itemprop="position"] {
-  color: #8c8a8a;
-  letter-spacing: 4px;
-}
-.breadcrumb ol li:last-child a {
-  opacity: 1;
-  filter: alpha(opacity=100);
-}
-.breadcrumb ol li:last-child span[itemprop="name"] {
-  font-weight: bold;
-}
-.breadcrumb ol li:last-child .arrow {
   display: none;
 }
 @media (min-width: 1024px) {
@@ -933,6 +945,47 @@ Desktop display
   }
   .breadcrumb ol li a {
     font-size: 1.2em;
+  }
+  .breadcrumb-wrapper {
+    margin-top: 9px;
+  }
+  .task-bar-wrapper {
+    margin-top: 15px;
+  }
+  .task-bar ul {
+    list-style: none;
+  }
+  .task-bar ul li.btn-search-list input {
+    display: block;
+    position: absolute;
+    border: 0;
+    background-color: transparent;
+    border-bottom: 1px solid #d0a44c;
+    height: 30px;
+    width: 130px;
+    outline: none;
+    -webkit-transition: width .35s;
+    -moz-transition: width .35s;
+    -o-transition: width .35s;
+    transition: width .35s;
+  }
+  .task-bar ul li.btn-search-list input:focus {
+    width: 300px;
+  }
+  .task-bar ul li.btn-search-list .fa-search {
+    top: 5px;
+    right: 0px;
+    font-size: 1.3em;
+  }
+  .task-bar ul li a i {
+    width: 33px;
+    height: 30px;
+    padding: 8px 0px 0px 11px;
+    border-radius: 3px 0px 0px 3px;
+  }
+  .task-bar ul li a span {
+    display: inline-block;
+    padding-left: 32px;
   }
 }
 .mfp-content .container {

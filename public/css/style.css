@@ -415,7 +415,7 @@ Desktop display
 }
 .search-box {
   position: relative;
-  margin: 17px 15px 0px 15px;
+  margin: 17px 0px 0px;
   height: 45px;
   background-color: #fff;
   border: 1px solid #e4e4e4;
@@ -780,9 +780,19 @@ Desktop display
   display: none;
 }
 .sub-menu.active-search .btn-search-list input {
-  width: 205px;
   opacity: 1;
   filter: alpha(opacity=100);
+  width: 100%;
+}
+.sub-menu.active-search .btn-search-list .fa {
+  top: 6px;
+  right: 3px;
+}
+.sub-menu.active-search .btn-search-list .fa-search {
+  display: none;
+}
+.sub-menu.active-search .btn-search-list .fa-times-circle {
+  display: inline-block;
 }
 .breadcrumb-wrapper {
   margin-top: 15px;
@@ -824,13 +834,17 @@ Desktop display
   position: absolute;
   margin: 0px;
   padding: 0px;
-  left: 0px;
   width: 300px;
   list-style: none;
   background-color: #fff;
   border-radius: 0 0 3px 3px;
   box-shadow: 0 1px 4px #777;
   z-index: 3;
+  width: 292px;
+  top: 33px;
+}
+.task-bar .lib-types.active {
+  display: block;
 }
 .task-bar .lib-types li {
   display: block;
@@ -863,23 +877,32 @@ Desktop display
   top: 15px;
 }
 .task-bar .lib-types li .fa-search {
+  display: inline-block !important;
   left: 10px;
   color: #b3b3b3 !important;
   font-size: 1.1em !important;
   top: 14px !important;
 }
-.task-bar ul {
+.task-bar > ul {
+  padding: 0px;
   list-style: none;
 }
-.task-bar ul li {
+.task-bar > ul > li {
   display: inline-block;
   border-radius: 3px;
   margin-left: 5px;
   width: 35px;
   height: 33px;
   position: relative;
+  -webkit-transition: width 1s;
+  -moz-transition: width 1s;
+  -o-transition: width 1s;
+  transition: width 1s;
 }
-.task-bar ul li.btn-search-list input {
+.task-bar > ul > li.btn-search-list {
+  margin-left: 0px;
+}
+.task-bar > ul > li.btn-search-list input {
   opacity: 0;
   filter: alpha(opacity=0);
   position: absolute;
@@ -891,39 +914,46 @@ Desktop display
   height: 30px;
   width: 0px;
   outline: none;
-  -webkit-transition: width .35s, opacity .35s;
-  -moz-transition: width .35s, opacity .35s;
-  -o-transition: width .35s, opacity .35s;
-  transition: width .35s, opacity .35s;
+  -webkit-transition: width 1s, opacity 1s;
+  -moz-transition: width 1s, opacity 1s;
+  -o-transition: width 1s, opacity 1s;
+  transition: width 1s, opacity 1s;
 }
-.task-bar ul li.btn-search-list .fa-search {
+.task-bar > ul > li.btn-search-list .fa {
   position: absolute;
   top: 2px;
   right: 0px;
-  color: #d8940d;
   cursor: pointer;
+}
+.task-bar > ul > li.btn-search-list .fa-search {
+  color: #d8940d;
   font-size: 2em;
 }
-.task-bar ul li.btn-add-list {
+.task-bar > ul > li.btn-search-list .fa-times-circle {
+  display: none;
+  color: #717171;
+  font-size: 1.5em;
+}
+.task-bar > ul > li.btn-add-list {
   background-color: #5fb84c;
 }
-.task-bar ul li.btn-add-list .fa-plus {
+.task-bar > ul > li.btn-add-list .fa-plus {
   background-color: #3da728;
 }
-.task-bar ul li.btn-ranking {
+.task-bar > ul > li.btn-ranking {
   background-color: #026aa7;
 }
-.task-bar ul li.btn-ranking .fa-trophy {
+.task-bar > ul > li.btn-ranking .fa-trophy {
   background-color: #025a8e;
 }
-.task-bar ul li a {
+.task-bar > ul > li a {
   font-size: 1em;
   color: #fff;
   padding: 5px 10px;
   display: block;
   text-decoration: none;
 }
-.task-bar ul li a i {
+.task-bar > ul > li a i {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -933,12 +963,18 @@ Desktop display
   padding: 8px 0 0 10px;
   border-radius: 3px;
 }
-.task-bar ul li a span {
+.task-bar > ul > li a span {
   display: none;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .sub-menu {
     height: 60px;
+  }
+  .sub-menu.active-search .breadcrumb-wrapper {
+    display: block;
+  }
+  .sub-menu.active-search .btn-search-list {
+    width: 200px;
   }
   .breadcrumb-wrapper {
     margin-top: 20px;
@@ -946,40 +982,35 @@ Desktop display
   .breadcrumb ol li a {
     font-size: 1.2em;
   }
-  .breadcrumb-wrapper {
-    margin-top: 9px;
-  }
   .task-bar-wrapper {
-    margin-top: 15px;
+    margin-top: 0px;
   }
   .task-bar ul {
     list-style: none;
   }
+  .task-bar ul li {
+    width: auto;
+    margin-left: 10px;
+  }
+  .task-bar ul li.btn-search-list {
+    top: 14px;
+    width: 175px;
+  }
   .task-bar ul li.btn-search-list input {
-    display: block;
-    position: absolute;
-    border: 0;
-    background-color: transparent;
-    border-bottom: 1px solid #d0a44c;
+    opacity: 1;
+    filter: alpha(opacity=100);
     height: 30px;
-    width: 130px;
-    outline: none;
-    -webkit-transition: width .35s;
-    -moz-transition: width .35s;
-    -o-transition: width .35s;
-    transition: width .35s;
+    width: 175px;
   }
   .task-bar ul li.btn-search-list input:focus {
-    width: 300px;
+    width: 200px;
   }
   .task-bar ul li.btn-search-list .fa-search {
     top: 5px;
     right: 0px;
-    font-size: 1.3em;
+    font-size: 1.5em;
   }
   .task-bar ul li a i {
-    width: 33px;
-    height: 30px;
     padding: 8px 0px 0px 11px;
     border-radius: 3px 0px 0px 3px;
   }
@@ -1767,12 +1798,15 @@ Desktop display
 .libraries-page .lists {
   clear: both;
 }
+.libraries-page .lists:first-child .title {
+  margin-top: 20px;
+}
 .libraries-page .lists .title {
   position: relative;
-  color: #c16109;
+  color: #999a9a;
   text-transform: uppercase;
   font-size: 1.2em;
-  margin: 30px 0px;
+  margin-top: 50px;
 }
 .libraries-page .lists .title .list-number {
   display: inline-block;
@@ -1783,7 +1817,7 @@ Desktop display
   color: #fff;
   text-align: center;
   white-space: nowrap;
-  background-color: #c16109;
+  background-color: #999a9a;
   border-radius: 10px;
   margin-right: 5px;
 }
@@ -1797,6 +1831,7 @@ Desktop display
 }
 .libraries-page .lists .list-wrapper {
   padding: 0px;
+  margin-top: 20px;
 }
 .libraries-page .lists .list-wrapper:last-child .list:before {
   content: "";
@@ -1929,7 +1964,7 @@ Desktop display
     margin: 0px -15px;
   }
   .libraries-page .lists .title {
-    margin: 15px 15px 20px;
+    margin: 35px 15px 10px 15px;
   }
   .libraries-page .lists .list-wrapper {
     padding: 0px 15px;
@@ -1948,9 +1983,6 @@ Desktop display
   .libraries-page .search-list .txtListName {
     height: 40px;
     font-size: 1.3em;
-  }
-  .libraries-page .lists {
-    margin: 0px;
   }
   .libraries-page .lists .list:hover:hover {
     top: -5px;

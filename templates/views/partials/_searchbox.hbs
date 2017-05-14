@@ -1,36 +1,38 @@
 <div class="search-box-wrapper">
-    <div class="search-box">
-        <form method="GET" class="frmSearch">                                        
-                <input id="word" name="word" data-word="" type="text" placeholder="English - Vietnamese" value="{{word}}" autocomplete="off">
-                {{!--<i id="btn-clearinput" class="btn-clearinput"></i>--}}
-                <div class="search-type">                
-                    <span class="select-icons">                        
-                        <i class="fa fa-book" aria-hidden="true"></i>
-                        
-                        <i class="arrow down"></i>                    
-                        <i class="arrow up"></i>
-                    </span>                
-                </div>
-                <button type="submit" class="btn btn-search">                    
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                </button> 
+    <div class="container">
+        <div class="search-box">
+            <form method="GET" class="frmSearch">                                        
+                    <input id="word" name="word" data-word="" type="text" placeholder="English - Vietnamese" value="{{word}}" autocomplete="off">
+                    {{!--<i id="btn-clearinput" class="btn-clearinput"></i>--}}
+                    <div class="search-type">                
+                        <span class="select-icons">                        
+                            <i class="fa fa-book" aria-hidden="true"></i>
+                            
+                            <i class="arrow down"></i>                    
+                            <i class="arrow up"></i>
+                        </span>                
+                    </div>
+                    <button type="submit" class="btn btn-search">                    
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button> 
 
-                <div class="select-types-content">
-                    <ul class="dict-type">
-                        <li class="active" data-type="en-vi">English - Vietnamese</li>
-                        <li data-type="en-en">English - English</li>                                                               
-                        {{!--<li data-type="vi-en">Vietnamese - English</li>--}}
-                    </ul>
-                    
-                    {{#if type}}
-                        <input id="hdfType" type="hidden" value="{{type}}" />
-                    {{else}}
-                        <input id="hdfType" type="hidden" value="en-vi" />
-                    {{/if}}
-                    
-                </div>
-                <div id="search-suggestion"  class="search-suggestion">                                                    
-                </div>                    
-        </form>
+                    <div class="select-types-content">
+                        <ul class="dict-type">
+                            <li class="active" data-type="en-vi">English - Vietnamese</li>
+                            <li data-type="en-en">English - English</li>                                                               
+                            {{!--<li data-type="vi-en">Vietnamese - English</li>--}}
+                        </ul>
+                        
+                        {{#if type}}
+                            <input id="hdfType" type="hidden" value="{{type}}" />
+                        {{else}}
+                            <input id="hdfType" type="hidden" value="en-vi" />
+                        {{/if}}
+                        
+                    </div>
+                    <div id="search-suggestion"  class="search-suggestion">                                                    
+                    </div>                    
+            </form>
+        </div>    
     </div>    
-</div>              
+</div>          
